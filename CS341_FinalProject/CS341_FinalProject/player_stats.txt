@@ -1,0 +1,17 @@
+User1:
+MemoryMatch solves = 
+Blackjack win ratio = 
+Slapjack wins = 
+SimonSays solves = 
+
+User2:
+MemoryMatch solves = 
+Blackjack win ratio = 
+Slapjack wins = 
+SimonSays solves = 
+
+User3:
+MemoryMatch solves = 
+Blackjack win ratio = 
+Slapjack wins = 
+SimonSays solves = 

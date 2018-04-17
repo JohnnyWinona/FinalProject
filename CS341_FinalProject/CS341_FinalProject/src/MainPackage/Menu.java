@@ -1,8 +1,18 @@
 package MainPackage;
 
+import MainPackage.Player;
 import FramePackage.bjFrame;
 import FramePackage.mmFrame;
 import FramePackage.ssFrame;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * Course: CS341 Data Structures Date: April 2018 Assignment: CS341_FinalProject
@@ -182,10 +192,30 @@ public class Menu extends javax.swing.JFrame {
     private void createPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerButtonActionPerformed
         // TODO add your handling code here:
         Player player = new Player();
+
+        String username = JOptionPane.showInputDialog(null, "Enter player name: ");
+        String fundsString = JOptionPane.showInputDialog(null, "Enter funds to deposit: ");
+
+        player.setUsername(username);
+        player.setFunds(Integer.parseInt(fundsString));
+
+        //output to player_list.txt
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileWriter("player_list.txt", true), true);
+            out.println(username + ": " + Integer.parseInt(fundsString));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        out.close();
+
     }//GEN-LAST:event_createPlayerButtonActionPerformed
 
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_selectUserButtonActionPerformed
 
     private void playerStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerStatsButtonActionPerformed

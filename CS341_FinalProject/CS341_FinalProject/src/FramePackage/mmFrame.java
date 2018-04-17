@@ -20,6 +20,10 @@ public class mmFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    private final int EASY_MATCHES = 2;
+    private final int MED_MATCHES = 3;
+    private final int HARD_MATCHES = 4;
+
     MemoryMatch mmGame = new MemoryMatch();
 
     List<Card> cards = new ArrayList<Card>();
@@ -251,8 +255,6 @@ public class mmFrame extends javax.swing.JFrame {
         cards = mmGame.getCards();
 
         Collections.shuffle(cards);
-
-        System.out.println(cards);
     }//GEN-LAST:event_easyButtonActionPerformed
 
     private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
@@ -290,8 +292,6 @@ public class mmFrame extends javax.swing.JFrame {
         cards = mmGame.getCards();
 
         Collections.shuffle(cards);
-
-        System.out.println(cards);
     }//GEN-LAST:event_mediumButtonActionPerformed
 
     private void hardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonActionPerformed
@@ -327,8 +327,6 @@ public class mmFrame extends javax.swing.JFrame {
         cards = mmGame.getCards();
 
         Collections.shuffle(cards);
-
-        System.out.println(cards);
     }//GEN-LAST:event_hardButtonActionPerformed
 
     private void easyCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard1ActionPerformed
@@ -793,6 +791,28 @@ public class mmFrame extends javax.swing.JFrame {
         medCard6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
         hardCard7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
         hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
+    }
+
+    public void checkCompletion(String difficulty, int matchesCurrent) {
+
+        switch (difficulty) {
+            case "easy":
+                if (matchesCurrent == EASY_MATCHES) {
+                    
+                }
+                break;
+            case "medium":
+                if (matchesCurrent == MED_MATCHES) {
+
+                }
+                break;
+            case "hard":
+                if (matchesCurrent == HARD_MATCHES) {
+
+                }
+                break;
+        }
+
     }
 
     /**
