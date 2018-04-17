@@ -5,6 +5,11 @@
  */
 package FramePackage;
 
+import GamePackage.SimonSays;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ch8661mh
@@ -17,6 +22,12 @@ public class ssFrame extends javax.swing.JFrame {
     public ssFrame() {
         initComponents();
     }
+
+    SimonSays ssGame = new SimonSays();
+
+    List<Integer> inputOrder = new ArrayList<Integer>();
+
+    double delay = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,17 +44,39 @@ public class ssFrame extends javax.swing.JFrame {
         blueButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
         playButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        scoreValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg"))); // NOI18N
+        redButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redButtonActionPerformed(evt);
+            }
+        });
 
         yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg"))); // NOI18N
+        yellowButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yellowButtonActionPerformed(evt);
+            }
+        });
 
         greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg"))); // NOI18N
+        greenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                greenButtonActionPerformed(evt);
+            }
+        });
 
         blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg"))); // NOI18N
+        blueButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                blueButtonActionPerformed(evt);
+            }
+        });
 
         titleLabel.setFont(new java.awt.Font("Toppan Bunkyu Gothic", 3, 36)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -53,6 +86,15 @@ public class ssFrame extends javax.swing.JFrame {
         playButton.setFont(new java.awt.Font("Toppan Bunkyu Midashi Gothic", 3, 13)); // NOI18N
         playButton.setText("Play");
         playButton.setToolTipText("");
+        playButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Score:");
+
+        scoreValue.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,6 +121,12 @@ public class ssFrame extends javax.swing.JFrame {
                                     .addComponent(blueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(scoreValue)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,11 +143,78 @@ public class ssFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(blueButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(greenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(scoreValue))
+                .addGap(11, 11, 11))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void redButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redButtonActionPerformed
+        // TODO add your handling code here:
+        if (ssGame.isMatch(inputOrder)) {
+            ssGame.addOrder();
+        } else {
+            //end game
+            JOptionPane.showMessageDialog(rootPane, "You lose");
+        }
+    }//GEN-LAST:event_redButtonActionPerformed
+
+    private void yellowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yellowButtonActionPerformed
+        // TODO add your handling code here:
+        if (ssGame.isMatch(inputOrder)) {
+            ssGame.addOrder();
+        } else {
+            //end game
+            JOptionPane.showMessageDialog(rootPane, "You lose");
+        }
+    }//GEN-LAST:event_yellowButtonActionPerformed
+
+    private void greenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenButtonActionPerformed
+        // TODO add your handling code here:
+        if (ssGame.isMatch(inputOrder)) {
+            ssGame.addOrder();
+        } else {
+            //end game
+            JOptionPane.showMessageDialog(rootPane, "You lose");
+        }
+    }//GEN-LAST:event_greenButtonActionPerformed
+
+    private void blueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueButtonActionPerformed
+        // TODO add your handling code here:
+        if (ssGame.isMatch(inputOrder)) {
+            ssGame.addOrder();
+        } else {
+            //end game
+            JOptionPane.showMessageDialog(rootPane, "You lose");
+        }
+    }//GEN-LAST:event_blueButtonActionPerformed
+
+    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
+        // TODO add your handling code here:
+        String difficulty = JOptionPane.showInputDialog(null, "Enter difficulty: ");
+        
+        switch (difficulty) {
+            case "easy":
+                delay = 2;
+                break;
+            case "medium":
+                delay = 1.5;
+                break;
+            case "hard":
+                delay = 1;
+                break;
+        }
+
+        ssGame.addOrder();
+        playButton.setEnabled(false);
+        
+        ssGame.getButtonColor();
+        medCard5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+    }//GEN-LAST:event_playButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,8 +254,10 @@ public class ssFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton blueButton;
     private javax.swing.JButton greenButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton playButton;
     private javax.swing.JButton redButton;
+    private javax.swing.JLabel scoreValue;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton yellowButton;
     // End of variables declaration//GEN-END:variables

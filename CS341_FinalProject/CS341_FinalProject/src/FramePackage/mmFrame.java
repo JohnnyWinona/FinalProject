@@ -10,6 +10,9 @@ import MainPackage.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class mmFrame extends javax.swing.JFrame {
 
@@ -222,39 +225,53 @@ public class mmFrame extends javax.swing.JFrame {
 
     private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
         // TODO add your handling code here:
-        //easy cards
-        easyCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
-        easyCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
-        easyCard3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
-        easyCard4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
-        easyCard1.setEnabled(true);
-        easyCard2.setEnabled(true);
-        easyCard3.setEnabled(true);
-        easyCard4.setEnabled(true);
-
-        //not easy cards
-        medCard5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-        medCard6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-        hardCard7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-        hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-        medCard5.setEnabled(false);
-        medCard6.setEnabled(false);
-        hardCard7.setEnabled(false);
-        hardCard8.setEnabled(false);
-
-        easyButton.setEnabled(false);
-        mediumButton.setEnabled(false);
-        hardButton.setEnabled(false);
-
-        difficulty = "easy";
-
         //generate cards
-        mmGame.generateMemoryMatch(difficulty);
+        mmGame.generateMemoryMatch("easy");
 
         //assign cards
         cards = mmGame.getCards();
 
         Collections.shuffle(cards);
+
+        //show cards faces
+        easyCard1.setIcon(cards.get(0).getCardImage());
+        easyCard2.setIcon(cards.get(1).getCardImage());
+        easyCard3.setIcon(cards.get(2).getCardImage());
+        easyCard4.setIcon(cards.get(3).getCardImage());
+
+        /*
+        try {
+            Thread.sleep(1000);
+
+            //easy cards
+            easyCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
+            easyCard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
+            easyCard3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
+            easyCard4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
+         */
+        easyCard1.setEnabled(true);
+        easyCard2.setEnabled(true);
+        easyCard3.setEnabled(true);
+        easyCard4.setEnabled(true);
+        /*
+            //not easy cards
+            medCard5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+            medCard6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+            hardCard7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+            hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+            medCard5.setEnabled(false);
+            medCard6.setEnabled(false);
+            hardCard7.setEnabled(false);
+            hardCard8.setEnabled(false);
+
+            easyButton.setEnabled(false);
+            mediumButton.setEnabled(false);
+            hardButton.setEnabled(false);
+
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+         */
     }//GEN-LAST:event_easyButtonActionPerformed
 
     private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
@@ -345,10 +362,14 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(0);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(0);
-                    break;
+                    //increment selection counter
+                    cardSelectionCount++;
+                    flag = true;
                 case 2: //redo switch after resetting selection counter
                     flag = true;
 
@@ -374,9 +395,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_easyCard1ActionPerformed
 
     private void easyCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard2ActionPerformed
@@ -731,6 +749,10 @@ public class mmFrame extends javax.swing.JFrame {
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         // TODO add your handling code here:
+        //reset game and cards
+        mmGame = new MemoryMatch();
+        cardSelectionCount = 0;
+
         //disable cards
         easyCard1.setEnabled(false);
         easyCard2.setEnabled(false);
@@ -798,7 +820,7 @@ public class mmFrame extends javax.swing.JFrame {
         switch (difficulty) {
             case "easy":
                 if (matchesCurrent == EASY_MATCHES) {
-                    
+
                 }
                 break;
             case "medium":

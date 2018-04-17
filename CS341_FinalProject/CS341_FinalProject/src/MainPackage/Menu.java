@@ -26,6 +26,8 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
     }
+    
+    public int gameID;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,6 +173,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         bjFrame bj = new bjFrame();
         bj.setVisible(true);
+        gameID = 1;
     }//GEN-LAST:event_bjButtonActionPerformed
 
     private void memoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryButtonActionPerformed
