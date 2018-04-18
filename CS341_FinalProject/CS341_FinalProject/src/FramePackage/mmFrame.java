@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class mmFrame extends javax.swing.JFrame {
 
@@ -35,6 +36,7 @@ public class mmFrame extends javax.swing.JFrame {
 
     Card firstCard;
     Card secondCard;
+    int currentMatches;
 
     String difficulty = difficultyFrame.getDifficulty();
 
@@ -209,11 +211,13 @@ public class mmFrame extends javax.swing.JFrame {
                     cardSelectionCount++;
                     flag = true;
                 case 2: //redo switch after resetting selection counter
-                    flag = true;
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        easyCard1.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -251,16 +255,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(1);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(1);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        easyCard2.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -280,9 +290,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_easyCard2ActionPerformed
 
     private void easyCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard3ActionPerformed
@@ -301,16 +308,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(2);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(2);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        easyCard3.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -330,9 +343,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_easyCard3ActionPerformed
 
     private void easyCard4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard4ActionPerformed
@@ -351,16 +361,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(3);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(3);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        easyCard4.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -380,9 +396,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_easyCard4ActionPerformed
 
     private void medCard5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medCard5ActionPerformed
@@ -401,16 +414,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(4);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(4);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        medCard5.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -430,9 +449,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_medCard5ActionPerformed
 
     private void medCard6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medCard6ActionPerformed
@@ -451,16 +467,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(5);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(5);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        medCard6.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -480,9 +502,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_medCard6ActionPerformed
 
     private void hardCard7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardCard7ActionPerformed
@@ -501,16 +520,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(6);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(6);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        hardCard7.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -530,9 +555,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_hardCard7ActionPerformed
 
     private void hardCard8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardCard8ActionPerformed
@@ -551,16 +573,22 @@ public class mmFrame extends javax.swing.JFrame {
             switch (cardSelectionCount) {
                 case 0: //no cards selected
                     firstCard = cards.get(7);
+                    //increment selection counter
+                    cardSelectionCount++;
                     break;
                 case 1: //one card selected
                     secondCard = cards.get(7);
-                    break;
-                case 2: //redo switch after resetting selection counter
+                    //increment selection counter
+                    cardSelectionCount++;
                     flag = true;
+                case 2: //redo switch after resetting selection counter
+                    flag = false;
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        hardCard8.setSelected(true);
+                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        checkCompletion(difficulty, currentMatches);
                     } else {
                         //reset selections
                         switch (difficulty) {
@@ -580,9 +608,6 @@ public class mmFrame extends javax.swing.JFrame {
                     break;
             }
         } while (flag);
-
-        //increment selection counter
-        cardSelectionCount++;
     }//GEN-LAST:event_hardCard8ActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
@@ -591,25 +616,7 @@ public class mmFrame extends javax.swing.JFrame {
         mmGame = new MemoryMatch();
         cardSelectionCount = 0;
 
-        //disable cards
-        easyCard1.setEnabled(false);
-        easyCard2.setEnabled(false);
-        easyCard3.setEnabled(false);
-        easyCard4.setEnabled(false);
-        medCard5.setEnabled(false);
-        medCard6.setEnabled(false);
-        hardCard7.setEnabled(false);
-        hardCard8.setEnabled(false);
-
-        //reset toggle buttons
-        easyCard1.setSelected(false);
-        easyCard2.setSelected(false);
-        easyCard3.setSelected(false);
-        easyCard4.setSelected(false);
-        medCard5.setSelected(false);
-        medCard6.setSelected(false);
-        hardCard7.setSelected(false);
-        hardCard8.setSelected(false);
+        resetCards();
 
         //generate cards
         mmGame.generateMemoryMatch(difficulty);
@@ -621,44 +628,49 @@ public class mmFrame extends javax.swing.JFrame {
 
         //show card faces briefly
         //begin loop
-        int delay = 1000;
+        //int delay = 1500;
+        //long endTime = System.currentTimeMillis() + delay;
+        //show cards faces
+        switch (difficulty) {
+            case "easy":
+                easyCard1.setIcon(cards.get(0).getCardImage());
+                easyCard2.setIcon(cards.get(1).getCardImage());
+                easyCard3.setIcon(cards.get(2).getCardImage());
+                easyCard4.setIcon(cards.get(3).getCardImage());
+                break;
+            case "medium":
+                easyCard1.setIcon(cards.get(0).getCardImage());
+                easyCard2.setIcon(cards.get(1).getCardImage());
+                easyCard3.setIcon(cards.get(2).getCardImage());
+                easyCard4.setIcon(cards.get(3).getCardImage());
+                medCard5.setIcon(cards.get(4).getCardImage());
+                medCard6.setIcon(cards.get(5).getCardImage());
+                break;
+            case "hard":
+                easyCard1.setIcon(cards.get(0).getCardImage());
+                easyCard2.setIcon(cards.get(1).getCardImage());
+                easyCard3.setIcon(cards.get(2).getCardImage());
+                easyCard4.setIcon(cards.get(3).getCardImage());
+                medCard5.setIcon(cards.get(4).getCardImage());
+                medCard6.setIcon(cards.get(5).getCardImage());
+                hardCard7.setIcon(cards.get(6).getCardImage());
+                hardCard8.setIcon(cards.get(7).getCardImage());
+                break;
+        }//end switch
 
-        ActionListener taskPerformer;
-        taskPerformer2 = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                //...Perform a task...
-
-                //show cards faces
-                switch (difficulty) {
-                    case "easy":
-                        easyCard1.setIcon(cards.get(0).getCardImage());
-                        easyCard2.setIcon(cards.get(1).getCardImage());
-                        easyCard3.setIcon(cards.get(2).getCardImage());
-                        easyCard4.setIcon(cards.get(3).getCardImage());
-                        break;
-                    case "medium":
-                        easyCard1.setIcon(cards.get(0).getCardImage());
-                        easyCard2.setIcon(cards.get(1).getCardImage());
-                        easyCard3.setIcon(cards.get(2).getCardImage());
-                        easyCard4.setIcon(cards.get(3).getCardImage());
-                        medCard5.setIcon(cards.get(4).getCardImage());
-                        medCard6.setIcon(cards.get(5).getCardImage());
-                        break;
-                    case "hard":
-                        easyCard1.setIcon(cards.get(0).getCardImage());
-                        easyCard2.setIcon(cards.get(1).getCardImage());
-                        easyCard3.setIcon(cards.get(2).getCardImage());
-                        easyCard4.setIcon(cards.get(3).getCardImage());
-                        medCard5.setIcon(cards.get(4).getCardImage());
-                        medCard6.setIcon(cards.get(5).getCardImage());
-                        hardCard7.setIcon(cards.get(6).getCardImage());
-                        hardCard8.setIcon(cards.get(7).getCardImage());
-                        break;
-                }
-
-            }
-        };//taskPerformer
-        new javax.swing.Timer(delay, taskPerformer2).start();
+        //after waiting
+        //show cards back
+        switch (difficulty) {
+            case "easy":
+                changeCardEasy();
+                break;
+            case "medium":
+                changeCardMedium();
+                break;
+            case "hard":
+                changeCardHard();
+                break;
+        }//end switch
 
         //enable cards
         switch (difficulty) {
@@ -765,21 +777,58 @@ public class mmFrame extends javax.swing.JFrame {
         switch (difficulty) {
             case "easy":
                 if (matchesCurrent == EASY_MATCHES) {
-
+                    int confirm = JOptionPane.showConfirmDialog(rootPane, mmGame);
+                    if (confirm == 1) {
+                        //shows reset cards
+                        resetCards();
+                        //increase score
+                    }
                 }
                 break;
             case "medium":
                 if (matchesCurrent == MED_MATCHES) {
-
+                    int confirm = JOptionPane.showConfirmDialog(rootPane, mmGame);
+                    if (confirm == 1) {
+                        //shows reset cards
+                        resetCards();
+                        //increase score
+                    }
                 }
                 break;
             case "hard":
                 if (matchesCurrent == HARD_MATCHES) {
-
+                    int confirm = JOptionPane.showConfirmDialog(rootPane, mmGame);
+                    if (confirm == 1) {
+                        //shows reset cards
+                        resetCards();
+                        //increase score
+                    }
                 }
                 break;
         }
 
+    }
+
+    public void resetCards() {
+        //disable cards
+        easyCard1.setEnabled(false);
+        easyCard2.setEnabled(false);
+        easyCard3.setEnabled(false);
+        easyCard4.setEnabled(false);
+        medCard5.setEnabled(false);
+        medCard6.setEnabled(false);
+        hardCard7.setEnabled(false);
+        hardCard8.setEnabled(false);
+
+        //reset toggle buttons
+        easyCard1.setSelected(false);
+        easyCard2.setSelected(false);
+        easyCard3.setSelected(false);
+        easyCard4.setSelected(false);
+        medCard5.setSelected(false);
+        medCard6.setSelected(false);
+        hardCard7.setSelected(false);
+        hardCard8.setSelected(false);
     }
 
     /**
