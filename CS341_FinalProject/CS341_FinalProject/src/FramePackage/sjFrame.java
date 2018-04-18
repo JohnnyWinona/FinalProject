@@ -32,14 +32,14 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     private List<Card> ComputerHand1 = new ArrayList<Card>();
     private List<Card> ComputerHand2 = new ArrayList<Card>();
     private List<Card> CenterHand = new ArrayList<Card>();
-   //    private ArrayList<Deck> deck = new ArrayList<Deck>();
-
+    //    private ArrayList<Deck> deck = new ArrayList<Deck>();
+    
     int Humanplayers = 0;
 
     int Computerplayers = 0;
-    
+
     int delay = 2000;
-    
+
     int x = 0;
 
     /**
@@ -93,6 +93,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         pauseButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Slapjack");
 
         panel1.setBackground(new java.awt.Color(0, 102, 0));
 
@@ -149,7 +150,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         .addComponent(jLabelPlayer3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3Player3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,9 +273,9 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
         } else if (Humanplayers == 1 && Computerplayers == 1) {
             PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
-            
+
             ComputerHand1 = deck.generateHand(Humanplayers, Computerplayers);
-            
+
         }
 
         jLabel2Player1.setText("<html>Player 1 <br> \n"
@@ -282,7 +283,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 + "# of cards "
                 + deck.getTotalCards(PlayerHand1)
                 + "</html>\n");
-                
+
         jLabel2Player2.setText("<html>Player 2 <br> \n"
                 + "Use letter L to Slap<br>\n"
                 + "# of cards "
@@ -298,23 +299,22 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 + "# of cards "
                 + deck.getTotalCards(ComputerHand2)
                 + "</html>\n");
-        
+
         //begin loop
-        
         int delay = 100;
-        
-          ActionListener taskPerformer;
+
+        ActionListener taskPerformer;
         taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 //...Perform a task...
-                
+
                 x++;
-                switch(x){
+                switch (x) {
                     case 1: //
-                        
+
                         jLabelPlayer1.setIcon(PlayerHand1.get(0).getCardImage());
                         PlayerHand1.remove(0);
-                                
+
                         break;
                     case 2: //yellow
                         jLabelPlayer2.setIcon(PlayerHand1.get(0).getCardImage());
@@ -327,16 +327,14 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     case 4: //blue
                         jLabelPlayer4.setIcon(PlayerHand1.get(0).getCardImage());
                         PlayerHand1.remove(3);
-                        
+
                         x = 0;
                         break;
                 }
-                
-                
+
             }
         };
-  new javax.swing.Timer(delay, taskPerformer).start();
-
+        new javax.swing.Timer(delay, taskPerformer).start();
 
 
     }//GEN-LAST:event_startButtonActionPerformed

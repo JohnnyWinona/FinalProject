@@ -71,6 +71,7 @@ public class bjFrame extends javax.swing.JFrame {
         checkWinnerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Blackjack");
 
         onePanel.setBackground(new java.awt.Color(0, 102, 0));
 
@@ -362,7 +363,7 @@ public class bjFrame extends javax.swing.JFrame {
     private void dealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealButtonActionPerformed
         // TODO add your handling code here:
         Blackjack bjGame = new Blackjack();
-        
+
         oneHitButton.setEnabled(true);
         oneStandButton.setEnabled(true);
         dealButton.setEnabled(false);
@@ -370,27 +371,26 @@ public class bjFrame extends javax.swing.JFrame {
         houseHand.clear();
         oneHand.clear();
         twoHand.clear();
-        
+
         try {
-        one1Label.setIcon(null);
-        one2Label.setIcon(null);
-        one3Label.setIcon(null);
-        one4Label.setIcon(null);
-        one5Label.setIcon(null);
-        
-        two1Label.setIcon(null);
-        two2Label.setIcon(null);
-        two3Label.setIcon(null);
-        two4Label.setIcon(null);
-        two5Label.setIcon(null);
-        
-        house1Label.setIcon(null);
-        house2Label.setIcon(null);
-        house3Label.setIcon(null);
-        house4Label.setIcon(null);
-        house5Label.setIcon(null);
-        }
-        catch(Exception e){
+            one1Label.setIcon(null);
+            one2Label.setIcon(null);
+            one3Label.setIcon(null);
+            one4Label.setIcon(null);
+            one5Label.setIcon(null);
+
+            two1Label.setIcon(null);
+            two2Label.setIcon(null);
+            two3Label.setIcon(null);
+            two4Label.setIcon(null);
+            two5Label.setIcon(null);
+
+            house1Label.setIcon(null);
+            house2Label.setIcon(null);
+            house3Label.setIcon(null);
+            house4Label.setIcon(null);
+            house5Label.setIcon(null);
+        } catch (Exception e) {
         }
 
         houseHand = bjGame.generateHand();
@@ -417,13 +417,12 @@ public class bjFrame extends javax.swing.JFrame {
         while (bjGame.getSum(houseHand) <= 17) {
             houseHand.add(bjGame.hit());
         }
-        try{
-        house2Label.setIcon(houseHand.get(1).getCardImage());
-        house3Label.setIcon(houseHand.get(2).getCardImage());
-        house4Label.setIcon(houseHand.get(3).getCardImage());
-        house5Label.setIcon(houseHand.get(4).getCardImage());
-        }
-        catch(Exception e){
+        try {
+            house2Label.setIcon(houseHand.get(1).getCardImage());
+            house3Label.setIcon(houseHand.get(2).getCardImage());
+            house4Label.setIcon(houseHand.get(3).getCardImage());
+            house5Label.setIcon(houseHand.get(4).getCardImage());
+        } catch (Exception e) {
         }
 
         switch (bjGame.checkWinner(oneHand, houseHand)) {
@@ -462,12 +461,11 @@ public class bjFrame extends javax.swing.JFrame {
     private void oneHitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneHitButtonActionPerformed
         // TODO add your handling code here:
         oneHand.add(bjGame.hit());
-        try{
-        one3Label.setIcon(oneHand.get(2).getCardImage());
-        one4Label.setIcon(oneHand.get(3).getCardImage());
-        one5Label.setIcon(oneHand.get(4).getCardImage());
-        }
-        catch(Exception e){
+        try {
+            one3Label.setIcon(oneHand.get(2).getCardImage());
+            one4Label.setIcon(oneHand.get(3).getCardImage());
+            one5Label.setIcon(oneHand.get(4).getCardImage());
+        } catch (Exception e) {
         }
         if (bjGame.getSum(oneHand) > 21) {
             oneHitButton.setEnabled(false);
@@ -488,12 +486,11 @@ public class bjFrame extends javax.swing.JFrame {
     private void twoHitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoHitButtonActionPerformed
         // TODO add your handling code here:
         twoHand.add(bjGame.hit());
-        try{
-        two3Label.setIcon(twoHand.get(2).getCardImage());
-        two4Label.setIcon(twoHand.get(3).getCardImage());
-        two5Label.setIcon(twoHand.get(4).getCardImage());
-        }
-        catch(Exception e){
+        try {
+            two3Label.setIcon(twoHand.get(2).getCardImage());
+            two4Label.setIcon(twoHand.get(3).getCardImage());
+            two5Label.setIcon(twoHand.get(4).getCardImage());
+        } catch (Exception e) {
         }
         if (bjGame.getSum(twoHand) > 21) {
             twoHitButton.setEnabled(false);

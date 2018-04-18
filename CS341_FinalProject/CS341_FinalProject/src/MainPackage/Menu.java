@@ -2,7 +2,10 @@ package MainPackage;
 
 import MainPackage.Player;
 import FramePackage.bjFrame;
+import FramePackage.difficultyFrame;
+import static FramePackage.difficultyFrame.difficulty;
 import FramePackage.mmFrame;
+import FramePackage.sjFrame;
 import FramePackage.ssFrame;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,8 +29,16 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
     }
-    
-    public int gameID;
+
+    public static int gameID;
+
+    public static int getGameID() {
+        return gameID;
+    }
+
+    public static void setGameID(int gameChosen) {
+        gameID = gameChosen;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,25 +182,42 @@ public class Menu extends javax.swing.JFrame {
 
     private void bjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjButtonActionPerformed
         // TODO add your handling code here:
+        /* //if difficulty is used
+                difficultyFrame dF = new difficultyFrame();
+            dF.setVisible(true);
+         */
+        //no difficulty chooser
         bjFrame bj = new bjFrame();
         bj.setVisible(true);
-        gameID = 1;
+        Menu.setGameID(1);
     }//GEN-LAST:event_bjButtonActionPerformed
 
     private void memoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryButtonActionPerformed
         // TODO add your handling code here:
-        mmFrame mm = new mmFrame();
-        mm.setVisible(true);
+        //difficulty chooser
+        difficultyFrame dF = new difficultyFrame();
+        dF.setVisible(true);
+        Menu.setGameID(2);
     }//GEN-LAST:event_memoryButtonActionPerformed
 
     private void slapjackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slapjackButtonActionPerformed
         // TODO add your handling code here:
+        /*//if difficulty is used
+        difficultyFrame dF = new difficultyFrame();
+        dF.setVisible(true);
+         */
+        //no difficulty chooser
+        sjFrame sj = new sjFrame();
+        sj.setVisible(true);
+        Menu.setGameID(3);
     }//GEN-LAST:event_slapjackButtonActionPerformed
 
     private void ssButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ssButtonActionPerformed
         // TODO add your handling code here:
-        ssFrame ss = new ssFrame();
-        ss.setVisible(true);
+        //difficulty chooser
+        difficultyFrame dF = new difficultyFrame();
+        dF.setVisible(true);
+        Menu.setGameID(4);
     }//GEN-LAST:event_ssButtonActionPerformed
 
     private void createPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerButtonActionPerformed
@@ -218,7 +246,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_selectUserButtonActionPerformed
 
     private void playerStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerStatsButtonActionPerformed

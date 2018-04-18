@@ -5,6 +5,8 @@
  */
 package FramePackage;
 
+import MainPackage.Menu;
+
 /**
  *
  * @author eu3035jm
@@ -17,8 +19,17 @@ public class difficultyFrame extends javax.swing.JFrame {
     public difficultyFrame() {
         initComponents();
     }
+
+    public static String difficulty;
+    public static int gameID = Menu.gameID;
+
+    public static String getDifficulty() {
+        return difficulty;
+    }
     
-    String difficulty;
+    public static void setDifficulty(String difficultyChosen) {
+        difficulty = difficultyChosen;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +45,7 @@ public class difficultyFrame extends javax.swing.JFrame {
         hardButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         easyButton.setText("Easy");
         easyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,14 +79,9 @@ public class difficultyFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(easyButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mediumButton)
-                                    .addComponent(hardButton))
-                                .addGap(6, 6, 6))))
+                            .addComponent(easyButton)
+                            .addComponent(mediumButton)
+                            .addComponent(hardButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
@@ -104,18 +110,71 @@ public class difficultyFrame extends javax.swing.JFrame {
 
     private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
         // TODO add your handling code here:
-        difficulty = "easy";
-        switch(gameID){
-            
+        difficultyFrame.setDifficulty("easy");
+        switch (Menu.gameID) {
+            case 1:
+                bjFrame bj = new bjFrame();
+                bj.setVisible(true);
+                break;
+            case 2:
+                mmFrame mm = new mmFrame();
+                mm.setVisible(true);
+                break;
+            case 3:
+                sjFrame sj = new sjFrame();
+                sj.setVisible(true);
+                break;
+            case 4:
+                ssFrame ss = new ssFrame();
+                ss.setVisible(true);
+                break;
         }
     }//GEN-LAST:event_easyButtonActionPerformed
 
     private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
         // TODO add your handling code here:
+        difficultyFrame.setDifficulty("medium");
+        switch (Menu.gameID) {
+            case 1:
+                bjFrame bj = new bjFrame();
+                bj.setVisible(true);
+                break;
+            case 2:
+                mmFrame mm = new mmFrame();
+                mm.setVisible(true);
+                break;
+            case 3:
+                sjFrame sj = new sjFrame();
+                sj.setVisible(true);
+                break;
+            case 4:
+                ssFrame ss = new ssFrame();
+                ss.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_mediumButtonActionPerformed
 
     private void hardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonActionPerformed
         // TODO add your handling code here:
+        difficultyFrame.setDifficulty("hard");
+        switch (Menu.gameID) {
+            case 1:
+                bjFrame bj = new bjFrame();
+                bj.setVisible(true);
+                break;
+            case 2:
+                mmFrame mm = new mmFrame();
+                mm.setVisible(true);
+                break;
+            case 3:
+                sjFrame sj = new sjFrame();
+                sj.setVisible(true);
+                break;
+            case 4:
+                ssFrame ss = new ssFrame();
+                ss.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_hardButtonActionPerformed
 
     /**

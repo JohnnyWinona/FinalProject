@@ -52,6 +52,7 @@ public class ssFrame extends javax.swing.JFrame {
         scoreValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Simon Says");
         setResizable(false);
 
         redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg"))); // NOI18N
@@ -199,7 +200,7 @@ public class ssFrame extends javax.swing.JFrame {
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         // TODO add your handling code here:
-        String difficulty = JOptionPane.showInputDialog(null, "Enter difficulty: ");
+        String difficulty = difficultyFrame.getDifficulty();
         
         switch (difficulty) {
             case "easy":
