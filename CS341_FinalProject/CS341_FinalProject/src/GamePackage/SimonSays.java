@@ -29,7 +29,7 @@ public class SimonSays implements SimonSaysInterface {
     }
     
     public String getButtonColor(){
-        switch(order.){
+      /*  switch(order.){
             case 1: //red
                 
                 break;
@@ -39,7 +39,8 @@ public class SimonSays implements SimonSaysInterface {
                 break;
             case 4: //blue
                 break;
-        }
+        }*/
+        return "";
     }
 
 }

@@ -6,9 +6,12 @@
 package FramePackage;
 
 import GamePackage.SimonSays;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -27,7 +30,8 @@ public class ssFrame extends javax.swing.JFrame {
 
     List<Integer> inputOrder = new ArrayList<Integer>();
 
-    double delay = 0;
+    int delay = 0;
+    int x = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,21 +203,47 @@ public class ssFrame extends javax.swing.JFrame {
         
         switch (difficulty) {
             case "easy":
-                delay = 2;
+                delay = 300;
                 break;
             case "medium":
-                delay = 1.5;
+                delay = 200;
                 break;
             case "hard":
-                delay = 1;
+                delay = 500;
                 break;
         }
-
         ssGame.addOrder();
+        ActionListener taskPerformer = new ActionListener() {
+      public void actionPerformed(ActionEvent evt) {
+          //...Perform a task...
+         
+          x++;
+           switch(x){
+            case 1: //red
+                redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                break;
+            case 2: //yellow
+                yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                break;
+            case 3: //green
+                greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                break;
+            case 4: //blue
+                blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                break;
+        }
+                            
+
+      }
+  };
+  new Timer(delay, taskPerformer).start();
+
+      redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
         playButton.setEnabled(false);
         
         ssGame.getButtonColor();
-        medCard5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+        
+      
     }//GEN-LAST:event_playButtonActionPerformed
 
     /**

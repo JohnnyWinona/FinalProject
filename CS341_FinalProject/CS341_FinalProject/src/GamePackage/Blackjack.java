@@ -29,13 +29,22 @@ public class Blackjack implements BlackjackInterface {
     }
 
     public int getSum(List<Card> hand) {
-
+ 
         int sum = 0;
-
+ 
         for (int x = 0; x < hand.size(); x++) {
             sum += hand.get(x).getNumericalValue();
         }
-
+       
+        if(sum > 21) {
+            for(int i = 0; i < hand.size(); i++) {
+                if(hand.get(i).getValue().compareTo(Card.Value.ACE) == 0) {
+                    sum-=10;
+                    break;
+                }
+            }
+        }
+ 
         return sum;
     }
 
