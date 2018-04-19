@@ -5,13 +5,21 @@
  */
 package FramePackage;
 
+import java.io.*;
+import sun.audio.*;
 import GamePackage.SimonSays;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import sun.applet.Main;
 
 /**
  *
@@ -30,8 +38,34 @@ public class ssFrame extends javax.swing.JFrame {
 
     List<Integer> inputOrder = new ArrayList<Integer>();
 
+    ActionListener taskPerformer;
+
     int delay = 0;
     int x = 0;
+    int color = 0;
+    int flip = 0;
+    int score = 0;
+
+    String url = "/MainPackage/audioFile.wav";
+
+    public static synchronized void playSound(final String url) {
+        new Thread(new Runnable() {
+            // The wrapper thread is unnecessary, unless it blocks on the
+            // Clip finishing; see comments.
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                            //"/MainPackage/audioFile.wav"
+                            Main.class.getResourceAsStream(url));
+                    clip.open(inputStream);
+                    clip.start();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +90,7 @@ public class ssFrame extends javax.swing.JFrame {
         setResizable(false);
 
         redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg"))); // NOI18N
+        redButton.setEnabled(false);
         redButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 redButtonActionPerformed(evt);
@@ -63,6 +98,7 @@ public class ssFrame extends javax.swing.JFrame {
         });
 
         yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg"))); // NOI18N
+        yellowButton.setEnabled(false);
         yellowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yellowButtonActionPerformed(evt);
@@ -70,6 +106,7 @@ public class ssFrame extends javax.swing.JFrame {
         });
 
         greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg"))); // NOI18N
+        greenButton.setEnabled(false);
         greenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 greenButtonActionPerformed(evt);
@@ -77,6 +114,7 @@ public class ssFrame extends javax.swing.JFrame {
         });
 
         blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg"))); // NOI18N
+        blueButton.setEnabled(false);
         blueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 blueButtonActionPerformed(evt);
@@ -160,92 +198,203 @@ public class ssFrame extends javax.swing.JFrame {
 
     private void redButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redButtonActionPerformed
         // TODO add your handling code here:
+        playSound(url);
+
+        inputOrder.add(1);
         if (ssGame.isMatch(inputOrder)) {
+            redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
             ssGame.addOrder();
+
+            for (int x = 0; x < ssGame.size(); x++) {
+                ssGame.play().get(x);
+                toggleCard();
+            }
+
+            score++;
+            scoreValue.setText("" + score);
         } else {
             //end game
             JOptionPane.showMessageDialog(rootPane, "You lose");
+
+            //restart buttons
+            playButton.setEnabled(true);
+            redButton.setEnabled(false);
+            blueButton.setEnabled(false);
+            greenButton.setEnabled(false);
+            yellowButton.setEnabled(false);
         }
     }//GEN-LAST:event_redButtonActionPerformed
 
     private void yellowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yellowButtonActionPerformed
         // TODO add your handling code here:
+        playSound(url);
+
+        inputOrder.add(2);
         if (ssGame.isMatch(inputOrder)) {
+            yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
             ssGame.addOrder();
+
+            for (int x = 0; x < ssGame.size(); x++) {
+                ssGame.play().get(x);
+                toggleCard();
+            }
+
+            score++;
+            scoreValue.setText("" + score);
         } else {
             //end game
             JOptionPane.showMessageDialog(rootPane, "You lose");
+
+            //restart buttons
+            playButton.setEnabled(true);
+            redButton.setEnabled(false);
+            blueButton.setEnabled(false);
+            greenButton.setEnabled(false);
+            yellowButton.setEnabled(false);
         }
     }//GEN-LAST:event_yellowButtonActionPerformed
 
     private void greenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenButtonActionPerformed
         // TODO add your handling code here:
+        playSound(url);
+
+        inputOrder.add(3);
         if (ssGame.isMatch(inputOrder)) {
+            greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
             ssGame.addOrder();
+
+            for (int x = 0; x < ssGame.size(); x++) {
+                ssGame.play().get(x);
+                toggleCard();
+            }
+
+            score++;
+            scoreValue.setText("" + score);
         } else {
             //end game
             JOptionPane.showMessageDialog(rootPane, "You lose");
+
+            //restart buttons
+            playButton.setEnabled(true);
+            redButton.setEnabled(false);
+            blueButton.setEnabled(false);
+            greenButton.setEnabled(false);
+            yellowButton.setEnabled(false);
         }
     }//GEN-LAST:event_greenButtonActionPerformed
 
     private void blueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueButtonActionPerformed
         // TODO add your handling code here:
+        playSound(url);
+
+        inputOrder.add(4);
         if (ssGame.isMatch(inputOrder)) {
+            blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
             ssGame.addOrder();
+
+            for (int x = 0; x < ssGame.size(); x++) {
+                ssGame.play().get(x);
+                toggleCard();
+            }
+
+            score++;
+            scoreValue.setText("" + score);
         } else {
             //end game
             JOptionPane.showMessageDialog(rootPane, "You lose");
+
+            //restart buttons
+            playButton.setEnabled(true);
+            redButton.setEnabled(false);
+            blueButton.setEnabled(false);
+            greenButton.setEnabled(false);
+            yellowButton.setEnabled(false);
         }
     }//GEN-LAST:event_blueButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         // TODO add your handling code here:
+        //enable buttons
+        redButton.setEnabled(true);
+        blueButton.setEnabled(true);
+        yellowButton.setEnabled(true);
+        greenButton.setEnabled(true);
+
+        //reset game
+        ssGame = new SimonSays();
+        inputOrder.clear();
+        score = 0;
+        scoreValue.setText("" + score);
+
+        playButton.setEnabled(false);
+
         String difficulty = difficultyFrame.getDifficulty();
-        
+
         switch (difficulty) {
             case "easy":
-                delay = 300;
+                delay = 500;
                 break;
             case "medium":
-                delay = 200;
+                delay = 300;
                 break;
             case "hard":
-                delay = 500;
+                delay = 200;
                 break;
         }
         ssGame.addOrder();
-        ActionListener taskPerformer = new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
-          //...Perform a task...
-         
-          x++;
-           switch(x){
-            case 1: //red
-                redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                break;
-            case 2: //yellow
-                yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                break;
-            case 3: //green
-                greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                break;
-            case 4: //blue
-                blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                break;
-        }
-                            
 
-      }
-  };
-  new Timer(delay, taskPerformer).start();
+        color = ssGame.play().get(0);
 
-      redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
+        //taskPerformer = toggleCard();
+        toggleCard();
+
         playButton.setEnabled(false);
-        
-        ssGame.getButtonColor();
-        
-      
+
     }//GEN-LAST:event_playButtonActionPerformed
+
+    public void toggleCard() {
+        taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //...Perform a task...
+                switch (flip) {
+                    case 0:
+                        switch (color) {
+                            case 1:
+                                redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                                break;
+                            case 2:
+                                yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                                break;
+                            case 3:
+                                greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                                break;
+                            case 4:
+                                blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
+                                break;
+                            default:
+                                break;
+                        }
+                        flip++;
+                        break;
+                    case 1:
+                        redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
+                        yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg")));
+                        greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
+                        break;
+                    default:
+                        flip = 0;
+                        break;
+                }//switch 1 
+
+            }//action performed
+
+        };
+        new javax.swing.Timer(delay, taskPerformer)
+                .start();
+
+        delay = delay * 2;
+    }
 
     /**
      * @param args the command line arguments

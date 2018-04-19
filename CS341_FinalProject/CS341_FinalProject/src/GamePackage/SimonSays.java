@@ -20,7 +20,7 @@ public class SimonSays implements SimonSaysInterface {
         order.add(order.size(), n);
     }
     
-    public int getScore(){
+    public int size(){
         return order.size();
     }
     
@@ -28,19 +28,8 @@ public class SimonSays implements SimonSaysInterface {
         return inputOrder.equals(order);
     }
     
-    public String getButtonColor(){
-      /*  switch(order.){
-            case 1: //red
-                
-                break;
-            case 2: //yellow
-                break;
-            case 3: //green
-                break;
-            case 4: //blue
-                break;
-        }*/
-        return "";
+    public List<Integer> play(){
+        return order;
     }
 
 }
