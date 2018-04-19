@@ -59,7 +59,12 @@ public class Deck {
     }
 
     public Card draw() {
+        
         return deckOfCards.remove();
+    }
+
+    public Card makeDeck() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

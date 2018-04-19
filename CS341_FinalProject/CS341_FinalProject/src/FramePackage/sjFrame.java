@@ -33,12 +33,12 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     private List<Card> ComputerHand2 = new ArrayList<Card>();
     private List<Card> CenterHand = new ArrayList<Card>();
     //    private ArrayList<Deck> deck = new ArrayList<Deck>();
-    
+
     int Humanplayers = 0;
 
     int Computerplayers = 0;
 
-    int delay = 2000;
+    int delay = 800;
 
     int x = 0;
 
@@ -109,19 +109,19 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
         jLabel2Player2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2Player2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2Player2.setText("<html>Player 2 <br> \nUse letter L to Slap<br>\n# of cards 13</html>\n");
+        jLabel2Player2.setText("<html>Player 2 <br> \nUse letter L to Slap<br>\n# of cards -</html>\n");
 
         jLabel3Player3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3Player3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3Player3.setText("<html>Computer<br> \nPlayer 2<br>\n# of cards 13</html>\n");
+        jLabel3Player3.setText("<html>Computer<br> \nPlayer 2<br>\n# of cards -</html>\n");
 
         jLabel4Player4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4Player4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4Player4.setText("<html>Computer<br> \nPlayer 2<br>\n# of cards 13</html>\n");
+        jLabel4Player4.setText("<html>Computer<br> \nPlayer 2<br>\n# of cards -</html>\n");
 
         jLabel2Player1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2Player1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2Player1.setText("<html>Player 1 <br> \nUse letter A to Slap<br>\n# of cards 13</html>\n");
+        jLabel2Player1.setText("<html>Player 1 <br> \nUse letter A to Slap<br>\n# of cards -</html>\n");
 
         CenterDeck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg"))); // NOI18N
 
@@ -276,6 +276,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
             ComputerHand1 = deck.generateHand(Humanplayers, Computerplayers);
 
+        } else if (Humanplayers == 2 && Computerplayers == 0) {
+            PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
+
+            PlayerHand2 = deck.generateHand(Humanplayers, Computerplayers);
         }
 
         jLabel2Player1.setText("<html>Player 1 <br> \n"
@@ -301,8 +305,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 + "</html>\n");
 
         //begin loop
-        int delay = 100;
-
+        //int delay = 1000;
         ActionListener taskPerformer;
         taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -317,17 +320,22 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         break;
                     case 2: //yellow
+                        if(Humanplayers ==2){
                         jLabelPlayer2.setIcon(PlayerHand1.get(0).getCardImage());
-                        PlayerHand1.remove(1);
+                        PlayerHand2.remove(0);
+                        }
                         break;
                     case 3: //green
+                        if( Computerplayers ==1  || Computerplayers ==2){
                         jLabelPlayer3.setIcon(PlayerHand1.get(0).getCardImage());
-                        PlayerHand1.remove(2);
+                        ComputerHand1.remove(0);
+                        }
                         break;
                     case 4: //blue
+                        if(Computerplayers ==2){
                         jLabelPlayer4.setIcon(PlayerHand1.get(0).getCardImage());
-                        PlayerHand1.remove(3);
-
+                        ComputerHand2.remove(0);
+                        }
                         x = 0;
                         break;
                 }
@@ -441,39 +449,83 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        System.out.println("");
+        //System.out.println("");
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        System.out.println("");
+        // System.out.println("");
 
         int key = ke.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
-            System.out.println("left");
+        if (key == KeyEvent.VK_A) {
+            //   System.out.println(jLabelPlayer1.getIcon().toString());
+            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
+            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
+                System.out.println(jLabelPlayer1.getIcon().toString());
+            }
         }
-
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_L) {
             System.out.println("right");
         }
 
-        if (key == KeyEvent.VK_E) {
+        if (key == KeyEvent.VK_UP) {
             System.out.println("E");
         }
 
         if (key == KeyEvent.VK_DOWN) {
             System.out.println("down");
-        } else {
-            System.out.println("wrong key");
         }
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        System.out.println("");
+        // System.out.println("");
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

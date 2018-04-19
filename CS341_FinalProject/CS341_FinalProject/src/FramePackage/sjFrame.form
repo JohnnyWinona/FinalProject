@@ -186,7 +186,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Player 2 &lt;br&gt; &#xa;Use letter L to Slap&lt;br&gt;&#xa;# of cards 13&lt;/html&gt;&#xa;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Player 2 &lt;br&gt; &#xa;Use letter L to Slap&lt;br&gt;&#xa;# of cards -&lt;/html&gt;&#xa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3Player3">
@@ -197,7 +197,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Computer&lt;br&gt; &#xa;Player 2&lt;br&gt;&#xa;# of cards 13&lt;/html&gt;&#xa;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Computer&lt;br&gt; &#xa;Player 2&lt;br&gt;&#xa;# of cards -&lt;/html&gt;&#xa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4Player4">
@@ -208,7 +208,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Computer&lt;br&gt; &#xa;Player 2&lt;br&gt;&#xa;# of cards 13&lt;/html&gt;&#xa;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Computer&lt;br&gt; &#xa;Player 2&lt;br&gt;&#xa;# of cards -&lt;/html&gt;&#xa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2Player1">
@@ -219,7 +219,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;Player 1 &lt;br&gt; &#xa;Use letter A to Slap&lt;br&gt;&#xa;# of cards 13&lt;/html&gt;&#xa;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;Player 1 &lt;br&gt; &#xa;Use letter A to Slap&lt;br&gt;&#xa;# of cards -&lt;/html&gt;&#xa;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="CenterDeck">

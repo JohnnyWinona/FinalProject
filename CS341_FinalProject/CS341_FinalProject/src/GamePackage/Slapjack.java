@@ -12,16 +12,19 @@ import java.util.List;
 public class Slapjack implements SlapjackInterface {
 
     Deck deck = new Deck();
+    
+    
+    
 
     public List<Card> generateHand(int Humanplayer, int ComputerPlayers) {
         List<Card> temp = new ArrayList<Card>();
         deck.shuffleDeck();
         int players = Humanplayer + ComputerPlayers;
-
+             
         if (players == 2) {
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
+            //temp.add(deck.);
+             temp.add(deck.draw());
+             temp.add(deck.draw());
             temp.add(deck.draw());
             temp.add(deck.draw());
             temp.add(deck.draw());

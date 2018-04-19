@@ -38,6 +38,9 @@ public class mmFrame extends javax.swing.JFrame {
     Card secondCard;
     int currentMatches;
 
+    int delay = 1500;
+    int flip = 0;
+
     String difficulty = difficultyFrame.getDifficulty();
 
     int cardSelectionCount;
@@ -212,13 +215,12 @@ public class mmFrame extends javax.swing.JFrame {
                     flag = true;
                 case 2: //redo switch after resetting selection counter
                     flag = false;
-
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -266,12 +268,14 @@ public class mmFrame extends javax.swing.JFrame {
                 case 2: //redo switch after resetting selection counter
                     flag = false;
 
+                    System.out.println(mmGame.isMatch(firstCard, secondCard));
+
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -319,12 +323,14 @@ public class mmFrame extends javax.swing.JFrame {
                 case 2: //redo switch after resetting selection counter
                     flag = false;
 
+                    System.out.println(mmGame.isMatch(firstCard, secondCard));
+
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -372,12 +378,14 @@ public class mmFrame extends javax.swing.JFrame {
                 case 2: //redo switch after resetting selection counter
                     flag = false;
 
+                    System.out.println(mmGame.isMatch(firstCard, secondCard));
+
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -427,10 +435,10 @@ public class mmFrame extends javax.swing.JFrame {
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -480,10 +488,10 @@ public class mmFrame extends javax.swing.JFrame {
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -533,10 +541,10 @@ public class mmFrame extends javax.swing.JFrame {
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -586,10 +594,10 @@ public class mmFrame extends javax.swing.JFrame {
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
-                        firstCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        secondCard.setCardImage(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
+                        currentMatches++;
                         checkCompletion(difficulty, currentMatches);
                     } else {
+                        currentMatches = 0;
                         //reset selections
                         switch (difficulty) {
                             case "easy":
@@ -615,7 +623,8 @@ public class mmFrame extends javax.swing.JFrame {
         //reset game and cards
         mmGame = new MemoryMatch();
         cardSelectionCount = 0;
-
+        flip = 0;
+        currentMatches = 0;
         resetCards();
 
         //generate cards
@@ -628,50 +637,8 @@ public class mmFrame extends javax.swing.JFrame {
 
         //show card faces briefly
         //begin loop
-        //int delay = 1500;
         //long endTime = System.currentTimeMillis() + delay;
-        //show cards faces
-        switch (difficulty) {
-            case "easy":
-                easyCard1.setIcon(cards.get(0).getCardImage());
-                easyCard2.setIcon(cards.get(1).getCardImage());
-                easyCard3.setIcon(cards.get(2).getCardImage());
-                easyCard4.setIcon(cards.get(3).getCardImage());
-                break;
-            case "medium":
-                easyCard1.setIcon(cards.get(0).getCardImage());
-                easyCard2.setIcon(cards.get(1).getCardImage());
-                easyCard3.setIcon(cards.get(2).getCardImage());
-                easyCard4.setIcon(cards.get(3).getCardImage());
-                medCard5.setIcon(cards.get(4).getCardImage());
-                medCard6.setIcon(cards.get(5).getCardImage());
-                break;
-            case "hard":
-                easyCard1.setIcon(cards.get(0).getCardImage());
-                easyCard2.setIcon(cards.get(1).getCardImage());
-                easyCard3.setIcon(cards.get(2).getCardImage());
-                easyCard4.setIcon(cards.get(3).getCardImage());
-                medCard5.setIcon(cards.get(4).getCardImage());
-                medCard6.setIcon(cards.get(5).getCardImage());
-                hardCard7.setIcon(cards.get(6).getCardImage());
-                hardCard8.setIcon(cards.get(7).getCardImage());
-                break;
-        }//end switch
-
-        //after waiting
-        //show cards back
-        switch (difficulty) {
-            case "easy":
-                changeCardEasy();
-                break;
-            case "medium":
-                changeCardMedium();
-                break;
-            case "hard":
-                changeCardHard();
-                break;
-        }//end switch
-
+        //show cards faces    
         //enable cards
         switch (difficulty) {
             case "easy":
@@ -734,6 +701,68 @@ public class mmFrame extends javax.swing.JFrame {
                 break;
         }
 
+        ActionListener taskPerformer;
+        taskPerformer = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                //...Perform a task...
+                switch (flip) {
+                    case 0:
+                        flip++;
+                        switch (difficulty) {
+                            case "easy":
+                                easyCard1.setIcon(cards.get(0).getCardImage());
+                                easyCard2.setIcon(cards.get(1).getCardImage());
+                                easyCard3.setIcon(cards.get(2).getCardImage());
+                                easyCard4.setIcon(cards.get(3).getCardImage());
+
+                                break;
+                            case "medium":
+                                easyCard1.setIcon(cards.get(0).getCardImage());
+                                easyCard2.setIcon(cards.get(1).getCardImage());
+                                easyCard3.setIcon(cards.get(2).getCardImage());
+                                easyCard4.setIcon(cards.get(3).getCardImage());
+                                medCard5.setIcon(cards.get(4).getCardImage());
+                                medCard6.setIcon(cards.get(5).getCardImage());
+                                break;
+                            case "hard":
+                                easyCard1.setIcon(cards.get(0).getCardImage());
+                                easyCard2.setIcon(cards.get(1).getCardImage());
+                                easyCard3.setIcon(cards.get(2).getCardImage());
+                                easyCard4.setIcon(cards.get(3).getCardImage());
+                                medCard5.setIcon(cards.get(4).getCardImage());
+                                medCard6.setIcon(cards.get(5).getCardImage());
+                                hardCard7.setIcon(cards.get(6).getCardImage());
+                                hardCard8.setIcon(cards.get(7).getCardImage());
+                                break;
+                        }//end switch
+                        break;
+                    case 1:
+                        //after waiting
+                        //show cards back
+                        flip++;
+                        switch (difficulty) {
+                            case "easy":
+                                changeCardEasy();
+
+                                break;
+                            case "medium":
+                                changeCardMedium();
+                                break;
+                            case "hard":
+                                changeCardHard();
+                                break;
+                        }//end switch
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
+        new javax.swing.Timer(delay, taskPerformer)
+                .start();
+
+        delay = delay * 2;
+
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     public void changeCardEasy() {
@@ -772,37 +801,34 @@ public class mmFrame extends javax.swing.JFrame {
         hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
     }
 
-    public void checkCompletion(String difficulty, int matchesCurrent) {
+    public void checkCompletion(String difficulty, int currentMatches) {
 
         switch (difficulty) {
             case "easy":
-                if (matchesCurrent == EASY_MATCHES) {
-                    int confirm = JOptionPane.showConfirmDialog(rootPane, mmGame);
-                    if (confirm == 1) {
-                        //shows reset cards
-                        resetCards();
-                        //increase score
-                    }
+                if (currentMatches == EASY_MATCHES) {
+                    JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
+                    //shows reset cards
+                    resetCards();
+                    //increase score
+
                 }
                 break;
             case "medium":
-                if (matchesCurrent == MED_MATCHES) {
-                    int confirm = JOptionPane.showConfirmDialog(rootPane, mmGame);
-                    if (confirm == 1) {
-                        //shows reset cards
-                        resetCards();
-                        //increase score
-                    }
+                if (currentMatches == MED_MATCHES) {
+                    JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
+                    //shows reset cards
+                    resetCards();
+                    //increase score
+
                 }
                 break;
             case "hard":
-                if (matchesCurrent == HARD_MATCHES) {
-                    int confirm = JOptionPane.showConfirmDialog(rootPane, mmGame);
-                    if (confirm == 1) {
-                        //shows reset cards
-                        resetCards();
-                        //increase score
-                    }
+                if (currentMatches == HARD_MATCHES) {
+                    JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
+                    //shows reset cards
+                    resetCards();
+                    //increase score
+
                 }
                 break;
         }
@@ -845,16 +871,24 @@ public class mmFrame extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mmFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mmFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mmFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mmFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mmFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mmFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mmFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(mmFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
