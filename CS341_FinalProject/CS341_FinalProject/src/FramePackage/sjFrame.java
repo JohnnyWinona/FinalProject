@@ -92,7 +92,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         startButton = new javax.swing.JButton();
         pauseButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Slapjack");
 
         panel1.setBackground(new java.awt.Color(0, 102, 0));
