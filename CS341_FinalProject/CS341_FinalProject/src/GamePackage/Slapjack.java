@@ -13,11 +13,10 @@ public class Slapjack implements SlapjackInterface {
 
     Deck deck = new Deck();
     
-    
+            List<Card> temp = new ArrayList<Card>();
     
 
     public List<Card> generateHand(int Humanplayer, int ComputerPlayers) {
-        List<Card> temp = new ArrayList<Card>();
         deck.shuffleDeck();
         int players = Humanplayer + ComputerPlayers;
              
