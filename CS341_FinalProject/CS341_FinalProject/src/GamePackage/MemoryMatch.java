@@ -23,6 +23,7 @@ public class MemoryMatch implements MemoryMatchInterface {
         return original;
     }
 
+    @Override
     public void generateMemoryMatch(String difficulty) {
 
         switch (difficulty) {
@@ -92,6 +93,7 @@ public class MemoryMatch implements MemoryMatchInterface {
         original.add(copy.get(3));
     }
 
+    @Override
     public boolean isMatch(Card cardOne, Card cardTwo) {
         if (cardOne.getSuit().equals(cardTwo.getSuit())) {
             if (cardOne.getValue().equals(cardTwo.getValue())) {

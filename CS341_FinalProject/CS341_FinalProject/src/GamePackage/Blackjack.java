@@ -25,11 +25,13 @@ public class Blackjack implements BlackjackInterface {
         return temp;
     }
 
+       @Override
     public Card hit() {
         bjDeck.shuffleDeck();
         return bjDeck.draw();
     }
 
+       @Override
     public int getSum(List<Card> hand) {
  
         int sum = 0;
@@ -50,6 +52,7 @@ public class Blackjack implements BlackjackInterface {
         return sum;
     }
 
+       @Override
     public boolean checkBust(List<Card> hand) {
 
         if (getSum(hand) > BUST_VALUE) {
@@ -59,6 +62,7 @@ public class Blackjack implements BlackjackInterface {
         return false;
     }
 
+       @Override
     public int checkWinner(List<Card> playerHand, List<Card> houseHand) {
         if (getSum(playerHand) > 21) {
             if (getSum(houseHand) > 21) {
