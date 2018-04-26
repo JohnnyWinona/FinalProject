@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Course: CS341 Data Structures
+ * Date: April 2018
+ * Assignment: CS341_FinalProject
+ * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
  */
 package FramePackage;
 
@@ -10,10 +11,6 @@ import MainPackage.Card;
 import java.util.*;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Johnny
- */
 public class bjFrame extends javax.swing.JFrame {
 
     /**

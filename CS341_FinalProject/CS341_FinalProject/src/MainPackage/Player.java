@@ -1,31 +1,30 @@
-package MainPackage;
-
-
 /**
  * Course: CS341 Data Structures
  * Date: April 2018
  * Assignment: CS341_FinalProject
  * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
  */
+package MainPackage;
+
 public class Player {
 
     //data members
     private String username;
     private int funds;
-    
+
     //blackjack stats
     private double blackjackRatio;
     private int bjWins;
     private int bjLosses;
-            
+
     //memory match stats
     private int mmEasySolves;
     private int mmMediumSolves;
     private int mmHardSolves;
-    
+
     //simon says stats
     private int ssSolves;
-    
+
     //slapjack stats
     private int sjWins;
     private int sjLosses;
@@ -58,11 +57,11 @@ public class Player {
     public String toString() {
         return username + ": " + funds;
     }
-    
+
     public double getBlackjackRatio() {
-        
+
         blackjackRatio = (double) bjWins / (double) bjLosses;
-        
+
         return blackjackRatio;
     }
 

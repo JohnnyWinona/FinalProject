@@ -1,10 +1,11 @@
+/**
+ * Course: CS341 Data Structures
+ * Date: April 2018
+ * Assignment: CS341_FinalProject
+ * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
+ */
 package FramePackage;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import GamePackage.Slapjack;
 import MainPackage.Card;
 import java.awt.Font;
@@ -19,10 +20,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
-/**
- *
- * @author
- */
 public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
     Slapjack deck = new Slapjack();
@@ -320,21 +317,21 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         break;
                     case 2: //yellow
-                        if(Humanplayers ==2){
-                        jLabelPlayer2.setIcon(PlayerHand1.get(0).getCardImage());
-                        PlayerHand2.remove(0);
+                        if (Humanplayers == 2) {
+                            jLabelPlayer2.setIcon(PlayerHand1.get(0).getCardImage());
+                            PlayerHand2.remove(0);
                         }
                         break;
                     case 3: //green
-                        if( Computerplayers ==1  || Computerplayers ==2){
-                        jLabelPlayer3.setIcon(PlayerHand1.get(0).getCardImage());
-                        ComputerHand1.remove(0);
+                        if (Computerplayers == 1 || Computerplayers == 2) {
+                            jLabelPlayer3.setIcon(PlayerHand1.get(0).getCardImage());
+                            ComputerHand1.remove(0);
                         }
                         break;
                     case 4: //blue
-                        if(Computerplayers ==2){
-                        jLabelPlayer4.setIcon(PlayerHand1.get(0).getCardImage());
-                        ComputerHand2.remove(0);
+                        if (Computerplayers == 2) {
+                            jLabelPlayer4.setIcon(PlayerHand1.get(0).getCardImage());
+                            ComputerHand2.remove(0);
                         }
                         x = 0;
                         break;
@@ -484,7 +481,8 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             }
             if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
                 System.out.println(jLabelPlayer1.getIcon().toString());
-            }if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
+            }
+            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
                 System.out.println(jLabelPlayer1.getIcon().toString());
             }
             if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
@@ -495,7 +493,8 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             }
             if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
                 System.out.println(jLabelPlayer1.getIcon().toString());
-            }if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
+            }
+            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
                 System.out.println(jLabelPlayer1.getIcon().toString());
             }
             if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {

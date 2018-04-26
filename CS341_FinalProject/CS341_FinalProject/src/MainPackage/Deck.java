@@ -1,9 +1,10 @@
-package MainPackage;
-
 /**
- * Course: CS341 Data Structures Date: April 2018 Assignment: CS341_FinalProject
+ * Course: CS341 Data Structures
+ * Date: April 2018
+ * Assignment: CS341_FinalProject
  * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
  */
+package MainPackage;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -59,7 +60,7 @@ public class Deck {
     }
 
     public Card draw() {
-        
+
         return deckOfCards.remove();
     }
 

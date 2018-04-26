@@ -1,3 +1,9 @@
+/**
+ * Course: CS341 Data Structures
+ * Date: April 2018
+ * Assignment: CS341_FinalProject
+ * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
+ */
 package MainPackage;
 
 import MainPackage.Player;
@@ -17,10 +23,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- * Course: CS341 Data Structures Date: April 2018 Assignment: CS341_FinalProject
- * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
- */
 public class Menu extends javax.swing.JFrame {
 
     /**
