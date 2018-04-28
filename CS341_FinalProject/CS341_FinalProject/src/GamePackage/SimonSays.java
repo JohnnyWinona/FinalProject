@@ -18,7 +18,7 @@ public class SimonSays implements SimonSaysInterface {
     public void addOrder() {
         Random rand = new Random();
 
-        int n = rand.nextInt(4) + 1;
+        int n = rand.nextInt(3);
         order.add(order.size(), n);
     }
 

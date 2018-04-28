@@ -42,27 +42,9 @@ public class ssFrame extends javax.swing.JFrame {
     int color = 0;
     int flip = 0;
     int score = 0;
+    int inputCount = 0;
 
     String url = "/MainPackage/audioFile.wav";
-
-    public static synchronized void playSound(final String url) {
-        new Thread(new Runnable() {
-            // The wrapper thread is unnecessary, unless it blocks on the
-            // Clip finishing; see comments.
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            //"/MainPackage/audioFile.wav"
-                            Main.class.getResourceAsStream(url));
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
-            }
-        }).start();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,117 +177,222 @@ public class ssFrame extends javax.swing.JFrame {
 
     private void redButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redButtonActionPerformed
         // TODO add your handling code here:
+        //plays a sound upon clicking a card
         playSound(url);
 
-        inputOrder.add(1);
-        if (ssGame.isMatch(inputOrder)) {
-            redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-            ssGame.addOrder();
+        //clear input order 
+        inputOrder.clear();
 
-            for (int x = 0; x < ssGame.size(); x++) {
-                ssGame.play().get(x);
-                toggleCard();
-            }
+        //increment input counter
+        inputCount++;
 
-            score++;
-            scoreValue.setText("" + score);
-        } else {
-            //end game
-            JOptionPane.showMessageDialog(rootPane, "You lose");
+        //add input to input order
+        inputOrder.add(0);
 
-            //restart buttons
-            playButton.setEnabled(true);
-            redButton.setEnabled(false);
-            blueButton.setEnabled(false);
-            greenButton.setEnabled(false);
-            yellowButton.setEnabled(false);
+        //check inputCount compared to score
+        if (inputCount == (score + 1)) {
+
+            //check if the entire input order equals the needed order
+            if (ssGame.isMatch(inputOrder)) {//match
+
+                //add additional step/order
+                ssGame.addOrder();
+
+                //toggle the display for each card for the user to follow
+                for (int x = 0; x < ssGame.size(); x++) {
+                    toggleCard(ssGame.play().get(x));
+                }
+
+                //increment the score and score label
+                score++;
+                scoreValue.setText("" + score);
+
+                //print the order
+                for (int x = 0; x < ssGame.size(); x++) {
+                    System.out.println(ssGame.play().get(x));
+                }
+            } else {//no match
+                //end game
+                JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
+
+                //dispose of window
+                ssFrame.this.dispose();
+
+                //restart buttons
+                playButton.setEnabled(true);
+                redButton.setEnabled(false);
+                blueButton.setEnabled(false);
+                greenButton.setEnabled(false);
+                yellowButton.setEnabled(false);
+            }//end else
         }
     }//GEN-LAST:event_redButtonActionPerformed
 
     private void yellowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yellowButtonActionPerformed
         // TODO add your handling code here:
+        //plays a sound upon clicking a card
         playSound(url);
 
-        inputOrder.add(2);
-        if (ssGame.isMatch(inputOrder)) {
-            yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-            ssGame.addOrder();
+        //clear input order 
+        inputOrder.clear();
 
-            for (int x = 0; x < ssGame.size(); x++) {
-                ssGame.play().get(x);
-                toggleCard();
-            }
+        //increment input counter
+        inputCount++;
 
-            score++;
-            scoreValue.setText("" + score);
-        } else {
-            //end game
-            JOptionPane.showMessageDialog(rootPane, "You lose");
+        //check inputCount compared to score
+        if (inputCount == (score + 1)) {
 
-            //restart buttons
-            playButton.setEnabled(true);
-            redButton.setEnabled(false);
-            blueButton.setEnabled(false);
-            greenButton.setEnabled(false);
-            yellowButton.setEnabled(false);
+            //add input to input order
+            inputOrder.add(1);
+
+            //check if the entire input order equals the needed order
+            if (ssGame.isMatch(inputOrder)) {//match
+
+                //add additional step/order
+                ssGame.addOrder();
+
+                //toggle the display for each card for the user to follow
+                for (int x = 0; x < ssGame.size(); x++) {
+                    ssGame.play().get(x);
+                    toggleCard();
+                }
+
+                //increment the score and score label
+                score++;
+                scoreValue.setText("" + score);
+
+                //print the order
+                for (int x = 0; x < ssGame.size(); x++) {
+                    System.out.println(ssGame.play().get(x));
+                }
+            } else {//no match
+                //end game
+                JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
+
+                //dispose of window
+                ssFrame.this.dispose();
+
+                //restart buttons
+                playButton.setEnabled(true);
+                redButton.setEnabled(false);
+                blueButton.setEnabled(false);
+                greenButton.setEnabled(false);
+                yellowButton.setEnabled(false);
+            }//end else
+        } else { //total input < input needed
+            inputOrder.add(1);
         }
     }//GEN-LAST:event_yellowButtonActionPerformed
 
     private void greenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenButtonActionPerformed
         // TODO add your handling code here:
+        //plays a sound upon clicking a card
         playSound(url);
 
-        inputOrder.add(3);
-        if (ssGame.isMatch(inputOrder)) {
-            greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-            ssGame.addOrder();
+        //clear input order 
+        inputOrder.clear();
 
-            for (int x = 0; x < ssGame.size(); x++) {
-                ssGame.play().get(x);
-                toggleCard();
-            }
+        //increment input counter
+        inputCount++;
 
-            score++;
-            scoreValue.setText("" + score);
-        } else {
-            //end game
-            JOptionPane.showMessageDialog(rootPane, "You lose");
+        //check inputCount compared to score
+        if (inputCount == (score + 1)) {
 
-            //restart buttons
-            playButton.setEnabled(true);
-            redButton.setEnabled(false);
-            blueButton.setEnabled(false);
-            greenButton.setEnabled(false);
-            yellowButton.setEnabled(false);
+            //add input to input order
+            inputOrder.add(2);
+
+            //check if the entire input order equals the needed order
+            if (ssGame.isMatch(inputOrder)) {//match
+
+                //add additional step/order
+                ssGame.addOrder();
+
+                //toggle the display for each card for the user to follow
+                for (int x = 0; x < ssGame.size(); x++) {
+                    ssGame.play().get(x);
+                    toggleCard();
+                }
+
+                //increment the score and score label
+                score++;
+                scoreValue.setText("" + score);
+
+                //print the order
+                for (int x = 0; x < ssGame.size(); x++) {
+                    System.out.println(ssGame.play().get(x));
+                }
+            } else {//no match
+                //end game
+                JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
+
+                //dispose of window
+                ssFrame.this.dispose();
+
+                //restart buttons
+                playButton.setEnabled(true);
+                redButton.setEnabled(false);
+                blueButton.setEnabled(false);
+                greenButton.setEnabled(false);
+                yellowButton.setEnabled(false);
+            }//end else
+        } else { //total input < input needed
+            inputOrder.add(2);
         }
     }//GEN-LAST:event_greenButtonActionPerformed
 
     private void blueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueButtonActionPerformed
         // TODO add your handling code here:
+        //plays a sound upon clicking a card
         playSound(url);
 
-        inputOrder.add(4);
-        if (ssGame.isMatch(inputOrder)) {
-            blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-            ssGame.addOrder();
+        //clear input order 
+        inputOrder.clear();
 
-            for (int x = 0; x < ssGame.size(); x++) {
-                ssGame.play().get(x);
-                toggleCard();
-            }
+        //increment input counter
+        inputCount++;
 
-            score++;
-            scoreValue.setText("" + score);
-        } else {
-            //end game
-            JOptionPane.showMessageDialog(rootPane, "You lose");
+        //check inputCount compared to score
+        if (inputCount == (score + 1)) {
 
-            //restart buttons
-            playButton.setEnabled(true);
-            redButton.setEnabled(false);
-            blueButton.setEnabled(false);
-            greenButton.setEnabled(false);
-            yellowButton.setEnabled(false);
+            //add input to input order
+            inputOrder.add(3);
+
+            //check if the entire input order equals the needed order
+            if (ssGame.isMatch(inputOrder)) {//match
+
+                //add additional step/order
+                ssGame.addOrder();
+
+                //toggle the display for each card for the user to follow
+                for (int x = 0; x < ssGame.size(); x++) {
+                    ssGame.play().get(x);
+                    toggleCard();
+                }
+
+                //increment the score and score label
+                score++;
+                scoreValue.setText("" + score);
+
+                //print the order
+                for (int x = 0; x < ssGame.size(); x++) {
+                    System.out.println(ssGame.play().get(x));
+                }
+            } else {//no match
+                //end game
+                JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
+
+                //dispose of window
+                ssFrame.this.dispose();
+
+                //restart buttons
+                playButton.setEnabled(true);
+                redButton.setEnabled(false);
+                blueButton.setEnabled(false);
+                greenButton.setEnabled(false);
+                yellowButton.setEnabled(false);
+            }//end else
+        } else { //total input < input needed
+            inputOrder.add(3);
         }
     }//GEN-LAST:event_blueButtonActionPerformed
 
@@ -323,10 +410,13 @@ public class ssFrame extends javax.swing.JFrame {
         score = 0;
         scoreValue.setText("" + score);
 
+        //disable the play button
         playButton.setEnabled(false);
 
+        //get difficulty from difficulty chooser frame
         String difficulty = difficultyFrame.getDifficulty();
 
+        //determine delay based on difficulty
         switch (difficulty) {
             case "easy":
                 delay = 500;
@@ -338,6 +428,8 @@ public class ssFrame extends javax.swing.JFrame {
                 delay = 200;
                 break;
         }
+
+        //adds the first step for the game
         ssGame.addOrder();
 
         color = ssGame.play().get(0);
@@ -345,8 +437,10 @@ public class ssFrame extends javax.swing.JFrame {
         //taskPerformer = toggleCard();
         toggleCard();
 
-        playButton.setEnabled(false);
-
+        //print the order
+        for (int x = 0; x < ssGame.size(); x++) {
+            System.out.println(ssGame.play().get(x));
+        }
     }//GEN-LAST:event_playButtonActionPerformed
 
     public void toggleCard() {
@@ -356,16 +450,16 @@ public class ssFrame extends javax.swing.JFrame {
                 switch (flip) {
                     case 0:
                         switch (color) {
-                            case 1:
+                            case 0:
                                 redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
                                 break;
-                            case 2:
+                            case 1:
                                 yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
                                 break;
-                            case 3:
+                            case 2:
                                 greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
                                 break;
-                            case 4:
+                            case 3:
                                 blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
                                 break;
                             default:
@@ -391,6 +485,26 @@ public class ssFrame extends javax.swing.JFrame {
                 .start();
 
         delay = delay * 2;
+    }
+
+    //method for playing a sound
+    public static synchronized void playSound(final String url) {
+        new Thread(new Runnable() {
+            // The wrapper thread is unnecessary, unless it blocks on the
+            // Clip finishing; see comments.
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                            //"/MainPackage/audioFile.wav"
+                            Main.class.getResourceAsStream(url));
+                    clip.open(inputStream);
+                    clip.start();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
     }
 
     /**
