@@ -7,6 +7,7 @@
 package GamePackage;
 
 import MainPackage.Card;
+import java.util.List;
 
 public interface MemoryMatchInterface {
 
@@ -21,6 +22,18 @@ public interface MemoryMatchInterface {
      *
      */
     public void generateMemoryMatch(String difficulty);
+
+    /**
+     * Get Cards
+     *
+     * @require The player starts a new game with a valid difficulty.
+     * @ensure A list of usable cards is created based on the corresponding
+     * difficulty.
+     * @return A list of cards and their matches are returned in order for the
+     * player to have valid cards to select within the game.
+     *
+     */
+    public List<Card> getCards();
 
     /**
      * Is Match

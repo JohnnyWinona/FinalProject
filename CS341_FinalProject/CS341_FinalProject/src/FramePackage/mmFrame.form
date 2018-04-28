@@ -37,21 +37,23 @@
                   <Component id="easyCard2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="medCard6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="hardCard8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="hintButton" linkSize="1" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="medCard5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="hardCard7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="newGameButton" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="newGameButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,26 +61,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="newGameButton" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="easyCard2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="medCard5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="hardCard7" alignment="0" max="32767" attributes="0"/>
-                          <Component id="easyCard1" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="easyCard4" min="-2" max="-2" attributes="0"/>
-                          <Component id="easyCard3" min="-2" max="-2" attributes="0"/>
-                          <Component id="medCard6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="hardCard8" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="newGameButton" max="32767" attributes="0"/>
+                  <Component id="easyCard2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="medCard5" alignment="0" max="32767" attributes="0"/>
+                  <Component id="hardCard7" alignment="0" max="32767" attributes="0"/>
+                  <Component id="easyCard1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="easyCard4" max="32767" attributes="0"/>
+                  <Component id="easyCard3" max="32767" attributes="0"/>
+                  <Component id="medCard6" alignment="0" max="32767" attributes="0"/>
+                  <Component id="hardCard8" max="32767" attributes="0"/>
+                  <Component id="hintButton" alignment="0" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -179,6 +175,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newGameButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="hintButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hint"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hintButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

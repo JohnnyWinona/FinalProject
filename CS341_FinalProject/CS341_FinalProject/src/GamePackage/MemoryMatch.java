@@ -13,12 +13,24 @@ import java.util.List;
 
 public class MemoryMatch implements MemoryMatchInterface {
 
+    //initialize lists and instantiate deck
     List<Card> original = new ArrayList<Card>();
     List<Card> copy = new ArrayList<Card>();
     Deck mmDeck = new Deck();
 
+    //initialize difficulty 
     String difficulty;
 
+    /**
+     * Get Cards
+     *
+     * @require The player starts a new game with a valid difficulty.
+     * @ensure A list of usable cards is created based on the corresponding
+     * difficulty.
+     * @return A list of cards and their matches are returned in order for the
+     * player to have valid cards to select within the game.
+     *
+     */
     public List<Card> getCards() {
         return original;
     }

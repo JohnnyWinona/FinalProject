@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 public class mmFrame extends javax.swing.JFrame {
 
@@ -39,12 +40,14 @@ public class mmFrame extends javax.swing.JFrame {
     Card secondCard;
     int currentMatches;
 
-    int delay = 1500;
+    int delay = 500;
     int flip = 0;
 
     String difficulty = difficultyFrame.getDifficulty();
 
     int cardSelectionCount;
+
+    ActionListener taskPerformer;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +67,7 @@ public class mmFrame extends javax.swing.JFrame {
         hardCard7 = new javax.swing.JToggleButton();
         hardCard8 = new javax.swing.JToggleButton();
         newGameButton = new javax.swing.JButton();
+        hintButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Memory Match");
@@ -140,6 +144,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         });
 
+        hintButton.setText("Hint");
+        hintButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hintButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,39 +165,41 @@ public class mmFrame extends javax.swing.JFrame {
                     .addComponent(easyCard4)
                     .addComponent(easyCard2))
                 .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(medCard6)
                         .addGap(18, 18, 18)
-                        .addComponent(hardCard8))
+                        .addComponent(hardCard8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hintButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(medCard5)
                         .addGap(18, 18, 18)
-                        .addComponent(hardCard7)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newGameButton)
+                        .addComponent(hardCard7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newGameButton)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {hintButton, newGameButton});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(newGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(easyCard2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(medCard5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(hardCard7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(easyCard1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(easyCard4)
-                            .addComponent(easyCard3)
-                            .addComponent(medCard6)
-                            .addComponent(hardCard8)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(newGameButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(easyCard2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(medCard5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hardCard7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(easyCard1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(easyCard4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(easyCard3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(medCard6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hardCard8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hintButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -630,18 +643,19 @@ public class mmFrame extends javax.swing.JFrame {
         currentMatches = 0;
         resetCards();
 
+        //enable hint button
+        hintButton.setEnabled(true);
+
         //generate cards
         mmGame.generateMemoryMatch(difficulty);
 
         //assign cards
         cards = mmGame.getCards();
 
+        //shuffles the list of cards
         Collections.shuffle(cards);
 
-        //show card faces briefly
-        //begin loop
-        //long endTime = System.currentTimeMillis() + delay;
-        //show cards faces    
+        //show card faces briefly  
         //enable cards
         switch (difficulty) {
             case "easy":
@@ -704,7 +718,6 @@ public class mmFrame extends javax.swing.JFrame {
                 break;
         }
 
-        ActionListener taskPerformer;
         taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 //...Perform a task...
@@ -746,7 +759,6 @@ public class mmFrame extends javax.swing.JFrame {
                         switch (difficulty) {
                             case "easy":
                                 changeCardEasy();
-
                                 break;
                             case "medium":
                                 changeCardMedium();
@@ -761,12 +773,14 @@ public class mmFrame extends javax.swing.JFrame {
                 }
             }
         };
-        new javax.swing.Timer(delay, taskPerformer)
-                .start();
-
-        delay = delay * 2;
+        new javax.swing.Timer(delay, taskPerformer).restart();
 
     }//GEN-LAST:event_newGameButtonActionPerformed
+
+    private void hintButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hintButtonActionPerformed
+        //disable hint button
+        hintButton.setEnabled(false);
+    }//GEN-LAST:event_hintButtonActionPerformed
 
     public void changeCardEasy() {
         //gray out other cards
@@ -812,6 +826,8 @@ public class mmFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
                     //shows reset cards
                     resetCards();
+                    //quits the memory match game window
+                    mmFrame.this.dispose();
                     //increase score
 
                 }
@@ -821,6 +837,8 @@ public class mmFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
                     //shows reset cards
                     resetCards();
+                    //quits the memory match game window
+                    mmFrame.this.dispose();
                     //increase score
 
                 }
@@ -830,12 +848,13 @@ public class mmFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
                     //shows reset cards
                     resetCards();
+                    //quits the memory match game window
+                    mmFrame.this.dispose();
                     //increase score
 
                 }
                 break;
         }
-
     }
 
     public void resetCards() {
@@ -913,6 +932,7 @@ public class mmFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton easyCard4;
     private javax.swing.JToggleButton hardCard7;
     private javax.swing.JToggleButton hardCard8;
+    private javax.swing.JToggleButton hintButton;
     private javax.swing.JToggleButton medCard5;
     private javax.swing.JToggleButton medCard6;
     private javax.swing.JButton newGameButton;
