@@ -430,7 +430,7 @@ public class bjFrame extends javax.swing.JFrame {
                 oneSumField.setText("WINNER: " + bjGame.getSum(oneHand));
                 int bjWinsTemp = Menu.player.getBjWins();
                 bjWinsTemp++;
-                Menu.player.plusBjWins();
+                Menu.player.setBjWins(bjWinsTemp);
                 break;
             case 0:
                 oneSumField.setText("TIE: " + bjGame.getSum(oneHand));
@@ -439,7 +439,7 @@ public class bjFrame extends javax.swing.JFrame {
                 oneSumField.setText("LOSER: " + bjGame.getSum(oneHand));
                 int bjLossesTemp = Menu.player.getBjLosses();
                 bjLossesTemp++;
-                Menu.player.plusBjLosses();
+                Menu.player.setBjLosses(bjLossesTemp);
                 break;
             default:
                 oneSumField.setText("BROKE: " + bjGame.getSum(oneHand));

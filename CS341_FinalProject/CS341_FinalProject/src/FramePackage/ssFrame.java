@@ -499,6 +499,7 @@ public class ssFrame extends javax.swing.JFrame {
                         yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg")));
                         greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
                         blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
+                        flip = 0;
                         break;
                     default://reset
                         flip = 0;

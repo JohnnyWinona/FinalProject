@@ -299,8 +299,6 @@ public class mmFrame extends javax.swing.JFrame {
                 case 2: //redo switch after resetting selection counter
                     flag = false;
 
-                    System.out.println(mmGame.isMatch(firstCard, secondCard));
-
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
                         currentMatches++;
@@ -354,8 +352,6 @@ public class mmFrame extends javax.swing.JFrame {
                 case 2: //redo switch after resetting selection counter
                     flag = false;
 
-                    System.out.println(mmGame.isMatch(firstCard, secondCard));
-
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
                         currentMatches++;
@@ -408,8 +404,6 @@ public class mmFrame extends javax.swing.JFrame {
                     flag = true;
                 case 2: //redo switch after resetting selection counter
                     flag = false;
-
-                    System.out.println(mmGame.isMatch(firstCard, secondCard));
 
                     //check if match
                     if (mmGame.isMatch(firstCard, secondCard)) {
@@ -848,8 +842,12 @@ public class mmFrame extends javax.swing.JFrame {
                     //shows reset cards
                     resetCards();
 
+                    int easyTemp = Menu.player.getMmEasySolves();
+
+                    easyTemp++;
+
                     //increment score
-                    Menu.player.plusMmEasySolves();
+                    Menu.player.setMmEasySolves(easyTemp++);
 
                     //quits the memory match game window
                     mmFrame.this.dispose();
@@ -867,8 +865,12 @@ public class mmFrame extends javax.swing.JFrame {
                     //shows reset cards
                     resetCards();
 
+                    int medTemp = Menu.player.getMmMediumSolves();
+
+                    medTemp++;
+
                     //increment score
-                    Menu.player.plusMmEasySolves();
+                    Menu.player.setMmMediumSolves(medTemp++);
 
                     //quits the memory match game window
                     mmFrame.this.dispose();
@@ -886,8 +888,12 @@ public class mmFrame extends javax.swing.JFrame {
                     //shows reset cards
                     resetCards();
 
+                    int hardTemp = Menu.player.getMmHardSolves();
+
+                    hardTemp++;
+
                     //increment score
-                    Menu.player.plusMmEasySolves();
+                    Menu.player.setMmHardSolves(hardTemp++);
 
                     //quits the memory match game window
                     mmFrame.this.dispose();

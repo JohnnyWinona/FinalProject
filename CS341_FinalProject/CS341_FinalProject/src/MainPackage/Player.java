@@ -11,25 +11,25 @@ import java.io.Serializable;
 public class Player implements Serializable {
 
     //data members
-    private String username;
-    private int funds;
+    private String username = "";
+    private int funds = 0;
 
     //blackjack stats
-    private double blackjackRatio;
-    private int bjWins;
-    private int bjLosses;
+    private double blackjackRatio = 0;
+    private int bjWins = 0;
+    private int bjLosses = 0;
 
     //memory match stats
-    public static int mmEasySolves;
-    private int mmMediumSolves;
-    private int mmHardSolves;
+    private int mmEasySolves = 0;
+    private int mmMediumSolves = 0;
+    private int mmHardSolves = 0;
 
     //simon says stats
-    private int ssHighest;
+    private int ssHighest = 0;
 
     //slapjack stats
-    private int sjWins;
-    private int sjLosses;
+    private int sjWins = 0;
+    private int sjLosses = 0;
 
     public Player() {
     }
@@ -88,40 +88,40 @@ public class Player implements Serializable {
         return bjWins;
     }
 
-    public void plusBjWins() {
-        this.bjWins = bjWins++;
+    public void setBjWins(int num) {
+        this.bjWins = num;
     }
 
     public int getBjLosses() {
         return bjLosses;
     }
 
-    public void plusBjLosses() {
-        this.bjLosses = bjLosses++;
+    public void setBjLosses(int num) {
+        this.bjLosses = num;
     }
 
     public int getMmEasySolves() {
         return mmEasySolves;
     }
 
-    public void plusMmEasySolves() {
-        this.mmEasySolves = mmEasySolves++;
+    public void setMmEasySolves(int num) {
+        this.mmEasySolves = num;
     }
 
     public int getMmMediumSolves() {
         return mmMediumSolves;
     }
 
-    public void plusMmMediumSolves() {
-        this.mmMediumSolves = mmMediumSolves++;
+    public void setMmMediumSolves(int num) {
+        this.mmMediumSolves = num;
     }
 
     public int getMmHardSolves() {
         return mmHardSolves;
     }
 
-    public void plusMmHardSolves() {
-        this.mmHardSolves = mmHardSolves++;
+    public void setMmHardSolves(int num) {
+        this.mmHardSolves = num;
     }
 
     public int getSsHighest() {
@@ -136,16 +136,16 @@ public class Player implements Serializable {
         return sjWins;
     }
 
-    public void plusSjWins() {
-        this.sjWins = sjWins++;
+    public void setSjWins(int num) {
+        this.sjWins = num;
     }
 
     public int getSjLosses() {
         return sjLosses;
     }
 
-    public void setSjLosses() {
-        this.sjLosses = sjLosses++;
+    public void setSjLosses(int num) {
+        this.sjLosses = num;
     }
 
 }

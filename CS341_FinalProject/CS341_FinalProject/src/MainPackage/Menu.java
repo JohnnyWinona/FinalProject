@@ -35,7 +35,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     List<Player> playerList = loadPlayers();
-    //List<Player> playerList = new ArrayList<Player>();
 
     public static int gameID;
 
@@ -70,6 +69,7 @@ public class Menu extends javax.swing.JFrame {
         selectUserButton = new javax.swing.JButton();
         playerStatsButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
+        playerLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
@@ -108,7 +108,7 @@ public class Menu extends javax.swing.JFrame {
 
         optionLabel.setText("Game Options:");
 
-        jLabel1.setText("Playerr Options:");
+        jLabel1.setText("Player Options:");
 
         createPlayerButton.setText("Create Player");
         createPlayerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,6 @@ public class Menu extends javax.swing.JFrame {
         });
 
         playerStatsButton.setText("Player Stats");
-        playerStatsButton.setEnabled(false);
         playerStatsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playerStatsButtonActionPerformed(evt);
@@ -133,7 +132,6 @@ public class Menu extends javax.swing.JFrame {
         });
 
         saveButton.setText("Save");
-        saveButton.setEnabled(false);
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -170,7 +168,10 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(createPlayerButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(selectUserButton))
-                            .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(63, 63, 63)
+                                .addComponent(playerLabel)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -192,7 +193,9 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(playerLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createPlayerButton)
@@ -269,13 +272,11 @@ public class Menu extends javax.swing.JFrame {
         ssButton.setEnabled(true);
         slapjackButton.setEnabled(true);
         bjButton.setEnabled(true);
-        playerStatsButton.setEnabled(true);
-        saveButton.setEnabled(true);
     }//GEN-LAST:event_createPlayerButtonActionPerformed
 
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
 
-        System.out.println("Select User: " + playerList);
+        System.out.println("Selected User: " + playerList);
 
         player = new Player();
         String username = JOptionPane.showInputDialog(null, "Enter existing player name: ");
@@ -285,9 +286,10 @@ public class Menu extends javax.swing.JFrame {
             if (playerList.get(i).getUsername().equals(username)) {
                 player = playerList.get(i);
                 JOptionPane.showMessageDialog(rootPane, "You've been signed in.");
+                playerLabel.setText(player.getUsername());
                 break;
             }
-            if (i == playerList.size() && playerList.get(i).getUsername() != username) {
+            if (i == playerList.size() && !playerList.get(i).getUsername().equals(username)) {
                 JOptionPane.showMessageDialog(rootPane, "Username could not be found");
             }
         }
@@ -297,8 +299,6 @@ public class Menu extends javax.swing.JFrame {
         ssButton.setEnabled(true);
         slapjackButton.setEnabled(true);
         bjButton.setEnabled(true);
-        playerStatsButton.setEnabled(true);
-        saveButton.setEnabled(true);
 
     }//GEN-LAST:event_selectUserButtonActionPerformed
 
@@ -389,6 +389,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton memoryButton;
     private javax.swing.JLabel optionLabel;
+    private javax.swing.JLabel playerLabel;
     private javax.swing.JButton playerStatsButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JButton selectUserButton;
