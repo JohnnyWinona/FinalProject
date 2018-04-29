@@ -1,25 +1,25 @@
-/**
- * Course: CS341 Data Structures
- * Date: April 2018
- * Assignment: CS341_FinalProject
- * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
- */
 package FramePackage;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 import GamePackage.Slapjack;
 import MainPackage.Card;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
+/**
+ *
+ * @author
+ */
 public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
     Slapjack deck = new Slapjack();
@@ -38,6 +38,20 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     int delay = 800;
 
     int x = 0;
+
+    String temp1 = "/cards/JACKofSPADES.jpg";
+
+    String temp2 = "/cards/JACKofCLUBS.jpg";
+
+    String temp3 = "/cards/JACKofHEARTS.jpg";
+
+    String temp4 = "/cards/JACKofDIAMONDS.jpg";
+
+    //    System.out.println(temp2);  
+    ImageIcon JACKofSPADES;
+    ImageIcon JACKofCLUBS;
+    ImageIcon JACKofHEARTS;
+    ImageIcon JACKofDIAMONDS;
 
     /**
      * Creates new form sjFrame
@@ -87,7 +101,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         addButton = new javax.swing.JButton();
         addComputerButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
-        pauseButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Slapjack");
@@ -206,10 +220,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             }
         });
 
-        pauseButton.setText("Pause Game");
-        pauseButton.addActionListener(new java.awt.event.ActionListener() {
+        exitButton.setText("Exit Game");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pauseButtonActionPerformed(evt);
+                exitButtonActionPerformed(evt);
             }
         });
 
@@ -225,7 +239,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pauseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -235,7 +249,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pauseButton)
+                    .addComponent(exitButton)
                     .addComponent(startButton)
                     .addComponent(addButton)
                     .addComponent(addComputerButton))
@@ -243,14 +257,21 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
         //  jTextField1.addKeyListener(this);
+
+        JACKofSPADES = new ImageIcon(getClass().getResource(temp1));
+        JACKofCLUBS = new ImageIcon(getClass().getResource(temp2));
+        JACKofHEARTS = new ImageIcon(getClass().getResource(temp3));
+        JACKofDIAMONDS = new ImageIcon(getClass().getResource(temp4));
+
         addButton.setEnabled(false);
         addComputerButton.setEnabled(false);
+
+        startButton.setVisible(false);
 
         panel1.addKeyListener(this);
         panel1.setFocusable(true);
@@ -260,9 +281,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         // PlayerHand1.start2PLayer();
         if (Humanplayers == 2 && Computerplayers == 2) {
             PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
+
             PlayerHand2 = deck.generateHand(Humanplayers, Computerplayers);
+
             ComputerHand1 = deck.generateHand(Humanplayers, Computerplayers);
+
             ComputerHand2 = deck.generateHand(Humanplayers, Computerplayers);
+
         } else if (Humanplayers == 2 && Computerplayers == 1) {
             PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
             PlayerHand2 = deck.generateHand(Humanplayers, Computerplayers);
@@ -278,29 +303,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
 
             PlayerHand2 = deck.generateHand(Humanplayers, Computerplayers);
+        } else if (Humanplayers == 1 && Computerplayers == 2) {
+            PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
+
+            ComputerHand1 = deck.generateHand(Humanplayers, Computerplayers);
+            
+            ComputerHand2 = deck.generateHand(Humanplayers, Computerplayers);
         }
-
-        jLabel2Player1.setText("<html>Player 1 <br> \n"
-                + "Use letter A to Slap<br>\n"
-                + "# of cards "
-                + deck.getTotalCards(PlayerHand1)
-                + "</html>\n");
-
-        jLabel2Player2.setText("<html>Player 2 <br> \n"
-                + "Use letter L to Slap<br>\n"
-                + "# of cards "
-                + deck.getTotalCards(PlayerHand2)
-                + "</html>\n");
-        jLabel3Player3.setText("<html>Computer <br> \n"
-                + "Player 1<br>\n"
-                + "# of cards "
-                + deck.getTotalCards(ComputerHand1)
-                + "</html>\n");
-        jLabel4Player4.setText("<html>Computer <br> \n"
-                + "Player 2<br>\n"
-                + "# of cards "
-                + deck.getTotalCards(ComputerHand2)
-                + "</html>\n");
 
         //begin loop
         //int delay = 1000;
@@ -308,41 +317,352 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 //...Perform a task...
+                if (Humanplayers == 2 && Computerplayers == 2) {
+
+                    if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        ComputerHand1.add(null);
+                        PlayerHand2.add(null);
+                        PlayerHand1.add(null);
+                    }
+                    if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand2.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        ComputerHand2.add(null);
+                        PlayerHand2.add(null);
+                        PlayerHand1.add(null);
+                    }
+                    if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0 && ComputerHand2.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand2.add(null);
+                        ComputerHand1.add(null);
+                        ComputerHand2.add(null);
+                    }
+                    if (PlayerHand2.size() == 0 && ComputerHand1.size() == 0 && ComputerHand2.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand2.add(null);
+                        ComputerHand1.add(null);
+                        ComputerHand2.add(null);
+                    }
+
+                } else if (Humanplayers == 2 && Computerplayers == 1) {
+
+                    if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand1.add(null);
+                        PlayerHand2.add(null);
+                    }
+                    if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand1.add(null);
+                        ComputerHand1.add(null);
+                    }
+                    if (PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand2.add(null);
+                        ComputerHand1.add(null);
+                    }
+
+                } else if (Humanplayers == 1 && Computerplayers == 1) {
+
+                    if (PlayerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand1.add(null);
+                    }
+                    if (ComputerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        ComputerHand1.add(null);
+                    }
+
+                } else if (Humanplayers == 2 && Computerplayers == 0) {
+
+                    if (PlayerHand1.size() == 0) {
+
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand1.add(null);
+                    }
+
+                    if (PlayerHand2.size() == 0) {
+
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand2.add(null);
+                    }
+                }else if (Humanplayers == 1 && Computerplayers == 2) {
+
+                    if (PlayerHand1.size() == 0 && ComputerHand2.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand1.add(null);
+                        ComputerHand2.add(null);
+                    }
+                    if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        PlayerHand1.add(null);
+                        ComputerHand1.add(null);
+                    }
+                    if (ComputerHand2.size() == 0 && ComputerHand1.size() == 0) {
+                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                        dispose();
+                        x = 10;
+                        ComputerHand2.add(null);
+                        ComputerHand1.add(null);
+                    }
+                    
+                }
+
+                jLabel2Player1.setText("<html>Player 1 <br> \n"
+                        + "Use letter A to Slap<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(PlayerHand1)
+                        + "</html>\n");
+
+                jLabel2Player2.setText("<html>Player 2 <br> \n"
+                        + "Use letter L to Slap<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(PlayerHand2)
+                        + "</html>\n");
+
+                jLabel3Player3.setText("<html>Computer <br> \n"
+                        + "Player 1<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(ComputerHand1)
+                        + "</html>\n");
+
+                jLabel4Player4.setText("<html>Computer <br> \n"
+                        + "Player 2<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(ComputerHand2)
+                        + "</html>\n");
 
                 x++;
                 switch (x) {
                     case 1: //
-
-                        jLabelPlayer1.setIcon(PlayerHand1.get(0).getCardImage());
-                        PlayerHand1.remove(0);
-
-                        break;
-                    case 2: //yellow
-                        if (Humanplayers == 2) {
-                            jLabelPlayer2.setIcon(PlayerHand1.get(0).getCardImage());
-                            PlayerHand2.remove(0);
+                        if (PlayerHand1.size() != 0) {
+                            jLabelPlayer1.setIcon(PlayerHand1.get(0).getCardImage());
+                            CenterHand.add(PlayerHand1.remove(0));
+                        } else {
+                            jLabelPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
                         }
+                        break;
+                    case 2:
+                        if (PlayerHand2.size() != 0) {
+                            if (Humanplayers == 2) {
+                                jLabelPlayer2.setIcon(PlayerHand2.get(0).getCardImage());
+                                CenterHand.add(PlayerHand2.remove(0));
+                            }
+                        } else {
+                            jLabelPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
+                        }
+
                         break;
                     case 3: //green
-                        if (Computerplayers == 1 || Computerplayers == 2) {
-                            jLabelPlayer3.setIcon(PlayerHand1.get(0).getCardImage());
-                            ComputerHand1.remove(0);
+
+                        if (ComputerHand1.size() != 0) {
+
+                            if (Computerplayers == 1 || Computerplayers == 2) {
+                                jLabelPlayer3.setIcon(ComputerHand1.get(0).getCardImage());
+                                CenterHand.add(ComputerHand1.remove(0));
+
+                            }
+                        } else {
+                            jLabelPlayer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
                         }
                         break;
-                    case 4: //blue
-                        if (Computerplayers == 2) {
-                            jLabelPlayer4.setIcon(PlayerHand1.get(0).getCardImage());
-                            ComputerHand2.remove(0);
+                    case 4:
+                        if (ComputerHand2.size() != 0) {
+                            if (Computerplayers == 2) {
+                                jLabelPlayer4.setIcon(ComputerHand2.get(0).getCardImage());
+                                CenterHand.add(ComputerHand2.remove(0));
+
+                            }
+                        } else {
+                            jLabelPlayer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
                         }
+
                         x = 0;
                         break;
                 }
+
+                jLabel2Player1.setText("<html>Player 1 <br> \n"
+                        + "Use letter A to Slap<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(PlayerHand1)
+                        + "</html>\n");
+
+                jLabel2Player2.setText("<html>Player 2 <br> \n"
+                        + "Use letter L to Slap<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(PlayerHand2)
+                        + "</html>\n");
+
+                jLabel3Player3.setText("<html>Computer <br> \n"
+                        + "Player 1<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(ComputerHand1)
+                        + "</html>\n");
+
+                jLabel4Player4.setText("<html>Computer <br> \n"
+                        + "Player 2<br>\n"
+                        + "# of cards "
+                        + deck.getTotalCards(ComputerHand2)
+                        + "</html>\n");
 
             }
         };
         new javax.swing.Timer(delay, taskPerformer).start();
 
+        if (Computerplayers == 1) {
 
+            ActionListener taskPerformer2;
+            taskPerformer2 = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    //   System.out.println(jLabelPlayer1.getIcon().toString());
+                    if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        };
+                    } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand1.add(CenterHand.remove(i));
+                        }
+                    }
+                }
+            };
+            new javax.swing.Timer(2000, taskPerformer2).start();
+        }
+
+        if (Computerplayers == 2) {
+            ActionListener taskPerformer3;
+            taskPerformer3 = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    //   System.out.println(jLabelPlayer1.getIcon().toString());
+                    if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        };
+                    } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                        //  System.out.println(jLabelPlayer1.getIcon().toString());
+                        for (int i = 0; i < CenterHand.size(); i++) {
+                            ComputerHand2.add(CenterHand.remove(i));
+                        }
+                    }
+                }
+            };
+            new javax.swing.Timer(2200, taskPerformer3).start();
+        }
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -387,9 +707,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         }
     }//GEN-LAST:event_addComputerButtonActionPerformed
 
-    private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pauseButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
 
     // */
     /**
@@ -432,6 +753,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel CenterDeck;
     private javax.swing.JButton addButton;
     private javax.swing.JButton addComputerButton;
+    private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel2Player1;
     private javax.swing.JLabel jLabel2Player2;
     private javax.swing.JLabel jLabel3Player3;
@@ -441,7 +763,6 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel jLabelPlayer3;
     private javax.swing.JLabel jLabelPlayer4;
     private java.awt.Panel panel1;
-    private javax.swing.JButton pauseButton;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 
@@ -454,73 +775,196 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
         // System.out.println("");
-
+        // System.out.println(jLabelPlayer1.getIcon().toString());
         int key = ke.getKeyCode();
+        //            System.out.println(temp);  
+        String temp1 = "/cards/JACKofSPADES.jpg";
+
+        String temp2 = "/cards/JACKofCLUBS.jpg";
+
+        String temp3 = "/cards/JACKofHEARTS.jpg";
+
+        String temp4 = "/cards/JACKofDIAMONDS.jpg";
+
+        //    System.out.println(temp2);  
+        ImageIcon JACKofSPADES;
+        ImageIcon JACKofCLUBS;
+        ImageIcon JACKofHEARTS;
+        ImageIcon JACKofDIAMONDS;
+
+        JACKofSPADES = new ImageIcon(getClass().getResource(temp1));
+        JACKofCLUBS = new ImageIcon(getClass().getResource(temp2));
+        JACKofHEARTS = new ImageIcon(getClass().getResource(temp3));
+        JACKofDIAMONDS = new ImageIcon(getClass().getResource(temp4));
 
         if (key == KeyEvent.VK_A) {
             //   System.out.println(jLabelPlayer1.getIcon().toString());
-            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofHEARTS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofSPADES.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofCLUBS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
-            }
-            if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase("file:/Users/eu3035jm/Documents/GitHub/FinalProject/CS341_FinalProject/CS341_FinalProject/build/classes/cards/JACKofDIAMONDS.jpg")) {
-                System.out.println(jLabelPlayer1.getIcon().toString());
+            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+
+                PlayerHand1.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand1.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand1.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand1.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand1.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                // System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand1.add(CenterHand.remove(i));
+                }
+            } else {
+                if (PlayerHand1.size() != 0) {
+                    CenterHand.add(PlayerHand1.remove(0));
+                }
             }
         }
         if (key == KeyEvent.VK_L) {
-            System.out.println("right");
+            //   System.out.println(jLabelPlayer1.getIcon().toString());
+            if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+
+                PlayerHand2.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand2.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand2.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand2.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                PlayerHand2.addAll(CenterHand);
+                CenterHand.removeAll(CenterHand);
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                // System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                //  System.out.println(jLabelPlayer1.getIcon().toString());
+                for (int i = 0; i < CenterHand.size(); i++) {
+                    PlayerHand2.add(CenterHand.remove(i));
+                }
+            } else {
+                if (PlayerHand2.size() != 0) {
+                    CenterHand.add(PlayerHand2.remove(0));
+                }
+            }
         }
 
-        if (key == KeyEvent.VK_UP) {
-            System.out.println("E");
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            System.out.println("down");
-        }
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-
     }
 
     @Override

@@ -1,9 +1,3 @@
-/**
- * Course: CS341 Data Structures
- * Date: April 2018
- * Assignment: CS341_FinalProject
- * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
- */
 package GamePackage;
 
 import MainPackage.Card;
@@ -11,14 +5,19 @@ import MainPackage.Deck;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Course: CS341 Data Structures Date: April 2018 Assignment: CS341_FinalProject
+ * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
+ */
 public class Slapjack implements SlapjackInterface {
 
     Deck deck = new Deck();
     
-            List<Card> temp = new ArrayList<Card>();
+         //   List<Card> temp = new ArrayList<Card>();
     
 
     public List<Card> generateHand(int Humanplayer, int ComputerPlayers) {
+        List<Card> temp = new ArrayList<Card>();
         deck.shuffleDeck();
         int players = Humanplayer + ComputerPlayers;
              
