@@ -9,6 +9,7 @@ package FramePackage;
 import java.io.*;
 import sun.audio.*;
 import GamePackage.SimonSays;
+import MainPackage.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class ssFrame extends javax.swing.JFrame {
     int score = 0;
     int inputCount = 0;
 
-    String url = "/MainPackage/audioFile.wav";
+    String url = "/AudioPackage/audioFile.wav";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -173,15 +174,13 @@ public class ssFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void redButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redButtonActionPerformed
         // TODO add your handling code here:
         //plays a sound upon clicking a card
         playSound(url);
-
-        //clear input order 
-        inputOrder.clear();
 
         //increment input counter
         inputCount++;
@@ -198,6 +197,12 @@ public class ssFrame extends javax.swing.JFrame {
                 //add additional step/order
                 ssGame.addOrder();
 
+                //reset inputCount
+                inputCount = 0;
+
+                //clear input order 
+                inputOrder.clear();
+
                 //toggle the display for each card for the user to follow
                 for (int x = 0; x < ssGame.size(); x++) {
                     toggleCard(ssGame.play().get(x));
@@ -206,6 +211,11 @@ public class ssFrame extends javax.swing.JFrame {
                 //increment the score and score label
                 score++;
                 scoreValue.setText("" + score);
+
+                //update score if necessary
+                if (Menu.player.getSsHighest() < score) {
+                    Menu.player.setSsHighest(score);
+                }
 
                 //print the order
                 for (int x = 0; x < ssGame.size(); x++) {
@@ -233,17 +243,14 @@ public class ssFrame extends javax.swing.JFrame {
         //plays a sound upon clicking a card
         playSound(url);
 
-        //clear input order 
-        inputOrder.clear();
-
         //increment input counter
         inputCount++;
 
+        //add input to input order
+        inputOrder.add(1);
+
         //check inputCount compared to score
         if (inputCount == (score + 1)) {
-
-            //add input to input order
-            inputOrder.add(1);
 
             //check if the entire input order equals the needed order
             if (ssGame.isMatch(inputOrder)) {//match
@@ -251,15 +258,25 @@ public class ssFrame extends javax.swing.JFrame {
                 //add additional step/order
                 ssGame.addOrder();
 
+                //reset inputCount
+                inputCount = 0;
+
+                //clear input order 
+                inputOrder.clear();
+
                 //toggle the display for each card for the user to follow
                 for (int x = 0; x < ssGame.size(); x++) {
-                    ssGame.play().get(x);
-                    toggleCard();
+                    toggleCard(ssGame.play().get(x));
                 }
 
                 //increment the score and score label
                 score++;
                 scoreValue.setText("" + score);
+
+                //update score if necessary
+                if (Menu.player.getSsHighest() < score) {
+                    Menu.player.setSsHighest(score);
+                }
 
                 //print the order
                 for (int x = 0; x < ssGame.size(); x++) {
@@ -279,8 +296,6 @@ public class ssFrame extends javax.swing.JFrame {
                 greenButton.setEnabled(false);
                 yellowButton.setEnabled(false);
             }//end else
-        } else { //total input < input needed
-            inputOrder.add(1);
         }
     }//GEN-LAST:event_yellowButtonActionPerformed
 
@@ -289,17 +304,14 @@ public class ssFrame extends javax.swing.JFrame {
         //plays a sound upon clicking a card
         playSound(url);
 
-        //clear input order 
-        inputOrder.clear();
-
         //increment input counter
         inputCount++;
 
+        //add input to input order
+        inputOrder.add(2);
+
         //check inputCount compared to score
         if (inputCount == (score + 1)) {
-
-            //add input to input order
-            inputOrder.add(2);
 
             //check if the entire input order equals the needed order
             if (ssGame.isMatch(inputOrder)) {//match
@@ -307,15 +319,25 @@ public class ssFrame extends javax.swing.JFrame {
                 //add additional step/order
                 ssGame.addOrder();
 
+                //reset inputCount
+                inputCount = 0;
+
+                //clear input order 
+                inputOrder.clear();
+
                 //toggle the display for each card for the user to follow
                 for (int x = 0; x < ssGame.size(); x++) {
-                    ssGame.play().get(x);
-                    toggleCard();
+                    toggleCard(ssGame.play().get(x));
                 }
 
                 //increment the score and score label
                 score++;
                 scoreValue.setText("" + score);
+
+                //update score if necessary
+                if (Menu.player.getSsHighest() < score) {
+                    Menu.player.setSsHighest(score);
+                }
 
                 //print the order
                 for (int x = 0; x < ssGame.size(); x++) {
@@ -335,8 +357,6 @@ public class ssFrame extends javax.swing.JFrame {
                 greenButton.setEnabled(false);
                 yellowButton.setEnabled(false);
             }//end else
-        } else { //total input < input needed
-            inputOrder.add(2);
         }
     }//GEN-LAST:event_greenButtonActionPerformed
 
@@ -345,17 +365,14 @@ public class ssFrame extends javax.swing.JFrame {
         //plays a sound upon clicking a card
         playSound(url);
 
-        //clear input order 
-        inputOrder.clear();
-
         //increment input counter
         inputCount++;
 
+        //add input to input order
+        inputOrder.add(3);
+
         //check inputCount compared to score
         if (inputCount == (score + 1)) {
-
-            //add input to input order
-            inputOrder.add(3);
 
             //check if the entire input order equals the needed order
             if (ssGame.isMatch(inputOrder)) {//match
@@ -363,15 +380,25 @@ public class ssFrame extends javax.swing.JFrame {
                 //add additional step/order
                 ssGame.addOrder();
 
+                //reset inputCount
+                inputCount = 0;
+
+                //clear input order 
+                inputOrder.clear();
+
                 //toggle the display for each card for the user to follow
                 for (int x = 0; x < ssGame.size(); x++) {
-                    ssGame.play().get(x);
-                    toggleCard();
+                    toggleCard(ssGame.play().get(x));
                 }
 
                 //increment the score and score label
                 score++;
                 scoreValue.setText("" + score);
+
+                //update score if necessary
+                if (Menu.player.getSsHighest() < score) {
+                    Menu.player.setSsHighest(score);
+                }
 
                 //print the order
                 for (int x = 0; x < ssGame.size(); x++) {
@@ -391,8 +418,6 @@ public class ssFrame extends javax.swing.JFrame {
                 greenButton.setEnabled(false);
                 yellowButton.setEnabled(false);
             }//end else
-        } else { //total input < input needed
-            inputOrder.add(3);
         }
     }//GEN-LAST:event_blueButtonActionPerformed
 
@@ -432,10 +457,11 @@ public class ssFrame extends javax.swing.JFrame {
         //adds the first step for the game
         ssGame.addOrder();
 
+        //gets the first color to toggle
         color = ssGame.play().get(0);
 
-        //taskPerformer = toggleCard();
-        toggleCard();
+        //toggles first color
+        toggleCard(color);
 
         //print the order
         for (int x = 0; x < ssGame.size(); x++) {
@@ -443,12 +469,13 @@ public class ssFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_playButtonActionPerformed
 
-    public void toggleCard() {
+    //shows card
+    public void toggleCard(int color) {
         taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 //...Perform a task...
                 switch (flip) {
-                    case 0:
+                    case 0://focus on card by graying it out
                         switch (color) {
                             case 0:
                                 redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
@@ -473,7 +500,7 @@ public class ssFrame extends javax.swing.JFrame {
                         greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
                         blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
                         break;
-                    default:
+                    default://reset
                         flip = 0;
                         break;
                 }//switch 1 
@@ -481,11 +508,8 @@ public class ssFrame extends javax.swing.JFrame {
             }//action performed
 
         };
-        new javax.swing.Timer(delay, taskPerformer)
-                .start();
-
-        delay = delay * 2;
-    }
+        new javax.swing.Timer(delay, taskPerformer).restart();
+    }//end toggleCard
 
     //method for playing a sound
     public static synchronized void playSound(final String url) {

@@ -6,7 +6,9 @@
  */
 package MainPackage;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
 
     //data members
     private String username;
@@ -18,12 +20,12 @@ public class Player {
     private int bjLosses;
 
     //memory match stats
-    private int mmEasySolves;
+    public static int mmEasySolves;
     private int mmMediumSolves;
     private int mmHardSolves;
 
     //simon says stats
-    private int ssSolves;
+    private int ssHighest;
 
     //slapjack stats
     private int sjWins;
@@ -55,7 +57,24 @@ public class Player {
 
     @Override
     public String toString() {
-        return username + ": " + funds;
+        return username + ": $" + funds;
+    }
+    
+    public String getAllStats(){
+        
+        return    "\n-------BLACKJACK--------------"
+                + "\nWins: " + bjWins 
+                + "\nLosses: " + bjLosses
+                + "\nW/L Ratio: " + blackjackRatio 
+                + "\n-------MEMORY MATCH-----------"
+                + "\nEasy Solves: " + mmEasySolves
+                + "\nMedium Solves: " + mmMediumSolves
+                + "\nHard Solves: " + mmHardSolves
+                + "\n-------SIMON SAYS-------------"
+                + "\nHigh Score: " + ssHighest
+                + "\n-------SLAPJACK---------------"
+                + "\nWins: " + sjWins
+                + "\nLosses: " + sjLosses;
     }
 
     public double getBlackjackRatio() {
@@ -65,72 +84,68 @@ public class Player {
         return blackjackRatio;
     }
 
-    public void setBlackjackRatio(double blackjackRatio) {
-        this.blackjackRatio = blackjackRatio;
-    }
-
     public int getBjWins() {
         return bjWins;
     }
 
-    public void setBjWins(int bjWins) {
-        this.bjWins = bjWins;
+    public void plusBjWins() {
+        this.bjWins = bjWins++;
     }
 
     public int getBjLosses() {
         return bjLosses;
     }
 
-    public void setBjLosses(int bjLosses) {
-        this.bjLosses = bjLosses;
+    public void plusBjLosses() {
+        this.bjLosses = bjLosses++;
     }
 
     public int getMmEasySolves() {
         return mmEasySolves;
     }
 
-    public void setMmEasySolves(int mmEasySolves) {
-        this.mmEasySolves = mmEasySolves;
+    public void plusMmEasySolves() {
+        this.mmEasySolves = mmEasySolves++;
     }
 
     public int getMmMediumSolves() {
         return mmMediumSolves;
     }
 
-    public void setMmMediumSolves(int mmMediumSolves) {
-        this.mmMediumSolves = mmMediumSolves;
+    public void plusMmMediumSolves() {
+        this.mmMediumSolves = mmMediumSolves++;
     }
 
     public int getMmHardSolves() {
         return mmHardSolves;
     }
 
-    public void setMmHardSolves(int mmHardSolves) {
-        this.mmHardSolves = mmHardSolves;
+    public void plusMmHardSolves() {
+        this.mmHardSolves = mmHardSolves++;
     }
 
-    public int getSsSolves() {
-        return ssSolves;
+    public int getSsHighest() {
+        return ssHighest;
     }
 
-    public void setSsSolves(int ssSolves) {
-        this.ssSolves = ssSolves;
+    public void setSsHighest(int ssHighest) {
+        this.ssHighest = ssHighest;
     }
 
     public int getSjWins() {
         return sjWins;
     }
 
-    public void setSjWins(int sjWins) {
-        this.sjWins = sjWins;
+    public void plusSjWins() {
+        this.sjWins = sjWins++;
     }
 
     public int getSjLosses() {
         return sjLosses;
     }
 
-    public void setSjLosses(int sjLosses) {
-        this.sjLosses = sjLosses;
+    public void setSjLosses() {
+        this.sjLosses = sjLosses++;
     }
 
 }

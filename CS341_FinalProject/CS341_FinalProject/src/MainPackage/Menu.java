@@ -13,12 +13,14 @@ import static FramePackage.difficultyFrame.difficulty;
 import FramePackage.mmFrame;
 import FramePackage.sjFrame;
 import FramePackage.ssFrame;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -32,6 +34,9 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
 
+    List<Player> playerList = loadPlayers();
+    //List<Player> playerList = new ArrayList<Player>();
+
     public static int gameID;
 
     public static int getGameID() {
@@ -41,6 +46,9 @@ public class Menu extends javax.swing.JFrame {
     public static void setGameID(int gameChosen) {
         gameID = gameChosen;
     }
+
+    //default sign in as first player in list
+    public static Player player;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,11 +69,13 @@ public class Menu extends javax.swing.JFrame {
         createPlayerButton = new javax.swing.JButton();
         selectUserButton = new javax.swing.JButton();
         playerStatsButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
 
         memoryButton.setText("Memory Match");
+        memoryButton.setEnabled(false);
         memoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 memoryButtonActionPerformed(evt);
@@ -73,6 +83,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         bjButton.setText("Blackjack");
+        bjButton.setEnabled(false);
         bjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bjButtonActionPerformed(evt);
@@ -80,6 +91,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         slapjackButton.setText("Slapjack");
+        slapjackButton.setEnabled(false);
         slapjackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 slapjackButtonActionPerformed(evt);
@@ -87,6 +99,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         ssButton.setText("Simon Says");
+        ssButton.setEnabled(false);
         ssButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ssButtonActionPerformed(evt);
@@ -95,7 +108,7 @@ public class Menu extends javax.swing.JFrame {
 
         optionLabel.setText("Game Options:");
 
-        jLabel1.setText("Other Options:");
+        jLabel1.setText("Playerr Options:");
 
         createPlayerButton.setText("Create Player");
         createPlayerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,9 +125,18 @@ public class Menu extends javax.swing.JFrame {
         });
 
         playerStatsButton.setText("Player Stats");
+        playerStatsButton.setEnabled(false);
         playerStatsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playerStatsButtonActionPerformed(evt);
+            }
+        });
+
+        saveButton.setText("Save");
+        saveButton.setEnabled(false);
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
             }
         });
 
@@ -133,19 +155,21 @@ public class Menu extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(memoryButton)
                                     .addComponent(slapjackButton))
-                                .addGap(91, 91, 91)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ssButton)
                                     .addComponent(bjButton))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(playerStatsButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(createPlayerButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectUserButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(playerStatsButton))
+                                .addComponent(selectUserButton))
                             .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -155,13 +179,13 @@ public class Menu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(optionLabel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(memoryButton)
                     .addComponent(bjButton))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(slapjackButton)
                     .addComponent(ssButton))
@@ -172,14 +196,18 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createPlayerButton)
-                    .addComponent(selectUserButton)
-                    .addComponent(playerStatsButton))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(selectUserButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(playerStatsButton)
+                    .addComponent(saveButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {bjButton, memoryButton, slapjackButton, ssButton});
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void bjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjButtonActionPerformed
@@ -226,34 +254,93 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         Player player = new Player();
 
-        String username = JOptionPane.showInputDialog(null, "Enter player name: ");
+        System.out.println("Create Player: " + playerList);
+
+        String username = JOptionPane.showInputDialog(null, "Enter new player name: ");
         String fundsString = JOptionPane.showInputDialog(null, "Enter funds to deposit: ");
 
         player.setUsername(username);
         player.setFunds(Integer.parseInt(fundsString));
 
-        //output to player_list.txt
-        PrintWriter out = null;
-        try {
-            out = new PrintWriter(new FileWriter("player_list.txt", true), true);
-            out.println(username + ": " + Integer.parseInt(fundsString));
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        out.close();
+        playerList.add(playerList.size(), player);
 
+        //enable games
+        memoryButton.setEnabled(true);
+        ssButton.setEnabled(true);
+        slapjackButton.setEnabled(true);
+        bjButton.setEnabled(true);
+        playerStatsButton.setEnabled(true);
+        saveButton.setEnabled(true);
     }//GEN-LAST:event_createPlayerButtonActionPerformed
 
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
-        // TODO add your handling code here:
+
+        System.out.println("Select User: " + playerList);
+
+        player = new Player();
+        String username = JOptionPane.showInputDialog(null, "Enter existing player name: ");
+
+        //search list for username
+        for (int i = 0; i < playerList.size(); i++) {
+            if (playerList.get(i).getUsername().equals(username)) {
+                player = playerList.get(i);
+                JOptionPane.showMessageDialog(rootPane, "You've been signed in.");
+                break;
+            }
+            if (i == playerList.size() && playerList.get(i).getUsername() != username) {
+                JOptionPane.showMessageDialog(rootPane, "Username could not be found");
+            }
+        }
+
+        //enable games
+        memoryButton.setEnabled(true);
+        ssButton.setEnabled(true);
+        slapjackButton.setEnabled(true);
+        bjButton.setEnabled(true);
+        playerStatsButton.setEnabled(true);
+        saveButton.setEnabled(true);
 
     }//GEN-LAST:event_selectUserButtonActionPerformed
 
     private void playerStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerStatsButtonActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(rootPane, player.toString() + "\n" + player.getAllStats());
     }//GEN-LAST:event_playerStatsButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        try {
+            // create a new file with an ObjectOutputStream
+            FileOutputStream out = new FileOutputStream("players.ser");
+            ObjectOutputStream oout = new ObjectOutputStream(out);
+            oout.writeObject(playerList);
+            oout.close();
+
+            JOptionPane.showMessageDialog(rootPane, "Player data has been saved.");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    public List<Player> loadPlayers() {
+        List<Player> playerList = new ArrayList<Player>();
+        try {
+            FileInputStream fis = new FileInputStream("players.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            playerList = (List<Player>) ois.readObject();
+            ois.close();
+
+            // read and print an object and cast it as string
+            System.out.println("Previous player info added: " + playerList);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return playerList;
+    }//end loadPlayers
 
     /**
      * @param args the command line arguments
@@ -263,8 +350,6 @@ public class Menu extends javax.swing.JFrame {
         Deck deck = new Deck();
 
         deck.shuffleDeck();
-
-        //System.out.print(deck.toString());
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -305,6 +390,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton memoryButton;
     private javax.swing.JLabel optionLabel;
     private javax.swing.JButton playerStatsButton;
+    private javax.swing.JButton saveButton;
     private javax.swing.JButton selectUserButton;
     private javax.swing.JButton slapjackButton;
     private javax.swing.JButton ssButton;

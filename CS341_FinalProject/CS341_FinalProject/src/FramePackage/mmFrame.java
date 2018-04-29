@@ -8,6 +8,8 @@ package FramePackage;
 
 import GamePackage.MemoryMatch;
 import MainPackage.Card;
+import MainPackage.Menu;
+import MainPackage.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,8 +18,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import sun.applet.Main;
 
 public class mmFrame extends javax.swing.JFrame {
 
@@ -28,26 +34,34 @@ public class mmFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    //constants for winning number of matches
     private final int EASY_MATCHES = 2;
     private final int MED_MATCHES = 3;
     private final int HARD_MATCHES = 4;
 
+    //instantiates a memory match game
     MemoryMatch mmGame = new MemoryMatch();
 
+    //initialize a list of cards
     List<Card> cards = new ArrayList<Card>();
 
     Card firstCard;
     Card secondCard;
     int currentMatches;
 
+    //variables for flipping cards
     int delay = 500;
     int flip = 0;
 
+    //retrieve difficulty from difficulty frame chooser
     String difficulty = difficultyFrame.getDifficulty();
 
     int cardSelectionCount;
 
     ActionListener taskPerformer;
+
+    //audio file variable
+    String winUrl = "/AudioPackage/win.wav";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,6 +217,7 @@ public class mmFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void easyCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard1ActionPerformed
@@ -823,35 +838,59 @@ public class mmFrame extends javax.swing.JFrame {
         switch (difficulty) {
             case "easy":
                 if (currentMatches == EASY_MATCHES) {
+
+                    //plays sound
+                    playSound(winUrl);
+
+                    //show win message
                     JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
+
                     //shows reset cards
                     resetCards();
+
+                    //increment score
+                    Menu.player.plusMmEasySolves();
+
                     //quits the memory match game window
                     mmFrame.this.dispose();
-                    //increase score
-
                 }
                 break;
             case "medium":
                 if (currentMatches == MED_MATCHES) {
+
+                    //plays sound
+                    playSound(winUrl);
+
+                    //show win message
                     JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
+
                     //shows reset cards
                     resetCards();
+
+                    //increment score
+                    Menu.player.plusMmEasySolves();
+
                     //quits the memory match game window
                     mmFrame.this.dispose();
-                    //increase score
-
                 }
                 break;
             case "hard":
                 if (currentMatches == HARD_MATCHES) {
+
+                    //plays sound
+                    playSound(winUrl);
+
+                    //show win message
                     JOptionPane.showMessageDialog(rootPane, "YOU WIN!");
+
                     //shows reset cards
                     resetCards();
+
+                    //increment score
+                    Menu.player.plusMmEasySolves();
+
                     //quits the memory match game window
                     mmFrame.this.dispose();
-                    //increase score
-
                 }
                 break;
         }
@@ -877,6 +916,26 @@ public class mmFrame extends javax.swing.JFrame {
         medCard6.setSelected(false);
         hardCard7.setSelected(false);
         hardCard8.setSelected(false);
+    }
+
+    //method for playing a sound
+    public static synchronized void playSound(final String url) {
+        new Thread(new Runnable() {
+            // The wrapper thread is unnecessary, unless it blocks on the
+            // Clip finishing; see comments.
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                            //"/MainPackage/audioFile.wav"
+                            Main.class.getResourceAsStream(url));
+                    clip.open(inputStream);
+                    clip.start();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
     }
 
     /**

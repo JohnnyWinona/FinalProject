@@ -8,6 +8,7 @@ package FramePackage;
 
 import GamePackage.Blackjack;
 import MainPackage.Card;
+import MainPackage.Menu;
 import java.util.*;
 import javax.swing.ImageIcon;
 
@@ -355,6 +356,7 @@ public class bjFrame extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealButtonActionPerformed
@@ -422,15 +424,22 @@ public class bjFrame extends javax.swing.JFrame {
         } catch (Exception e) {
         }
 
+        //stats only apply to the first hand
         switch (bjGame.checkWinner(oneHand, houseHand)) {
             case 1:
                 oneSumField.setText("WINNER: " + bjGame.getSum(oneHand));
+                int bjWinsTemp = Menu.player.getBjWins();
+                bjWinsTemp++;
+                Menu.player.plusBjWins();
                 break;
             case 0:
                 oneSumField.setText("TIE: " + bjGame.getSum(oneHand));
                 break;
             case -1:
                 oneSumField.setText("LOSER: " + bjGame.getSum(oneHand));
+                int bjLossesTemp = Menu.player.getBjLosses();
+                bjLossesTemp++;
+                Menu.player.plusBjLosses();
                 break;
             default:
                 oneSumField.setText("BROKE: " + bjGame.getSum(oneHand));
