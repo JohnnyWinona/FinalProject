@@ -29,23 +29,6 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="optionLabel" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="memoryButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="slapjackButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ssButton" linkSize="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="bjButton" linkSize="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="playerStatsButton" linkSize="1" min="-2" max="-2" attributes="0"/>
@@ -65,6 +48,25 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="memoryButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="slapjackButton" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="optionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="adminButton" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="ssButton" linkSize="1" max="32767" attributes="0"/>
+                                  <Component id="bjButton" linkSize="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
       </Group>
@@ -73,8 +75,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="optionLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="optionLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="adminButton" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="memoryButton" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bjButton" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -190,6 +195,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="playerLabel">
+    </Component>
+    <Component class="javax.swing.JButton" name="adminButton">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

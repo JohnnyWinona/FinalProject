@@ -138,4 +138,15 @@ public class Player implements Serializable {
     public void setSjLosses(int num) {
         this.sjLosses = num;
     }
+    
+    public void resetAllStats(){
+        this.sjLosses = 0;
+        this.bjLosses = 0;
+        this.bjWins = 0;
+        this.mmEasySolves = 0;
+        this.mmHardSolves = 0;
+        this.mmMediumSolves = 0;
+        this.sjWins = 0;
+        this.ssHighest = 0;
+    }
 }

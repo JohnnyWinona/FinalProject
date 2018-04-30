@@ -6,6 +6,7 @@
  */
 package MainPackage;
 
+import FramePackage.adminFrame;
 import MainPackage.Player;
 import FramePackage.bjFrame;
 import FramePackage.difficultyFrame;
@@ -13,6 +14,7 @@ import static FramePackage.difficultyFrame.difficulty;
 import FramePackage.mmFrame;
 import FramePackage.sjFrame;
 import FramePackage.ssFrame;
+import java.awt.HeadlessException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -32,15 +34,20 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         initComponents();
+
+        //makes the reset button invisible
+        adminButton.setOpaque(false);
+        adminButton.setContentAreaFilled(false);
+        adminButton.setBorderPainted(false);
     }
 
     //call the load method to get players from player.ser file,
     //fills the array list with existing players
     List<Player> playerList = loadPlayers();
-    
+
     //used to reset players.ser file
     //List<Player> playerList = new ArrayList<Player>();
-
+    
     //the gameID for each game, needed for difficulty chooser if used
     public static int gameID;
 
@@ -76,6 +83,7 @@ public class Menu extends javax.swing.JFrame {
         playerStatsButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         playerLabel = new javax.swing.JLabel();
+        adminButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
@@ -146,6 +154,12 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -154,18 +168,6 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(optionLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(memoryButton)
-                                    .addComponent(slapjackButton))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ssButton)
-                                    .addComponent(bjButton))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -180,7 +182,21 @@ public class Menu extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(63, 63, 63)
                                 .addComponent(playerLabel)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(memoryButton)
+                            .addComponent(slapjackButton)
+                            .addComponent(optionLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ssButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bjButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {bjButton, createPlayerButton, memoryButton, playerStatsButton, selectUserButton, slapjackButton, ssButton});
@@ -189,8 +205,10 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(optionLabel)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(optionLabel)
+                    .addComponent(adminButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(memoryButton)
                     .addComponent(bjButton))
@@ -326,16 +344,25 @@ public class Menu extends javax.swing.JFrame {
         try {
             // create a new file with an ObjectOutputStream
             FileOutputStream out = new FileOutputStream("players.ser");
-            ObjectOutputStream oout = new ObjectOutputStream(out);
-            oout.writeObject(playerList);
-            oout.close();
+            try (ObjectOutputStream oout = new ObjectOutputStream(out)) {
+                oout.writeObject(playerList);
+            }
 
             JOptionPane.showMessageDialog(rootPane, "Player data has been saved.");
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (HeadlessException | IOException ex) {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        // TODO add your handling code here:
+        adminFrame admin = new adminFrame(playerList);
+        admin.setVisible(true);
+        
+        //updates the player list
+        playerList = adminFrame.playerListCopy;
+
+    }//GEN-LAST:event_adminButtonActionPerformed
 
     public List<Player> loadPlayers() {
         List<Player> playerList = new ArrayList<Player>();
@@ -399,6 +426,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminButton;
     private javax.swing.JButton bjButton;
     private javax.swing.JButton createPlayerButton;
     private javax.swing.JLabel jLabel1;
