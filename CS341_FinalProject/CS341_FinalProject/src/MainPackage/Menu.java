@@ -34,8 +34,11 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
 
+    //call the load method to get players from player.ser file,
+    //fills the array list with existing players
     List<Player> playerList = loadPlayers();
 
+    //the gameID for each game, needed for difficulty chooser if used
     public static int gameID;
 
     public static int getGameID() {
@@ -125,6 +128,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         playerStatsButton.setText("Player Stats");
+        playerStatsButton.setEnabled(false);
         playerStatsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playerStatsButtonActionPerformed(evt);
@@ -132,6 +136,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         saveButton.setText("Save");
+        saveButton.setEnabled(false);
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -247,9 +252,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void ssButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ssButtonActionPerformed
         // TODO add your handling code here:
-        //difficulty chooser
+        /*//difficulty chooser
         difficultyFrame dF = new difficultyFrame();
         dF.setVisible(true);
+         */
+        //no difficulty chooser
+        ssFrame ss = new ssFrame();
+        ss.setVisible(true);
         Menu.setGameID(4);
     }//GEN-LAST:event_ssButtonActionPerformed
 
@@ -267,11 +276,13 @@ public class Menu extends javax.swing.JFrame {
 
         playerList.add(playerList.size(), player);
 
-        //enable games
+        //enable games and stats
         memoryButton.setEnabled(true);
         ssButton.setEnabled(true);
         slapjackButton.setEnabled(true);
         bjButton.setEnabled(true);
+        saveButton.setEnabled(true);
+        playerStatsButton.setEnabled(true);
     }//GEN-LAST:event_createPlayerButtonActionPerformed
 
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
@@ -294,11 +305,13 @@ public class Menu extends javax.swing.JFrame {
             }
         }
 
-        //enable games
+        //enable games and stats
         memoryButton.setEnabled(true);
         ssButton.setEnabled(true);
         slapjackButton.setEnabled(true);
         bjButton.setEnabled(true);
+        saveButton.setEnabled(true);
+        playerStatsButton.setEnabled(true);
 
     }//GEN-LAST:event_selectUserButtonActionPerformed
 

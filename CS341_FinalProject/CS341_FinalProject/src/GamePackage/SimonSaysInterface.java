@@ -13,8 +13,8 @@ public interface SimonSaysInterface {
     /**
      * Add Order
      *
-     * @require
-     * @ensure
+     * @require A valid list for steps is created.
+     * @ensure A step for the user to follow is added to the list.
      *
      */
     public void addOrder();
@@ -47,8 +47,8 @@ public interface SimonSaysInterface {
     /**
      * Play
      *
-     * @require
-     * @ensure
+     * @require A valid list for steps is created.
+     * @ensure The list of steps is able to be returned.
      * @return A list including the first step for the player to follow is returned.
      *
      */

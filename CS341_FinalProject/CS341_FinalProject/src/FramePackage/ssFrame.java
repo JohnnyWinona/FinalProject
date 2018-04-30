@@ -38,7 +38,8 @@ public class ssFrame extends javax.swing.JFrame {
 
     ActionListener taskPerformer;
 
-    int delay = 0;
+    String neededOrder = "";
+
     int x = 0;
     int color = 0;
     int flip = 0;
@@ -203,10 +204,29 @@ public class ssFrame extends javax.swing.JFrame {
                 //clear input order 
                 inputOrder.clear();
 
-                //toggle the display for each card for the user to follow
-                for (int x = 0; x < ssGame.size(); x++) {
-                    toggleCard(ssGame.play().get(x));
+                //reset required input string
+                neededOrder = "";
+
+                //outputs the required order to input
+                for (int step = 0; step < ssGame.size(); step++) {
+                    switch (ssGame.play().get(step)) {
+                        case 0:
+                            neededOrder += "R";
+                            break;
+                        case 1:
+                            neededOrder += "Y";
+                            break;
+                        case 2:
+                            neededOrder += "G";
+                            break;
+                        case 3:
+                            neededOrder += "B";
+                            break;
+                    }
                 }
+
+                //output message
+                JOptionPane.showMessageDialog(rootPane, neededOrder);
 
                 //increment the score and score label
                 score++;
@@ -217,10 +237,6 @@ public class ssFrame extends javax.swing.JFrame {
                     Menu.player.setSsHighest(score);
                 }
 
-                //print the order
-                for (int x = 0; x < ssGame.size(); x++) {
-                    System.out.println(ssGame.play().get(x));
-                }
             } else {//no match
                 //end game
                 JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
@@ -264,10 +280,29 @@ public class ssFrame extends javax.swing.JFrame {
                 //clear input order 
                 inputOrder.clear();
 
-                //toggle the display for each card for the user to follow
-                for (int x = 0; x < ssGame.size(); x++) {
-                    toggleCard(ssGame.play().get(x));
+                //reset required input string
+                neededOrder = "";
+
+                //outputs the required order to input
+                for (int step = 0; step < ssGame.size(); step++) {
+                    switch (ssGame.play().get(step)) {
+                        case 0:
+                            neededOrder += "R";
+                            break;
+                        case 1:
+                            neededOrder += "Y";
+                            break;
+                        case 2:
+                            neededOrder += "G";
+                            break;
+                        case 3:
+                            neededOrder += "B";
+                            break;
+                    }
                 }
+
+                //output message
+                JOptionPane.showMessageDialog(rootPane, neededOrder);
 
                 //increment the score and score label
                 score++;
@@ -278,10 +313,6 @@ public class ssFrame extends javax.swing.JFrame {
                     Menu.player.setSsHighest(score);
                 }
 
-                //print the order
-                for (int x = 0; x < ssGame.size(); x++) {
-                    System.out.println(ssGame.play().get(x));
-                }
             } else {//no match
                 //end game
                 JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
@@ -325,10 +356,29 @@ public class ssFrame extends javax.swing.JFrame {
                 //clear input order 
                 inputOrder.clear();
 
-                //toggle the display for each card for the user to follow
-                for (int x = 0; x < ssGame.size(); x++) {
-                    toggleCard(ssGame.play().get(x));
+                //reset required input string
+                neededOrder = "";
+
+                //outputs the required order to input
+                for (int step = 0; step < ssGame.size(); step++) {
+                    switch (ssGame.play().get(step)) {
+                        case 0:
+                            neededOrder += "R";
+                            break;
+                        case 1:
+                            neededOrder += "Y";
+                            break;
+                        case 2:
+                            neededOrder += "G";
+                            break;
+                        case 3:
+                            neededOrder += "B";
+                            break;
+                    }
                 }
+
+                //output message
+                JOptionPane.showMessageDialog(rootPane, neededOrder);
 
                 //increment the score and score label
                 score++;
@@ -339,10 +389,6 @@ public class ssFrame extends javax.swing.JFrame {
                     Menu.player.setSsHighest(score);
                 }
 
-                //print the order
-                for (int x = 0; x < ssGame.size(); x++) {
-                    System.out.println(ssGame.play().get(x));
-                }
             } else {//no match
                 //end game
                 JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
@@ -386,10 +432,29 @@ public class ssFrame extends javax.swing.JFrame {
                 //clear input order 
                 inputOrder.clear();
 
-                //toggle the display for each card for the user to follow
-                for (int x = 0; x < ssGame.size(); x++) {
-                    toggleCard(ssGame.play().get(x));
+                //reset required input string
+                neededOrder = "";
+
+                //outputs the required order to input
+                for (int step = 0; step < ssGame.size(); step++) {
+                    switch (ssGame.play().get(step)) {
+                        case 0:
+                            neededOrder += "R";
+                            break;
+                        case 1:
+                            neededOrder += "Y";
+                            break;
+                        case 2:
+                            neededOrder += "G";
+                            break;
+                        case 3:
+                            neededOrder += "B";
+                            break;
+                    }
                 }
+
+                //output message
+                JOptionPane.showMessageDialog(rootPane, neededOrder);
 
                 //increment the score and score label
                 score++;
@@ -400,10 +465,6 @@ public class ssFrame extends javax.swing.JFrame {
                     Menu.player.setSsHighest(score);
                 }
 
-                //print the order
-                for (int x = 0; x < ssGame.size(); x++) {
-                    System.out.println(ssGame.play().get(x));
-                }
             } else {//no match
                 //end game
                 JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
@@ -438,79 +499,33 @@ public class ssFrame extends javax.swing.JFrame {
         //disable the play button
         playButton.setEnabled(false);
 
-        //get difficulty from difficulty chooser frame
-        String difficulty = difficultyFrame.getDifficulty();
-
-        //determine delay based on difficulty
-        switch (difficulty) {
-            case "easy":
-                delay = 500;
-                break;
-            case "medium":
-                delay = 300;
-                break;
-            case "hard":
-                delay = 200;
-                break;
-        }
-
         //adds the first step for the game
         ssGame.addOrder();
 
-        //gets the first color to toggle
-        color = ssGame.play().get(0);
+        //reset required input string
+        neededOrder = "";
 
-        //toggles first color
-        toggleCard(color);
-
-        //print the order
-        for (int x = 0; x < ssGame.size(); x++) {
-            System.out.println(ssGame.play().get(x));
+        //outputs the required order to input
+        for (int step = 0; step < ssGame.size(); step++) {
+            switch (ssGame.play().get(step)) {
+                case 0:
+                    neededOrder += "R";
+                    break;
+                case 1:
+                    neededOrder += "Y";
+                    break;
+                case 2:
+                    neededOrder += "G";
+                    break;
+                case 3:
+                    neededOrder += "B";
+                    break;
+            }
         }
+
+        //output message
+        JOptionPane.showMessageDialog(rootPane, neededOrder);
     }//GEN-LAST:event_playButtonActionPerformed
-
-    //shows card
-    public void toggleCard(int color) {
-        taskPerformer = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                //...Perform a task...
-                switch (flip) {
-                    case 0://focus on card by graying it out
-                        switch (color) {
-                            case 0:
-                                redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                                break;
-                            case 1:
-                                yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                                break;
-                            case 2:
-                                greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                                break;
-                            case 3:
-                                blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/gray_back.jpg")));
-                                break;
-                            default:
-                                break;
-                        }
-                        flip++;
-                        break;
-                    case 1:
-                        redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
-                        yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg")));
-                        greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/green_back.jpg")));
-                        blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
-                        flip = 0;
-                        break;
-                    default://reset
-                        flip = 0;
-                        break;
-                }//switch 1 
-
-            }//action performed
-
-        };
-        new javax.swing.Timer(delay, taskPerformer).restart();
-    }//end toggleCard
 
     //method for playing a sound
     public static synchronized void playSound(final String url) {

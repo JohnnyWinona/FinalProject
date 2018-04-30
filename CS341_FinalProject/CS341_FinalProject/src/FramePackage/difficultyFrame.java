@@ -16,7 +16,10 @@ public class difficultyFrame extends javax.swing.JFrame {
     public difficultyFrame() {
         initComponents();
     }
+    
+    //The difficulty frame allows for any difficulty component to be added to any game
 
+    //info passed onto other frame
     public static String difficulty;
     public static int gameID = Menu.gameID;
 

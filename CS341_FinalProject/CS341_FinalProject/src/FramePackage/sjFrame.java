@@ -1,12 +1,14 @@
+/**
+ * Course: CS341 Data Structures
+ * Date: April 2018
+ * Assignment: CS341_FinalProject
+ * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
+ */
 package FramePackage;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import GamePackage.Slapjack;
 import MainPackage.Card;
+import MainPackage.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -16,10 +18,6 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author
- */
 public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
     Slapjack deck = new Slapjack();
@@ -307,7 +305,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             PlayerHand1 = deck.generateHand(Humanplayers, Computerplayers);
 
             ComputerHand1 = deck.generateHand(Humanplayers, Computerplayers);
-            
+
             ComputerHand2 = deck.generateHand(Humanplayers, Computerplayers);
         }
 
@@ -323,6 +321,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         ComputerHand1.add(null);
@@ -333,6 +338,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         ComputerHand2.add(null);
@@ -343,6 +355,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
@@ -353,6 +372,14 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjWins();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjWins(scoreTemp++);
+
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
@@ -366,6 +393,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -375,6 +409,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -384,6 +425,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjWins();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjWins(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
@@ -396,6 +444,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -404,6 +459,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjWins();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjWins(scoreTemp++);
                         dispose();
                         x = 10;
                         ComputerHand1.add(null);
@@ -416,6 +478,13 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -426,16 +495,30 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
                     }
-                }else if (Humanplayers == 1 && Computerplayers == 2) {
+                } else if (Humanplayers == 1 && Computerplayers == 2) {
 
                     if (PlayerHand1.size() == 0 && ComputerHand2.size() == 0) {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -445,6 +528,14 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjLosses();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjLosses(scoreTemp++);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -454,12 +545,20 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                         JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                                 "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+
+                        int scoreTemp = Menu.player.getSjWins();
+
+                        scoreTemp++;
+
+                        //increment score
+                        Menu.player.setSjWins(scoreTemp++);
+
                         dispose();
                         x = 10;
                         ComputerHand2.add(null);
                         ComputerHand1.add(null);
                     }
-                    
+
                 }
 
                 jLabel2Player1.setText("<html>Player 1 <br> \n"

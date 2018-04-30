@@ -15,6 +15,13 @@ public class SimonSays implements SimonSaysInterface {
 
     List<Integer> order = new ArrayList<Integer>();
 
+    /**
+     * Add Order
+     *
+     * @require A valid list for steps is created.
+     * @ensure A step for the user to follow is added to the list.
+     *
+     */
     public void addOrder() {
         Random rand = new Random();
 
@@ -51,6 +58,15 @@ public class SimonSays implements SimonSaysInterface {
         return inputOrder.equals(order);
     }
 
+    /**
+     * Play
+     *
+     * @require A valid list for steps is created.
+     * @ensure The list of steps is able to be returned.
+     * @return A list including the first step for the player to follow is
+     * returned.
+     *
+     */
     public List<Integer> play() {
         return order;
     }

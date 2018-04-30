@@ -15,7 +15,6 @@ public class Player implements Serializable {
     private int funds = 0;
 
     //blackjack stats
-    private double blackjackRatio = 0;
     private int bjWins = 0;
     private int bjLosses = 0;
 
@@ -59,13 +58,12 @@ public class Player implements Serializable {
     public String toString() {
         return username + ": $" + funds;
     }
-    
-    public String getAllStats(){
-        
-        return    "\n-------BLACKJACK--------------"
-                + "\nWins: " + bjWins 
+
+    public String getAllStats() {
+
+        return "\n-------BLACKJACK--------------"
+                + "\nWins: " + bjWins
                 + "\nLosses: " + bjLosses
-                + "\nW/L Ratio: " + blackjackRatio 
                 + "\n-------MEMORY MATCH-----------"
                 + "\nEasy Solves: " + mmEasySolves
                 + "\nMedium Solves: " + mmMediumSolves
@@ -75,13 +73,6 @@ public class Player implements Serializable {
                 + "\n-------SLAPJACK---------------"
                 + "\nWins: " + sjWins
                 + "\nLosses: " + sjLosses;
-    }
-
-    public double getBlackjackRatio() {
-
-        blackjackRatio = (double) bjWins / (double) bjLosses;
-
-        return blackjackRatio;
     }
 
     public int getBjWins() {
@@ -147,5 +138,4 @@ public class Player implements Serializable {
     public void setSjLosses(int num) {
         this.sjLosses = num;
     }
-
 }
