@@ -138,8 +138,15 @@ public class Player implements Serializable {
     public void setSjLosses(int num) {
         this.sjLosses = num;
     }
-    
-    public void resetAllStats(){
+
+    /**
+     * Reset All Stats
+     *
+     * @require A player to be selected in which their stats are to be reset.
+     * @ensure Stats for all games will be reset back to zero.
+     *
+     */
+    public void resetAllStats() {
         this.sjLosses = 0;
         this.bjLosses = 0;
         this.bjWins = 0;
