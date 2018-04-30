@@ -328,6 +328,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         ComputerHand1.add(null);
@@ -345,6 +349,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         ComputerHand2.add(null);
@@ -362,6 +370,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 20);
+
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
@@ -379,6 +391,9 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjWins(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 35);
 
                         dispose();
                         x = 10;
@@ -400,6 +415,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -416,6 +435,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 20);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -432,6 +455,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjWins(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
@@ -451,6 +478,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -466,6 +497,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjWins(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 35);
+
                         dispose();
                         x = 10;
                         ComputerHand1.add(null);
@@ -485,6 +520,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 20);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -502,6 +541,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 20);
+
                         dispose();
                         x = 10;
                         PlayerHand2.add(null);
@@ -519,6 +562,10 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -536,6 +583,9 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         //increment score
                         Menu.player.setSjLosses(scoreTemp++);
 
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                         dispose();
                         x = 10;
                         PlayerHand1.add(null);
@@ -552,6 +602,9 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
                         //increment score
                         Menu.player.setSjWins(scoreTemp++);
+
+                        //increment funds
+                        Menu.player.setFunds(Menu.player.getFunds() + 35);
 
                         dispose();
                         x = 10;

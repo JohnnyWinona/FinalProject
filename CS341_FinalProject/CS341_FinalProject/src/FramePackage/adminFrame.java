@@ -20,6 +20,9 @@ import javax.swing.JOptionPane;
  * @author eu3035jm
  */
 public class adminFrame extends javax.swing.JFrame {
+    
+    //value for the funds to be reset to 
+    public static final int RESET_FUNDS = 100;
 
     //gets a copy of the player list
     public static List<Player> playerListCopy = new ArrayList<>();
@@ -48,6 +51,7 @@ public class adminFrame extends javax.swing.JFrame {
         resetStatsButton = new javax.swing.JButton();
         resetPlayersButton = new javax.swing.JButton();
         removePlayerButton = new javax.swing.JButton();
+        resetFundsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Admin Settings");
@@ -73,16 +77,24 @@ public class adminFrame extends javax.swing.JFrame {
             }
         });
 
+        resetFundsButton.setText("Reset Funds");
+        resetFundsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetFundsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(resetStatsButton)
-                    .addComponent(resetPlayersButton)
-                    .addComponent(removePlayerButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(resetStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(resetPlayersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(removePlayerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(resetFundsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(35, 35, 35))
         );
 
@@ -91,13 +103,14 @@ public class adminFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(removePlayerButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resetStatsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(resetPlayersButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resetFundsButton))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {removePlayerButton, resetPlayersButton, resetStatsButton});
@@ -213,6 +226,32 @@ public class adminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_removePlayerButtonActionPerformed
 
+    private void resetFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetFundsButtonActionPerformed
+        //get each player and reset funds to $100
+        for(int player = 0; player < playerListCopy.size(); player++){
+            playerListCopy.get(player).setFunds(RESET_FUNDS);
+        }
+
+        //show that the list has been reset
+        JOptionPane.showMessageDialog(rootPane, "Player stats have been reset. Program will save and restart.");
+
+        //saves the reset data
+        try {
+            // create a new file with an ObjectOutputStream
+            FileOutputStream out = new FileOutputStream("players.ser");
+            try (ObjectOutputStream oout = new ObjectOutputStream(out)) {
+                oout.writeObject(playerListCopy);
+            }
+
+        } catch (IOException ex) {
+        }
+
+        //restarts program
+        dispose();
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_resetFundsButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,6 +290,7 @@ public class adminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton removePlayerButton;
+    private javax.swing.JButton resetFundsButton;
     private javax.swing.JButton resetPlayersButton;
     private javax.swing.JButton resetStatsButton;
     // End of variables declaration//GEN-END:variables

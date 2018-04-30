@@ -237,6 +237,9 @@ public class ssFrame extends javax.swing.JFrame {
                     Menu.player.setSsHighest(score);
                 }
 
+                //increment funds
+                Menu.player.setFunds(Menu.player.getFunds() + 10);
+
             } else {//no match
                 //end game
                 JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
@@ -312,6 +315,9 @@ public class ssFrame extends javax.swing.JFrame {
                 if (Menu.player.getSsHighest() < score) {
                     Menu.player.setSsHighest(score);
                 }
+
+                //increment funds
+                Menu.player.setFunds(Menu.player.getFunds() + 10);
 
             } else {//no match
                 //end game
@@ -389,6 +395,9 @@ public class ssFrame extends javax.swing.JFrame {
                     Menu.player.setSsHighest(score);
                 }
 
+                //increment funds
+                Menu.player.setFunds(Menu.player.getFunds() + 10);
+
             } else {//no match
                 //end game
                 JOptionPane.showMessageDialog(rootPane, "You lose! Your score is: " + score);
@@ -464,6 +473,9 @@ public class ssFrame extends javax.swing.JFrame {
                 if (Menu.player.getSsHighest() < score) {
                     Menu.player.setSsHighest(score);
                 }
+
+                //increment funds
+                Menu.player.setFunds(Menu.player.getFunds() + 10);
 
             } else {//no match
                 //end game

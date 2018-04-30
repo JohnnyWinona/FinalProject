@@ -831,6 +831,9 @@ public class mmFrame extends javax.swing.JFrame {
                     //increment score
                     Menu.player.setMmEasySolves(easyTemp++);
 
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+
                     //quits the memory match game window
                     mmFrame.this.dispose();
                 }
@@ -854,6 +857,9 @@ public class mmFrame extends javax.swing.JFrame {
                     //increment score
                     Menu.player.setMmMediumSolves(medTemp++);
 
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 20);
+
                     //quits the memory match game window
                     mmFrame.this.dispose();
                 }
@@ -876,6 +882,9 @@ public class mmFrame extends javax.swing.JFrame {
 
                     //increment score
                     Menu.player.setMmHardSolves(hardTemp++);
+
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 30);
 
                     //quits the memory match game window
                     mmFrame.this.dispose();
