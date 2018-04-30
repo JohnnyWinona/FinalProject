@@ -37,6 +37,9 @@ public class Menu extends javax.swing.JFrame {
     //call the load method to get players from player.ser file,
     //fills the array list with existing players
     List<Player> playerList = loadPlayers();
+    
+    //used to reset players.ser file
+    //List<Player> playerList = new ArrayList<Player>();
 
     //the gameID for each game, needed for difficulty chooser if used
     public static int gameID;
