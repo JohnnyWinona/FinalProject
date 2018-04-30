@@ -49,7 +49,7 @@ public class adminFrame extends javax.swing.JFrame {
         resetPlayersButton = new javax.swing.JButton();
         removePlayerButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Admin Settings");
 
         resetStatsButton.setText("Reset Stats");
@@ -109,7 +109,7 @@ public class adminFrame extends javax.swing.JFrame {
     private void resetStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetStatsButtonActionPerformed
         // TODO add your handling code here:
         
-        //get each player and reset stats 
+        //get each player and reset stats  
         for(int player = 0; player < playerListCopy.size(); player++){
             playerListCopy.get(player).resetAllStats();
         }
