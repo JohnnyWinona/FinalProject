@@ -1,10 +1,11 @@
-
 /**
  * Course: CS341 Data Structures
  * Date: April 2018
  * Assignment: CS341_FinalProject
  * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
  */
+package GamePackage;
+
 import MainPackage.Card;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public interface SlapjackInterface {
 
     /**
      * Generate Hand
-     * 
+     *
      * @param Humanplayer integer number of human players
      * @param ComputerPlayers integer number of computer players
      * @require A valid number of players
@@ -24,7 +25,7 @@ public interface SlapjackInterface {
 
     /**
      * Get Total Cards
-     * 
+     *
      * @param hand The hand list
      * @require A valid List object
      * @ensure All of the cards get counted
@@ -34,7 +35,7 @@ public interface SlapjackInterface {
 
     /**
      * Draw
-     * 
+     *
      * @require A valid List is added to inventory
      * @ensure The List is empty
      * @return The list of cards to be drawn
