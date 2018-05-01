@@ -6,21 +6,18 @@
  */
 package FramePackage;
 
-import java.io.*;
-import sun.audio.*;
 import GamePackage.SimonSays;
 import MainPackage.Menu;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 import sun.applet.Main;
 
 public class ssFrame extends javax.swing.JFrame {
@@ -34,7 +31,7 @@ public class ssFrame extends javax.swing.JFrame {
 
     SimonSays ssGame = new SimonSays();
 
-    List<Integer> inputOrder = new ArrayList<Integer>();
+    List<Integer> inputOrder = new ArrayList<>();
 
     ActionListener taskPerformer;
 
@@ -177,7 +174,13 @@ public class ssFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Red Button
+     *
+     * @require The user clicks the red button.
+     * @ensure A sound will play and the chosen card will be determined if it's
+     * the correct card.
+     */
     private void redButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redButtonActionPerformed
         // TODO add your handling code here:
         //plays a sound upon clicking a card
@@ -256,7 +259,13 @@ public class ssFrame extends javax.swing.JFrame {
             }//end else
         }
     }//GEN-LAST:event_redButtonActionPerformed
-
+    /**
+     * Yellow Button
+     *
+     * @require The user clicks the yellow button.
+     * @ensure A sound will play and the chosen card will be determined if it's
+     * the correct card.
+     */
     private void yellowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yellowButtonActionPerformed
         // TODO add your handling code here:
         //plays a sound upon clicking a card
@@ -335,7 +344,13 @@ public class ssFrame extends javax.swing.JFrame {
             }//end else
         }
     }//GEN-LAST:event_yellowButtonActionPerformed
-
+    /**
+     * Green Button
+     *
+     * @require The user clicks the green button.
+     * @ensure A sound will play and the chosen card will be determined if it's
+     * the correct card.
+     */
     private void greenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenButtonActionPerformed
         // TODO add your handling code here:
         //plays a sound upon clicking a card
@@ -414,7 +429,13 @@ public class ssFrame extends javax.swing.JFrame {
             }//end else
         }
     }//GEN-LAST:event_greenButtonActionPerformed
-
+    /**
+     * Blue Button
+     *
+     * @require The user clicks the blue button.
+     * @ensure A sound will play and the chosen card will be determined if it's
+     * the correct card.
+     */
     private void blueButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blueButtonActionPerformed
         // TODO add your handling code here:
         //plays a sound upon clicking a card
@@ -493,7 +514,12 @@ public class ssFrame extends javax.swing.JFrame {
             }//end else
         }
     }//GEN-LAST:event_blueButtonActionPerformed
-
+    /**
+     * Play Button
+     *
+     * @require The user clicks the play button.
+     * @ensure The simon says game will initiate.
+     */
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
         // TODO add your handling code here:
         //enable buttons
@@ -539,24 +565,27 @@ public class ssFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, neededOrder);
     }//GEN-LAST:event_playButtonActionPerformed
 
-    //method for playing a sound
+    /**
+     * Play Sound
+     *
+     * @require The user clicks a button.
+     * @ensure A sound will play to let the user know it clicked a card.
+     */
     public static synchronized void playSound(final String url) {
-        new Thread(new Runnable() {
-            // The wrapper thread is unnecessary, unless it blocks on the
-            // Clip finishing; see comments.
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            //"/MainPackage/audioFile.wav"
-                            Main.class.getResourceAsStream(url));
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
+        new Thread(() -> {
+            try {
+                Clip clip = AudioSystem.getClip();
+                AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                        //"/MainPackage/audioFile.wav"
+                        Main.class.getResourceAsStream(url));
+                clip.open(inputStream);
+                clip.start();
+            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
+                System.err.println(e.getMessage());
             }
-        }).start();
+        } // The wrapper thread is unnecessary, unless it blocks on the
+        // Clip finishing; see comments.
+        ).start();
     }
 
     /**
@@ -587,10 +616,8 @@ public class ssFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ssFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ssFrame().setVisible(true);
         });
     }
 

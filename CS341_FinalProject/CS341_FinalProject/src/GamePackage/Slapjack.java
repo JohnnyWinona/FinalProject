@@ -25,75 +25,78 @@ public class Slapjack implements SlapjackInterface {
      * @ensure The hand will be added to the list
      * @return Returns a list of cards based on the number of players
      */
+    @Override
     public List<Card> generateHand(int Humanplayer, int ComputerPlayers) {
-        List<Card> temp = new ArrayList<Card>();
+        List<Card> temp = new ArrayList<>();
         deck.shuffleDeck();
         int players = Humanplayer + ComputerPlayers;
 
-        if (players == 2) {
-            //temp.add(deck.);
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            return temp;
-        } else if (players == 3) {
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            return temp;
-
-        } else if (players == 4) {
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-            temp.add(deck.draw());
-
-            return temp;
+        switch (players) {
+            case 2:
+                //temp.add(deck.);
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                return temp;
+            case 3:
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                return temp;
+            case 4:
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                temp.add(deck.draw());
+                
+                return temp;
+            default:
+                break;
         }
         return temp;
     }
@@ -106,6 +109,7 @@ public class Slapjack implements SlapjackInterface {
      * @ensure All of the cards get counted
      * @return Returns an int value of all of the cards in the hand
      */
+    @Override
     public int getTotalCards(List<Card> hand) {
 
         int total = hand.size();
@@ -120,12 +124,12 @@ public class Slapjack implements SlapjackInterface {
      * @ensure The List is empty
      * @return The list of cards to be drawn
      */
+    @Override
     public List<Card> draw() {
-        List<Card> temp = new ArrayList<Card>();
+        List<Card> temp = new ArrayList<>();
         deck.shuffleDeck();
 
         temp.add(deck.draw());
         return temp;
     }
-
 }

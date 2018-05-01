@@ -210,7 +210,13 @@ public class mmFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void easyCard1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard1ActionPerformed
         // TODO add your handling code here:
 
@@ -262,7 +268,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_easyCard1ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void easyCard2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard2ActionPerformed
         // TODO add your handling code here:
 
@@ -315,7 +327,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_easyCard2ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void easyCard3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard3ActionPerformed
         // TODO add your handling code here:
 
@@ -368,7 +386,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_easyCard3ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void easyCard4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyCard4ActionPerformed
         // TODO add your handling code here:
 
@@ -421,7 +445,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_easyCard4ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void medCard5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medCard5ActionPerformed
         // TODO add your handling code here:
 
@@ -474,7 +504,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_medCard5ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void medCard6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medCard6ActionPerformed
         // TODO add your handling code here:
 
@@ -527,7 +563,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_medCard6ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void hardCard7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardCard7ActionPerformed
         // TODO add your handling code here:
 
@@ -580,7 +622,13 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_hardCard7ActionPerformed
-
+    /**
+     * Card Button
+     *
+     * @require The user clicks a card button.
+     * @ensure A card turns over on the first try, but not on the second. Checks
+     * to see if the cards are matching. Checks for game completion.
+     */
     private void hardCard8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardCard8ActionPerformed
         // TODO add your handling code here:
 
@@ -633,7 +681,12 @@ public class mmFrame extends javax.swing.JFrame {
             }
         } while (flag);
     }//GEN-LAST:event_hardCard8ActionPerformed
-
+    /**
+     * New Game Button
+     *
+     * @require The user clicks new game button.
+     * @ensure A memory match game is initiated and icons are setup.
+     */
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         // TODO add your handling code here:
         //reset game and cards
@@ -771,7 +824,12 @@ public class mmFrame extends javax.swing.JFrame {
         new javax.swing.Timer(delay, taskPerformer).restart();
 
     }//GEN-LAST:event_newGameButtonActionPerformed
-
+    /**
+     * Change Card Easy
+     *
+     * @require A pair did not match.
+     * @ensure All cards are changed to blue.
+     */
     public void changeCardEasy() {
         //gray out other cards
         easyCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
@@ -784,6 +842,12 @@ public class mmFrame extends javax.swing.JFrame {
         hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/blue_back.jpg")));
     }
 
+    /**
+     * Change Card Medium
+     *
+     * @require A pair did not match.
+     * @ensure All cards are changed to yellow.
+     */
     public void changeCardMedium() {
         //gray out other cards
         easyCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg")));
@@ -796,6 +860,12 @@ public class mmFrame extends javax.swing.JFrame {
         hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/yellow_back.jpg")));
     }
 
+    /**
+     * Change Card Hard
+     *
+     * @require A pair did not match.
+     * @ensure All cards are changed to red.
+     */
     public void changeCardHard() {
         //gray out other cards
         easyCard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
@@ -808,6 +878,15 @@ public class mmFrame extends javax.swing.JFrame {
         hardCard8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/red_back.jpg")));
     }
 
+    /**
+     * Check Completion
+     *
+     * @param difficulty The difficulty of the game.
+     * @param currentMatches The number of pairs that match.
+     * @require A card button is clicked.
+     * @ensure Ends game if all pairs of matching cards are found. Plays sound
+     * and closes frame.
+     */
     public void checkCompletion(String difficulty, int currentMatches) {
 
         switch (difficulty) {
@@ -892,6 +971,12 @@ public class mmFrame extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Reset Cards
+     *
+     * @require A game was completed.
+     * @ensure All cards are changed to disabled.
+     */
     public void resetCards() {
         //disable cards
         easyCard1.setEnabled(false);
@@ -914,7 +999,12 @@ public class mmFrame extends javax.swing.JFrame {
         hardCard8.setSelected(false);
     }
 
-    //method for playing a sound
+    /**
+     * Play Sound
+     *
+     * @require A game was won.
+     * @ensure A noise to show that the winner won is produced.
+     */
     public static synchronized void playSound(final String url) {
         new Thread(() -> {
             try {
@@ -975,7 +1065,6 @@ public class mmFrame extends javax.swing.JFrame {
             new mmFrame().setVisible(true);
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton easyCard1;
     private javax.swing.JToggleButton easyCard2;

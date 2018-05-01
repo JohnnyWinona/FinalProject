@@ -51,5 +51,4 @@ public interface MemoryMatchInterface {
      *
      */
     public boolean isMatch(Card cardOne, Card cardTwo);
-
 }

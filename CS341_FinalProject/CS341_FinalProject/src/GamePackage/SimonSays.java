@@ -6,14 +6,13 @@
  */
 package GamePackage;
 
-import MainPackage.Card;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class SimonSays implements SimonSaysInterface {
 
-    List<Integer> order = new ArrayList<Integer>();
+    List<Integer> order = new ArrayList<>();
 
     /**
      * Add Order
@@ -22,6 +21,7 @@ public class SimonSays implements SimonSaysInterface {
      * @ensure A step for the user to follow is added to the list.
      *
      */
+    @Override
     public void addOrder() {
         Random rand = new Random();
 
@@ -38,6 +38,7 @@ public class SimonSays implements SimonSaysInterface {
      * follow.
      *
      */
+    @Override
     public int size() {
         return order.size();
     }
@@ -54,6 +55,7 @@ public class SimonSays implements SimonSaysInterface {
      * successfully followed the order of steps.
      *
      */
+    @Override
     public boolean isMatch(List<Integer> inputOrder) {
         return inputOrder.equals(order);
     }
@@ -67,8 +69,8 @@ public class SimonSays implements SimonSaysInterface {
      * returned.
      *
      */
+    @Override
     public List<Integer> play() {
         return order;
     }
-
 }

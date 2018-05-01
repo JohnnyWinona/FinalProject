@@ -1,12 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Course: CS341 Data Structures
+ * Date: April 2018
+ * Assignment: CS341_FinalProject
+ * Authors: Trevor Conway, Tristin Harvell, Travis Kruse, Johnny Tran
  */
 package FramePackage;
 
 import MainPackage.Menu;
-import static MainPackage.Menu.player;
 import MainPackage.Player;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,10 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author eu3035jm
- */
 public class adminFrame extends javax.swing.JFrame {
 
     //value for the funds to be reset to 
@@ -118,7 +114,13 @@ public class adminFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Reset Stats Button
+     *
+     * @require The user clicks the reset stats button.
+     * @ensure Each player's stats will be set to zero, the player data will be
+     * saved, and the program will restart.
+     */
     private void resetStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetStatsButtonActionPerformed
         // TODO add your handling code here:
 
@@ -146,7 +148,13 @@ public class adminFrame extends javax.swing.JFrame {
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_resetStatsButtonActionPerformed
-
+    /**
+     * Reset Players Button
+     *
+     * @require The user clicks the reset players button.
+     * @ensure Each player will be removed, the default player will only be
+     * saved, and the program will restart.
+     */
     private void resetPlayersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPlayersButtonActionPerformed
         // TODO add your handling code here:
         //new player
@@ -181,7 +189,13 @@ public class adminFrame extends javax.swing.JFrame {
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_resetPlayersButtonActionPerformed
-
+    /**
+     * Remove Player Button
+     *
+     * @require The user clicks the remove player button.
+     * @ensure A specific player can be removed, the player data will be saved,
+     * and the program will restart.
+     */
     private void removePlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePlayerButtonActionPerformed
         // TODO add your handling code here:
 
@@ -195,7 +209,7 @@ public class adminFrame extends javax.swing.JFrame {
         while (removePlayer == null || removePlayer == "") {
             removePlayer = JOptionPane.showInputDialog(this, "Please enter the player to be removed.");
         }
-        
+
         //find the player in the player list and remove it
         for (int playerIndex = 0; playerIndex < playerListCopy.size(); playerIndex++) {
             if (playerListCopy.get(playerIndex).getUsername().equalsIgnoreCase(removePlayer.trim())) {
@@ -229,7 +243,13 @@ public class adminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, removePlayer + " could not be found or removed.");
         }
     }//GEN-LAST:event_removePlayerButtonActionPerformed
-
+    /**
+     * Reset Funds Button
+     *
+     * @require The user clicks the reset funds button.
+     * @ensure Each player's funds will be set to $100 (or the predetermined
+     * amount), the player data will be saved, and the program will restart.
+     */
     private void resetFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetFundsButtonActionPerformed
         //get each player and reset funds to $100
         for (int player = 0; player < playerListCopy.size(); player++) {

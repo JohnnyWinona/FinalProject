@@ -226,6 +226,12 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Blackjack Button
+     *
+     * @require The user clicks the blackjack button.
+     * @ensure A frame opens to allow the user to play a game of blackjack.
+     */
     private void bjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bjButtonActionPerformed
         // TODO add your handling code here:
         /* //if difficulty is used
@@ -237,7 +243,13 @@ public class Menu extends javax.swing.JFrame {
         bj.setVisible(true);
         gameID = 1;
     }//GEN-LAST:event_bjButtonActionPerformed
-
+    /**
+     * Memory Match Button
+     *
+     * @require The user clicks the memory match button.
+     * @ensure A difficulty chooser frame opens to allow the user to play a game
+     * of memory match.
+     */
     private void memoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryButtonActionPerformed
         // TODO add your handling code here:
         //difficulty chooser
@@ -245,7 +257,12 @@ public class Menu extends javax.swing.JFrame {
         dF.setVisible(true);
         gameID = 2;
     }//GEN-LAST:event_memoryButtonActionPerformed
-
+    /**
+     * Slapjack Button
+     *
+     * @require The user clicks the slapjack button.
+     * @ensure A frame opens to allow the user to play a game of slapjack.
+     */
     private void slapjackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slapjackButtonActionPerformed
         // TODO add your handling code here:
         /*//if difficulty is used
@@ -257,7 +274,12 @@ public class Menu extends javax.swing.JFrame {
         sj.setVisible(true);
         gameID = 3;
     }//GEN-LAST:event_slapjackButtonActionPerformed
-
+    /**
+     * Simon Says Button
+     *
+     * @require The user clicks the simon says button.
+     * @ensure A frame opens to allow the user to play a game of simon says.
+     */
     private void ssButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ssButtonActionPerformed
         // TODO add your handling code here:
         /*//difficulty chooser
@@ -269,7 +291,12 @@ public class Menu extends javax.swing.JFrame {
         ss.setVisible(true);
         gameID = 4;
     }//GEN-LAST:event_ssButtonActionPerformed
-
+    /**
+     * Create Player Button
+     *
+     * @require The user clicks the create player button.
+     * @ensure An input dialogue opens to allow the user to create a new user.
+     */
     private void createPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerButtonActionPerformed
         //intialize
         Player player = new Player();
@@ -308,7 +335,13 @@ public class Menu extends javax.swing.JFrame {
         bjButton.setEnabled(true);
         saveButton.setEnabled(true);
     }//GEN-LAST:event_createPlayerButtonActionPerformed
-
+    /**
+     * Select User Button
+     *
+     * @require The user clicks the select user button.
+     * @ensure An input dialogue opens to allow the user to select an existing
+     * user.
+     */
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
 
         //display the current user
@@ -347,11 +380,22 @@ public class Menu extends javax.swing.JFrame {
         playerStatsButton.setEnabled(true);
 
     }//GEN-LAST:event_selectUserButtonActionPerformed
-
+    /**
+     * Player Stats Button
+     *
+     * @require The user clicks the player stats button.
+     * @ensure A message dialogue opens to allow the user to see various
+     * statistics about game history.
+     */
     private void playerStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playerStatsButtonActionPerformed
         JOptionPane.showMessageDialog(rootPane, player.toString() + "\n" + player.getAllStats());
     }//GEN-LAST:event_playerStatsButtonActionPerformed
-
+    /**
+     * Save Button
+     *
+     * @require The user clicks the save button.
+     * @ensure Players, funds, and stats will be saved to a serialized file.
+     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
             // create a new file with an ObjectOutputStream
@@ -365,7 +409,13 @@ public class Menu extends javax.swing.JFrame {
         } catch (HeadlessException | IOException ex) {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
-
+    /**
+     * Admin Button
+     *
+     * @require The user clicks the hidden admin button above the blackjack
+     * button.
+     * @ensure A frame will open to allow for resetting/removing player data.
+     */
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
         adminFrame admin = new adminFrame(playerList);
@@ -375,7 +425,15 @@ public class Menu extends javax.swing.JFrame {
         playerList = adminFrame.playerListCopy;
 
     }//GEN-LAST:event_adminButtonActionPerformed
-
+    /**
+     * Load
+     *
+     * @require The user to open the program
+     * @ensure Players, funds, and stats will be imported from a serialized
+     * file.
+     * @return A list of players and their data is returned based on what's in
+     * the players.ser file.
+     */
     public List<Player> loadPlayers() {
         List<Player> playerList = new ArrayList<>();
         try {
@@ -399,10 +457,6 @@ public class Menu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
-        Deck deck = new Deck();
-
-        deck.shuffleDeck();
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -21,8 +21,10 @@ public class bjFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    //create black jack game object
     Blackjack bjGame = new Blackjack();
 
+    //hand lists
     List<Card> houseHand = new ArrayList<>();
     List<Card> oneHand = new ArrayList<>();
     List<Card> twoHand = new ArrayList<>();
@@ -358,7 +360,12 @@ public class bjFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Deal Button
+     *
+     * @require The user clicks the deal button.
+     * @ensure Hands are drawn for the house and two players.
+     */
     private void dealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealButtonActionPerformed
         // TODO add your handling code here:
         Blackjack bjGame = new Blackjack();
@@ -410,7 +417,12 @@ public class bjFrame extends javax.swing.JFrame {
         house2Label.setIcon(image);
 
     }//GEN-LAST:event_dealButtonActionPerformed
-
+    /**
+     * Check Winner Button
+     *
+     * @require The user clicks the check winner button.
+     * @ensure Hands are compared against the house to determine winner.
+     */
     private void checkWinnerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkWinnerButtonActionPerformed
         // TODO add your handling code here:
         while (bjGame.getSum(houseHand) <= 17) {
@@ -469,7 +481,12 @@ public class bjFrame extends javax.swing.JFrame {
         checkWinnerButton.setEnabled(false);
         dealButton.setEnabled(true);
     }//GEN-LAST:event_checkWinnerButtonActionPerformed
-
+    /**
+     * One Hit Button
+     *
+     * @require The user clicks the one hit button.
+     * @ensure The first hand is hit.
+     */
     private void oneHitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneHitButtonActionPerformed
         // TODO add your handling code here:
         oneHand.add(bjGame.hit());
@@ -486,7 +503,12 @@ public class bjFrame extends javax.swing.JFrame {
             oneSumField.setText("" + bjGame.getSum(oneHand));
         }
     }//GEN-LAST:event_oneHitButtonActionPerformed
-
+    /**
+     * One Stand Button
+     *
+     * @require The user clicks the one stand button.
+     * @ensure The first hand stands.
+     */
     private void oneStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneStandButtonActionPerformed
         // TODO add your handling code here:
         twoHitButton.setEnabled(true);
@@ -494,7 +516,12 @@ public class bjFrame extends javax.swing.JFrame {
         oneStandButton.setEnabled(false);
         oneHitButton.setEnabled(false);
     }//GEN-LAST:event_oneStandButtonActionPerformed
-
+    /**
+     * Two Hit Button
+     *
+     * @require The user clicks the two hit button.
+     * @ensure The second hand is hit.
+     */
     private void twoHitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoHitButtonActionPerformed
         // TODO add your handling code here:
         twoHand.add(bjGame.hit());
@@ -512,7 +539,12 @@ public class bjFrame extends javax.swing.JFrame {
             twoSumField.setText("" + bjGame.getSum(twoHand));
         }
     }//GEN-LAST:event_twoHitButtonActionPerformed
-
+    /**
+     * Two Stand Button
+     *
+     * @require The user clicks the two stand button.
+     * @ensure The second hand stands.
+     */
     private void twoStandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoStandButtonActionPerformed
         // TODO add your handling code here:
         twoHitButton.setEnabled(false);

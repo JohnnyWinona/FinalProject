@@ -6,37 +6,7 @@
  */
 package MainPackage;
 
-import java.io.Serializable;
-
-public class Player implements Serializable {
-
-    //data members
-    private String username = "";
-    private int funds = 0;
-
-    //blackjack stats
-    private int bjWins = 0;
-    private int bjLosses = 0;
-
-    //memory match stats
-    private int mmEasySolves = 0;
-    private int mmMediumSolves = 0;
-    private int mmHardSolves = 0;
-
-    //simon says stats
-    private int ssHighest = 0;
-
-    //slapjack stats
-    private int sjWins = 0;
-    private int sjLosses = 0;
-
-    public Player() {
-    }
-
-    public Player(String username, int funds) {
-        this.username = username;
-        this.funds = funds;
-    }
+public interface PlayerInterface {
 
     /**
      * Get Username
@@ -45,9 +15,7 @@ public class Player implements Serializable {
      * @ensure The username assigned to the current player is retrieved.
      * @return Returns a String value for the username of the current player.
      */
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername();
 
     /**
      * Set Username
@@ -56,9 +24,7 @@ public class Player implements Serializable {
      * @require User-input for the desired username.
      * @ensure The current player is assigned to the chosen username.
      */
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username);
 
     /**
      * Get Funds
@@ -67,9 +33,7 @@ public class Player implements Serializable {
      * @ensure The funds for the current player is retrieved.
      * @return Returns an integer value the total funds for the defined player.
      */
-    public int getFunds() {
-        return funds;
-    }
+    public int getFunds();
 
     /**
      * Set Funds
@@ -80,9 +44,7 @@ public class Player implements Serializable {
      * player is being created in order to set the funds.
      * @ensure The current user has an updated fund quantity.
      */
-    public void setFunds(int funds) {
-        this.funds = funds;
-    }
+    public void setFunds(int funds);
 
     /**
      * toString
@@ -93,9 +55,7 @@ public class Player implements Serializable {
      * funds.
      */
     @Override
-    public String toString() {
-        return username + ": $" + funds;
-    }
+    public String toString();
 
     /**
      * Get All Statistics
@@ -104,21 +64,7 @@ public class Player implements Serializable {
      * @ensure All of the statistics for each game are retrieved.
      * @return Returns a String of all the statistics for each game.
      */
-    public String getAllStats() {
-
-        return "\n-------BLACKJACK--------------"
-                + "\nWins: " + bjWins
-                + "\nLosses: " + bjLosses
-                + "\n-------MEMORY MATCH-----------"
-                + "\nEasy Solves: " + mmEasySolves
-                + "\nMedium Solves: " + mmMediumSolves
-                + "\nHard Solves: " + mmHardSolves
-                + "\n-------SIMON SAYS-------------"
-                + "\nHigh Score: " + ssHighest
-                + "\n-------SLAPJACK---------------"
-                + "\nWins: " + sjWins
-                + "\nLosses: " + sjLosses;
-    }
+    public String getAllStats();
 
     /**
      * Get Blackjack Wins
@@ -129,9 +75,7 @@ public class Player implements Serializable {
      * @return Returns an integer value associated with the total number of
      * blackjack wins for the player.
      */
-    public int getBjWins() {
-        return bjWins;
-    }
+    public int getBjWins();
 
     /**
      * Set Blackjack Wins
@@ -140,9 +84,7 @@ public class Player implements Serializable {
      * @require A player to be chosen before setting statistics.
      * @ensure A new number of blackjack wins is assigned to the player.
      */
-    public void setBjWins(int num) {
-        this.bjWins = num;
-    }
+    public void setBjWins(int num);
 
     /**
      * Get Blackjack Losses
@@ -153,9 +95,7 @@ public class Player implements Serializable {
      * @return Returns an integer value associated with the total number of
      * blackjack losses for the player.
      */
-    public int getBjLosses() {
-        return bjLosses;
-    }
+    public int getBjLosses();
 
     /**
      * Set Blackjack Losses
@@ -164,9 +104,7 @@ public class Player implements Serializable {
      * @require A player to be chosen before setting statistics.
      * @ensure A new number of blackjack losses is assigned to the player.
      */
-    public void setBjLosses(int num) {
-        this.bjLosses = num;
-    }
+    public void setBjLosses(int num);
 
     /**
      * Get Memory Match Easy Solves
@@ -178,9 +116,7 @@ public class Player implements Serializable {
      * @return Returns an integer value associated with the total number of
      * Memory Match easy solves for the player.
      */
-    public int getMmEasySolves() {
-        return mmEasySolves;
-    }
+    public int getMmEasySolves();
 
     /**
      * Set Memory Match Easy Solves
@@ -191,9 +127,7 @@ public class Player implements Serializable {
      * @ensure The total number of easy Memory Match solves for the player is
      * adjusted.
      */
-    public void setMmEasySolves(int num) {
-        this.mmEasySolves = num;
-    }
+    public void setMmEasySolves(int num);
 
     /**
      * Get Memory Match Medium Solves
@@ -205,9 +139,7 @@ public class Player implements Serializable {
      * @return Returns an int value associated with the total number of Memory
      * Match medium solves for the player.
      */
-    public int getMmMediumSolves() {
-        return mmMediumSolves;
-    }
+    public int getMmMediumSolves();
 
     /**
      * Set Memory Match Medium Solves
@@ -218,9 +150,7 @@ public class Player implements Serializable {
      * @ensure The total number of medium Memory Match solves for the player is
      * adjusted.
      */
-    public void setMmMediumSolves(int num) {
-        this.mmMediumSolves = num;
-    }
+    public void setMmMediumSolves(int num);
 
     /**
      * Get Memory Match Hard Solves
@@ -232,9 +162,7 @@ public class Player implements Serializable {
      * @return Returns an int value associated with the total number of Memory
      * Match hard solves for the player.
      */
-    public int getMmHardSolves() {
-        return mmHardSolves;
-    }
+    public int getMmHardSolves();
 
     /**
      * Set Memory Match Hard Solves
@@ -245,9 +173,7 @@ public class Player implements Serializable {
      * @ensure The total number of hard Memory Match solves for the player is
      * adjusted.
      */
-    public void setMmHardSolves(int num) {
-        this.mmHardSolves = num;
-    }
+    public void setMmHardSolves(int num);
 
     /**
      * Get Simon Says Highest Score
@@ -256,9 +182,7 @@ public class Player implements Serializable {
      * @ensure The Simon Says high score is retrieved.
      * @return Returns an integer value the Simon Says high score.
      */
-    public int getSsHighest() {
-        return ssHighest;
-    }
+    public int getSsHighest();
 
     /**
      * Set Simon Says Highest Score
@@ -268,9 +192,7 @@ public class Player implements Serializable {
      * updated.
      * @ensure The new Simon Says score is updated.
      */
-    public void setSsHighest(int ssHighest) {
-        this.ssHighest = ssHighest;
-    }
+    public void setSsHighest(int ssHighest);
 
     /**
      * Get Slapjack Wins
@@ -282,9 +204,7 @@ public class Player implements Serializable {
      * @return Returns an integer value the total number of Slapjack wins for
      * the current user.
      */
-    public int getSjWins() {
-        return sjWins;
-    }
+    public int getSjWins();
 
     /**
      * Set Slapjack Wins
@@ -293,9 +213,7 @@ public class Player implements Serializable {
      * @require A valid player is selected.
      * @ensure The new number of Slapjack wins is assigned to the user.
      */
-    public void setSjWins(int num) {
-        this.sjWins = num;
-    }
+    public void setSjWins(int num);
 
     /**
      * Get Slapjack Losses
@@ -307,9 +225,7 @@ public class Player implements Serializable {
      * @return Returns an integer value the total number of Slapjack losses for
      * the current user.
      */
-    public int getSjLosses() {
-        return sjLosses;
-    }
+    public int getSjLosses();
 
     /**
      * Set Slapjack Losses
@@ -318,25 +234,16 @@ public class Player implements Serializable {
      * @require A valid player is selected.
      * @ensure The new number of Slapjack losses is assigned to the user.
      */
-    public void setSjLosses(int num) {
-        this.sjLosses = num;
-    }
+    public void setSjLosses(int num);
 
     /**
-     * Reset All Stats
+     * Reset All Statistics
      *
-     * @require A player to be selected in which their stats are to be reset.
-     * @ensure Stats for all games will be reset back to zero.
+     * @require A player to be selected in which their statistics are to be
+     * reset.
+     * @ensure Statistics for all games will be reset back to zero.
      *
      */
-    public void resetAllStats() {
-        this.sjLosses = 0;
-        this.bjLosses = 0;
-        this.bjWins = 0;
-        this.mmEasySolves = 0;
-        this.mmHardSolves = 0;
-        this.mmMediumSolves = 0;
-        this.sjWins = 0;
-        this.ssHighest = 0;
-    }
+    public void resetAllStats();
+
 }

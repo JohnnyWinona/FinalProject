@@ -68,5 +68,4 @@ public interface BlackjackInterface {
      *
      */
     public int checkWinner(List<Card> playerHand, List<Card> houseHand);
-
 }

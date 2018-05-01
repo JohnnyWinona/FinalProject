@@ -20,8 +20,10 @@ import javax.swing.ImageIcon;
 
 public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
+    //create deck
     Slapjack deck = new Slapjack();
 
+    //array lists
     private List<Card> PlayerHand1 = new ArrayList<>();
     private List<Card> PlayerHand2 = new ArrayList<>();
     private List<Card> ComputerHand1 = new ArrayList<>();
@@ -29,20 +31,18 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     private List<Card> CenterHand = new ArrayList<>();
     //    private ArrayList<Deck> deck = new ArrayList<Deck>();
 
+    //player count
     int Humanplayers = 0;
-
     int Computerplayers = 0;
 
+    //timer info
     int delay = 800;
-
     int x = 0;
 
+    //variables for card locations
     String temp1 = "/cards/JACKofSPADES.jpg";
-
     String temp2 = "/cards/JACKofCLUBS.jpg";
-
     String temp3 = "/cards/JACKofHEARTS.jpg";
-
     String temp4 = "/cards/JACKofDIAMONDS.jpg";
 
     //    System.out.println(temp2);  
@@ -246,7 +246,12 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Start Button
+     *
+     * @require The user clicks the start button.
+     * @ensure A slapjack game will initiate.
+     */
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
         //  jTextField1.addKeyListener(this);
@@ -305,22 +310,22 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         taskPerformer = (ActionEvent evt1) -> {
             //...Perform a task...
             if (Humanplayers == 2 && Computerplayers == 2) {
-                
+
                 if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     ComputerHand1.add(null);
@@ -331,17 +336,17 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     ComputerHand2.add(null);
@@ -352,17 +357,17 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 20);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand2.add(null);
@@ -373,41 +378,41 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjWins();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjWins(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 35);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand2.add(null);
                     ComputerHand1.add(null);
                     ComputerHand2.add(null);
                 }
-                
+
             } else if (Humanplayers == 2 && Computerplayers == 1) {
-                
+
                 if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0) {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand1.add(null);
@@ -417,17 +422,17 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 20);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand1.add(null);
@@ -437,40 +442,40 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjWins();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjWins(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand2.add(null);
                     ComputerHand1.add(null);
                 }
-                
+
             } else if (Humanplayers == 1 && Computerplayers == 1) {
-                
+
                 if (PlayerHand1.size() == 0) {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand1.add(null);
@@ -479,82 +484,82 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjWins();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjWins(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 35);
-                    
+
                     dispose();
                     x = 10;
                     ComputerHand1.add(null);
                 }
-                
+
             } else if (Humanplayers == 2 && Computerplayers == 0) {
-                
+
                 if (PlayerHand1.size() == 0) {
-                    
+
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 20);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand1.add(null);
                 }
-                
+
                 if (PlayerHand2.size() == 0) {
-                    
+
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 20);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand2.add(null);
                 }
             } else if (Humanplayers == 1 && Computerplayers == 2) {
-                
+
                 if (PlayerHand1.size() == 0 && ComputerHand2.size() == 0) {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand1.add(null);
@@ -564,17 +569,17 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjLosses();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjLosses(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 10);
-                    
+
                     dispose();
                     x = 10;
                     PlayerHand1.add(null);
@@ -584,49 +589,49 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
                     JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
                             "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-                    
+
                     int scoreTemp = Menu.player.getSjWins();
-                    
+
                     scoreTemp++;
-                    
+
                     //increment score
                     Menu.player.setSjWins(scoreTemp++);
-                    
+
                     //increment funds
                     Menu.player.setFunds(Menu.player.getFunds() + 35);
-                    
+
                     dispose();
                     x = 10;
                     ComputerHand2.add(null);
                     ComputerHand1.add(null);
                 }
-                
+
             }
-            
+
             jLabel2Player1.setText("<html>Player 1 <br> \n"
                     + "Use letter A to Slap<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(PlayerHand1)
                     + "</html>\n");
-            
+
             jLabel2Player2.setText("<html>Player 2 <br> \n"
                     + "Use letter L to Slap<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(PlayerHand2)
                     + "</html>\n");
-            
+
             jLabel3Player3.setText("<html>Computer <br> \n"
                     + "Player 1<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(ComputerHand1)
                     + "</html>\n");
-            
+
             jLabel4Player4.setText("<html>Computer <br> \n"
                     + "Player 2<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(ComputerHand2)
                     + "</html>\n");
-            
+
             x++;
             switch (x) {
                 case 1: //
@@ -646,16 +651,16 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                     } else {
                         jLabelPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
                     }
-                    
+
                     break;
                 case 3: //green
-                    
+
                     if (ComputerHand1.size() != 0) {
-                        
+
                         if (Computerplayers == 1 || Computerplayers == 2) {
                             jLabelPlayer3.setIcon(ComputerHand1.get(0).getCardImage());
                             CenterHand.add(ComputerHand1.remove(0));
-                            
+
                         }
                     } else {
                         jLabelPlayer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
@@ -666,34 +671,34 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                         if (Computerplayers == 2) {
                             jLabelPlayer4.setIcon(ComputerHand2.get(0).getCardImage());
                             CenterHand.add(ComputerHand2.remove(0));
-                            
+
                         }
                     } else {
                         jLabelPlayer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
                     }
-                    
+
                     x = 0;
                     break;
             }
-            
+
             jLabel2Player1.setText("<html>Player 1 <br> \n"
                     + "Use letter A to Slap<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(PlayerHand1)
                     + "</html>\n");
-            
+
             jLabel2Player2.setText("<html>Player 2 <br> \n"
                     + "Use letter L to Slap<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(PlayerHand2)
                     + "</html>\n");
-            
+
             jLabel3Player3.setText("<html>Computer <br> \n"
                     + "Player 1<br>\n"
                     + "# of cards "
                     + deck.getTotalCards(ComputerHand1)
                     + "</html>\n");
-            
+
             jLabel4Player4.setText("<html>Computer <br> \n"
                     + "Player 2<br>\n"
                     + "# of cards "
@@ -799,7 +804,12 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             new javax.swing.Timer(2200, taskPerformer3).start();
         }
     }//GEN-LAST:event_startButtonActionPerformed
-
+    /**
+     * Add Button
+     *
+     * @require The user clicks the add button.
+     * @ensure Adds a human player to the game.
+     */
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
 
@@ -820,7 +830,12 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             jLabel2Player2.setVisible(true);
         }
     }//GEN-LAST:event_addButtonActionPerformed
-
+    /**
+     * Add Computer Button
+     *
+     * @require The user clicks the add computer button.
+     * @ensure Adds a computer player to the game.
+     */
     private void addComputerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addComputerButtonActionPerformed
         // TODO add your handling code here:
         Computerplayers++;
@@ -844,7 +859,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
     // */
@@ -877,10 +892,8 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new sjFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new sjFrame().setVisible(true);
         });
     }
 

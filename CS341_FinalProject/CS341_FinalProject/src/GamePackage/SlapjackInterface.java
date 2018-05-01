@@ -7,7 +7,6 @@
 package GamePackage;
 
 import MainPackage.Card;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface SlapjackInterface {

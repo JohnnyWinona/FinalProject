@@ -6,15 +6,9 @@
  */
 package MainPackage;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
-import javax.swing.ImageIcon;
 
-public class Deck {
-
-    public Queue<Card> deckOfCards = new LinkedList<>();
+public interface DeckInterface {
 
     /**
      * Make Deck
@@ -25,26 +19,7 @@ public class Deck {
      * cards.
      * @return Returns a queue that acts as a deck of cards.
      */
-    public Queue<Card> makeDeck(Queue<Card> deckOfCards) {
-        for (Card.Suit suit : Card.Suit.values()) {
-            for (Card.Value value : Card.Value.values()) {
-                deckOfCards.add(new Card(value, suit, null));
-            }
-        }
-        for (int i = 0; i < deckOfCards.size(); i++) {
-            Card temp = deckOfCards.remove();
-            String temp2 = "/cards/" + temp.toString() + ".jpg";
-            ImageIcon image;
-            image = new ImageIcon(getClass().getResource(temp2));
-            temp.setCardImage(image);
-            deckOfCards.add(temp);
-        }
-        return deckOfCards;
-    }
-
-    public Deck() {
-        deckOfCards = makeDeck(deckOfCards);
-    }
+    public Queue<Card> makeDeck(Queue<Card> deckOfCards);
 
     /**
      * Get Deck of Cards
@@ -53,9 +28,7 @@ public class Deck {
      * @ensure All 52 cards will be retrieved.
      * @return Returns a queue that acts as a deck of cards.
      */
-    public Queue<Card> getDeckOfCards() {
-        return deckOfCards;
-    }
+    public Queue<Card> getDeckOfCards();
 
     /**
      * Set Deck of Cards
@@ -65,9 +38,7 @@ public class Deck {
      * shuffling.
      * @ensure The deck of cards is set and updated to reflect any changes.
      */
-    public void setDeckOfCards(Queue<Card> deckOfCards) {
-        this.deckOfCards = deckOfCards;
-    }
+    public void setDeckOfCards(Queue<Card> deckOfCards);
 
     /**
      * To String
@@ -77,9 +48,7 @@ public class Deck {
      * @return Returns a String of what's in the queue (deck of cards).
      */
     @Override
-    public String toString() {
-        return "Deck of cards: " + deckOfCards;
-    }
+    public String toString();
 
     /**
      * Shuffle Deck
@@ -87,9 +56,7 @@ public class Deck {
      * @require A valid deck of cards is created.
      * @ensure All cards in the deck will be shuffled and reorganized randomly.
      */
-    public void shuffleDeck() {
-        Collections.shuffle((List<Card>) deckOfCards);
-    }
+    public void shuffleDeck();
 
     /**
      * Move To Bottom
@@ -98,9 +65,7 @@ public class Deck {
      * @require A valid deck of cards is created and a card is to be reused.
      * @ensure The used card is passed to the bottom of the deck.
      */
-    public void moveToBottom(Card newBottom) {
-        deckOfCards.add(newBottom);
-    }
+    public void moveToBottom(Card newBottom);
 
     /**
      * Draw
@@ -109,7 +74,6 @@ public class Deck {
      * @ensure The first card of the deck is to be retrieved.
      * @return Returns the card that was on the top of the deck of cards.
      */
-    public Card draw() {
-        return deckOfCards.remove();
-    }
+    public Card draw();
+
 }

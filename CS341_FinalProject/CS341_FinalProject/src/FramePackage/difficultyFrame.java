@@ -99,7 +99,12 @@ public class difficultyFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Easy Button
+     *
+     * @require The user clicks the easy button.
+     * @ensure The next game will open with the easy difficulty.
+     */
     private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
         // TODO add your handling code here:
         difficulty = "easy";
@@ -122,7 +127,12 @@ public class difficultyFrame extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_easyButtonActionPerformed
-
+    /**
+     * Medium Button
+     *
+     * @require The user clicks the medium button.
+     * @ensure The next game will open with the medium difficulty.
+     */
     private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
         // TODO add your handling code here:
         difficulty = "medium";
@@ -145,7 +155,12 @@ public class difficultyFrame extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_mediumButtonActionPerformed
-
+    /**
+     * Hard Button
+     *
+     * @require The user clicks the hard button.
+     * @ensure The next game will open with the hard difficulty.
+     */
     private void hardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonActionPerformed
         // TODO add your handling code here:
         difficulty = "hard";

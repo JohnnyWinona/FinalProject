@@ -19,52 +19,81 @@ public class Card {
         ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
     }
 
-    public static enum FaceUp {
-        TRUE, FALSE;
-    }
-
     //data members
     private final Value value;
     private final Suit suit;
-    private FaceUp faceUp;
     private Icon cardImage;
 
-    public Card(Value value, Suit suit, FaceUp faceUp, Icon cardImage) {
+    public Card(Value value, Suit suit, Icon cardImage) {
         this.value = value;
         this.suit = suit;
-        this.faceUp = faceUp;
         this.cardImage = cardImage;
     }
 
+    /**
+     * Get Value
+     *
+     * @require A valid card object is chosen.
+     * @ensure The associated value is retrieved.
+     * @return Returns the value of the card.
+     */
     public Value getValue() {
         return value;
     }
 
+    /**
+     * Get Suit
+     *
+     * @require A valid card object is chosen.
+     * @ensure The associated suit is retrieved.
+     * @return Returns the suit of the card.
+     */
     public Suit getSuit() {
         return suit;
     }
 
-    public FaceUp getFaceUp() {
-        return faceUp;
-    }
-
-    public void setFaceUp(FaceUp faceUp) {
-        this.faceUp = faceUp;
-    }
-
+    /**
+     * Get Card Image
+     *
+     * @require A valid card object is chosen.
+     * @ensure The associated card image is retrieved.
+     * @return Returns an icon of the card image.
+     */
     public Icon getCardImage() {
         return cardImage;
     }
 
+    /**
+     * Set Card Image
+     *
+     * @param cardImage The image connected to the card (front or back).
+     * @require A valid card object is chosen.
+     * @ensure The image is assigned to the card object.
+     */
     public void setCardImage(Icon cardImage) {
         this.cardImage = cardImage;
     }
 
+    /**
+     * To String
+     *
+     * @require A valid card object is chosen.
+     * @ensure The suit and value is retrieved.
+     * @return Returns an the suit and value as a String.
+     */
     @Override
     public String toString() {
         return value + "of" + suit;
     }
 
+    /**
+     * Get Numerical Value
+     *
+     * @require A valid card object is chosen.
+     * @ensure A numerical value is given that coordinates with the value of the
+     * card.
+     * @return Returns an integer value of numerical value of the card.
+     */
     public int getNumericalValue() {
 
         int numberValue = 0;
@@ -114,5 +143,4 @@ public class Card {
         return numberValue;
 
     }//end getNumericalValue
-
 }

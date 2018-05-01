@@ -14,8 +14,8 @@ import java.util.List;
 public class MemoryMatch implements MemoryMatchInterface {
 
     //initialize lists and instantiate deck
-    List<Card> original = new ArrayList<Card>();
-    List<Card> copy = new ArrayList<Card>();
+    List<Card> original = new ArrayList<>();
+    List<Card> copy = new ArrayList<>();
     Deck mmDeck = new Deck();
 
     //initialize difficulty 
@@ -31,6 +31,7 @@ public class MemoryMatch implements MemoryMatchInterface {
      * player to have valid cards to select within the game.
      *
      */
+    @Override
     public List<Card> getCards() {
         return original;
     }
@@ -139,5 +140,4 @@ public class MemoryMatch implements MemoryMatchInterface {
         }
         return false;
     }
-
 }

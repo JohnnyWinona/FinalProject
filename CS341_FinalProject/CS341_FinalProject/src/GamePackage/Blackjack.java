@@ -25,8 +25,9 @@ public class Blackjack implements BlackjackInterface {
      * @return A list of two cards is returned for the hand.
      *
      */
+    @Override
     public List<Card> generateHand() {
-        List<Card> temp = new ArrayList<Card>();
+        List<Card> temp = new ArrayList<>();
         bjDeck.shuffleDeck();
         temp.add(bjDeck.draw());
         temp.add(bjDeck.draw());
@@ -93,11 +94,7 @@ public class Blackjack implements BlackjackInterface {
     @Override
     public boolean checkBust(List<Card> hand) {
 
-        if (getSum(hand) > BUST_VALUE) {
-            return true;
-        }
-
-        return false;
+        return getSum(hand) > BUST_VALUE;
     }
 
     /**
@@ -135,5 +132,4 @@ public class Blackjack implements BlackjackInterface {
         }
         return 2;
     }
-
 }

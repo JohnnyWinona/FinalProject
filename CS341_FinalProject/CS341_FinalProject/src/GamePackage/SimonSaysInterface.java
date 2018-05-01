@@ -53,5 +53,4 @@ public interface SimonSaysInterface {
      *
      */
     public List<Integer> play();
-
 }
