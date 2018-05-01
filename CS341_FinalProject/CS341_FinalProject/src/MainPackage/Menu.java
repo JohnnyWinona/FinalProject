@@ -47,7 +47,6 @@ public class Menu extends javax.swing.JFrame {
 
     //used to reset players.ser file
     //List<Player> playerList = new ArrayList<Player>();
-    
     //the gameID for each game, needed for difficulty chooser if used
     public static int gameID;
 
@@ -284,17 +283,34 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_ssButtonActionPerformed
 
     private void createPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerButtonActionPerformed
-        // TODO add your handling code here:
+        //intialize
         Player player = new Player();
+        String username = "";
+        String fundsString = "";
+        int funds;
 
+        //show the current player list
         System.out.println("Create Player: " + playerList);
 
-        String username = JOptionPane.showInputDialog(null, "Enter new player name: ");
-        String fundsString = JOptionPane.showInputDialog(null, "Enter funds to deposit: ");
+        //validate username
+        while (username == null || username == "") {
+            username = JOptionPane.showInputDialog(null, "Enter new player name: ");
+        }
+        //validate fundsString
+        while (fundsString == null || fundsString == "") {
+            fundsString = JOptionPane.showInputDialog(null, "Enter funds to deposit: ");
+            try {
+                funds = Integer.parseInt(fundsString);
+            } catch (NumberFormatException e) {
+                fundsString = "";
+            }
+        }
 
+        //modify the current player object
         player.setUsername(username);
         player.setFunds(Integer.parseInt(fundsString));
 
+        //add the current player to the list
         playerList.add(playerList.size(), player);
 
         //enable games and stats
@@ -303,15 +319,23 @@ public class Menu extends javax.swing.JFrame {
         slapjackButton.setEnabled(true);
         bjButton.setEnabled(true);
         saveButton.setEnabled(true);
-        playerStatsButton.setEnabled(true);
     }//GEN-LAST:event_createPlayerButtonActionPerformed
 
     private void selectUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUserButtonActionPerformed
 
+        //display the current user
         System.out.println("Selected User: " + playerList);
 
+        //reset player
         player = new Player();
-        String username = JOptionPane.showInputDialog(null, "Enter existing player name: ");
+
+        //intialize username
+        String username = "";
+
+        //validate username
+        while (username == null || username == "") {
+            username = JOptionPane.showInputDialog(null, "Enter existing player name: ");
+        }
 
         //search list for username
         for (int i = 0; i < playerList.size(); i++) {
@@ -358,7 +382,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         adminFrame admin = new adminFrame(playerList);
         admin.setVisible(true);
-        
+
         //updates the player list
         playerList = adminFrame.playerListCopy;
 

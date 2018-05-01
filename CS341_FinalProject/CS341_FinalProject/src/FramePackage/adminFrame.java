@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * @author eu3035jm
  */
 public class adminFrame extends javax.swing.JFrame {
-    
+
     //value for the funds to be reset to 
     public static final int RESET_FUNDS = 100;
 
@@ -121,9 +121,9 @@ public class adminFrame extends javax.swing.JFrame {
 
     private void resetStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetStatsButtonActionPerformed
         // TODO add your handling code here:
-        
+
         //get each player and reset stats  
-        for(int player = 0; player < playerListCopy.size(); player++){
+        for (int player = 0; player < playerListCopy.size(); player++) {
             playerListCopy.get(player).resetAllStats();
         }
 
@@ -189,9 +189,13 @@ public class adminFrame extends javax.swing.JFrame {
         boolean removed = false;
 
         //get the input for the user to be removed
-        String removePlayer;
-        removePlayer = JOptionPane.showInputDialog(this, "Please enter the player to be removed.");
+        String removePlayer = "";
 
+        //validate player
+        while (removePlayer == null || removePlayer == "") {
+            removePlayer = JOptionPane.showInputDialog(this, "Please enter the player to be removed.");
+        }
+        
         //find the player in the player list and remove it
         for (int playerIndex = 0; playerIndex < playerListCopy.size(); playerIndex++) {
             if (playerListCopy.get(playerIndex).getUsername().equalsIgnoreCase(removePlayer.trim())) {
@@ -228,7 +232,7 @@ public class adminFrame extends javax.swing.JFrame {
 
     private void resetFundsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetFundsButtonActionPerformed
         //get each player and reset funds to $100
-        for(int player = 0; player < playerListCopy.size(); player++){
+        for (int player = 0; player < playerListCopy.size(); player++) {
             playerListCopy.get(player).setFunds(RESET_FUNDS);
         }
 
