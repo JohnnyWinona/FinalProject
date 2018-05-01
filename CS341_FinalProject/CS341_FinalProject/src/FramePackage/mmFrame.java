@@ -9,20 +9,18 @@ package FramePackage;
 import GamePackage.MemoryMatch;
 import MainPackage.Card;
 import MainPackage.Menu;
-import MainPackage.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
-import javax.swing.Timer;
 import sun.applet.Main;
 
 public class mmFrame extends javax.swing.JFrame {
@@ -43,8 +41,9 @@ public class mmFrame extends javax.swing.JFrame {
     MemoryMatch mmGame = new MemoryMatch();
 
     //initialize a list of cards
-    List<Card> cards = new ArrayList<Card>();
+    List<Card> cards = new ArrayList<>();
 
+    //card choice variables
     Card firstCard;
     Card secondCard;
     int currentMatches;
@@ -54,10 +53,12 @@ public class mmFrame extends javax.swing.JFrame {
     int flip = 0;
 
     //retrieve difficulty from difficulty frame chooser
-    String difficulty = difficultyFrame.getDifficulty();
+    String difficulty = difficultyFrame.difficulty;
 
+    //card counter
     int cardSelectionCount;
 
+    //used to flip card
     ActionListener taskPerformer;
 
     //audio file variable
@@ -714,59 +715,57 @@ public class mmFrame extends javax.swing.JFrame {
                 break;
         }
 
-        taskPerformer = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                //...Perform a task...
-                switch (flip) {
-                    case 0:
-                        flip++;
-                        switch (difficulty) {
-                            case "easy":
-                                easyCard1.setIcon(cards.get(0).getCardImage());
-                                easyCard2.setIcon(cards.get(1).getCardImage());
-                                easyCard3.setIcon(cards.get(2).getCardImage());
-                                easyCard4.setIcon(cards.get(3).getCardImage());
+        taskPerformer = (ActionEvent evt1) -> {
+            //...Perform a task...
+            switch (flip) {
+                case 0:
+                    flip++;
+                    switch (difficulty) {
+                        case "easy":
+                            easyCard1.setIcon(cards.get(0).getCardImage());
+                            easyCard2.setIcon(cards.get(1).getCardImage());
+                            easyCard3.setIcon(cards.get(2).getCardImage());
+                            easyCard4.setIcon(cards.get(3).getCardImage());
 
-                                break;
-                            case "medium":
-                                easyCard1.setIcon(cards.get(0).getCardImage());
-                                easyCard2.setIcon(cards.get(1).getCardImage());
-                                easyCard3.setIcon(cards.get(2).getCardImage());
-                                easyCard4.setIcon(cards.get(3).getCardImage());
-                                medCard5.setIcon(cards.get(4).getCardImage());
-                                medCard6.setIcon(cards.get(5).getCardImage());
-                                break;
-                            case "hard":
-                                easyCard1.setIcon(cards.get(0).getCardImage());
-                                easyCard2.setIcon(cards.get(1).getCardImage());
-                                easyCard3.setIcon(cards.get(2).getCardImage());
-                                easyCard4.setIcon(cards.get(3).getCardImage());
-                                medCard5.setIcon(cards.get(4).getCardImage());
-                                medCard6.setIcon(cards.get(5).getCardImage());
-                                hardCard7.setIcon(cards.get(6).getCardImage());
-                                hardCard8.setIcon(cards.get(7).getCardImage());
-                                break;
-                        }//end switch
-                        break;
-                    case 1:
-                        //after waiting
-                        //show cards back
-                        flip++;
-                        switch (difficulty) {
-                            case "easy":
-                                changeCardEasy();
-                                break;
-                            case "medium":
-                                changeCardMedium();
-                                break;
-                            case "hard":
-                                changeCardHard();
-                                break;
-                        }//end switch
-                        break;
-                    default:
-                        break;
-                }
+                            break;
+                        case "medium":
+                            easyCard1.setIcon(cards.get(0).getCardImage());
+                            easyCard2.setIcon(cards.get(1).getCardImage());
+                            easyCard3.setIcon(cards.get(2).getCardImage());
+                            easyCard4.setIcon(cards.get(3).getCardImage());
+                            medCard5.setIcon(cards.get(4).getCardImage());
+                            medCard6.setIcon(cards.get(5).getCardImage());
+                            break;
+                        case "hard":
+                            easyCard1.setIcon(cards.get(0).getCardImage());
+                            easyCard2.setIcon(cards.get(1).getCardImage());
+                            easyCard3.setIcon(cards.get(2).getCardImage());
+                            easyCard4.setIcon(cards.get(3).getCardImage());
+                            medCard5.setIcon(cards.get(4).getCardImage());
+                            medCard6.setIcon(cards.get(5).getCardImage());
+                            hardCard7.setIcon(cards.get(6).getCardImage());
+                            hardCard8.setIcon(cards.get(7).getCardImage());
+                            break;
+                    }//end switch
+                    break;
+                case 1:
+                    //after waiting
+                    //show cards back
+                    flip++;
+                    switch (difficulty) {
+                        case "easy":
+                            changeCardEasy();
+                            break;
+                        case "medium":
+                            changeCardMedium();
+                            break;
+                        case "hard":
+                            changeCardHard();
+                            break;
+                    }//end switch
+                    break;
+                default:
+                    break;
             }
         };
         new javax.swing.Timer(delay, taskPerformer).restart();
@@ -917,22 +916,20 @@ public class mmFrame extends javax.swing.JFrame {
 
     //method for playing a sound
     public static synchronized void playSound(final String url) {
-        new Thread(new Runnable() {
-            // The wrapper thread is unnecessary, unless it blocks on the
-            // Clip finishing; see comments.
-            public void run() {
-                try {
-                    Clip clip = AudioSystem.getClip();
-                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-                            //"/MainPackage/audioFile.wav"
-                            Main.class.getResourceAsStream(url));
-                    clip.open(inputStream);
-                    clip.start();
-                } catch (Exception e) {
-                    System.err.println(e.getMessage());
-                }
+        new Thread(() -> {
+            try {
+                Clip clip = AudioSystem.getClip();
+                AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                        //"/MainPackage/audioFile.wav"
+                        Main.class.getResourceAsStream(url));
+                clip.open(inputStream);
+                clip.start();
+            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
+                System.err.println(e.getMessage());
             }
-        }).start();
+        } // The wrapper thread is unnecessary, unless it blocks on the
+        // Clip finishing; see comments.
+        ).start();
     }
 
     /**
@@ -974,10 +971,8 @@ public class mmFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new mmFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new mmFrame().setVisible(true);
         });
     }
 

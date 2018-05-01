@@ -23,9 +23,9 @@ public class bjFrame extends javax.swing.JFrame {
 
     Blackjack bjGame = new Blackjack();
 
-    List<Card> houseHand = new ArrayList<Card>();
-    List<Card> oneHand = new ArrayList<Card>();
-    List<Card> twoHand = new ArrayList<Card>();
+    List<Card> houseHand = new ArrayList<>();
+    List<Card> oneHand = new ArrayList<>();
+    List<Card> twoHand = new ArrayList<>();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -549,10 +549,8 @@ public class bjFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new bjFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new bjFrame().setVisible(true);
         });
     }
 

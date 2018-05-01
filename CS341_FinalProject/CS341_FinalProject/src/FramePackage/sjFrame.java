@@ -22,11 +22,11 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
     Slapjack deck = new Slapjack();
 
-    private List<Card> PlayerHand1 = new ArrayList<Card>();
-    private List<Card> PlayerHand2 = new ArrayList<Card>();
-    private List<Card> ComputerHand1 = new ArrayList<Card>();
-    private List<Card> ComputerHand2 = new ArrayList<Card>();
-    private List<Card> CenterHand = new ArrayList<Card>();
+    private List<Card> PlayerHand1 = new ArrayList<>();
+    private List<Card> PlayerHand2 = new ArrayList<>();
+    private List<Card> ComputerHand1 = new ArrayList<>();
+    private List<Card> ComputerHand2 = new ArrayList<>();
+    private List<Card> CenterHand = new ArrayList<>();
     //    private ArrayList<Deck> deck = new ArrayList<Deck>();
 
     int Humanplayers = 0;
@@ -99,7 +99,6 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         addButton = new javax.swing.JButton();
         addComputerButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
-        exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Slapjack");
@@ -218,13 +217,6 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
             }
         });
 
-        exitButton.setText("Exit Game");
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,9 +228,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 .addComponent(addComputerButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addGap(22, 147, Short.MAX_VALUE))
             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -247,7 +237,6 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
                 .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitButton)
                     .addComponent(startButton)
                     .addComponent(addButton)
                     .addComponent(addComputerButton))
@@ -255,6 +244,7 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
@@ -312,454 +302,449 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
         //begin loop
         //int delay = 1000;
         ActionListener taskPerformer;
-        taskPerformer = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                //...Perform a task...
-                if (Humanplayers == 2 && Computerplayers == 2) {
-
-                    if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        ComputerHand1.add(null);
-                        PlayerHand2.add(null);
-                        PlayerHand1.add(null);
-                    }
-                    if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand2.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        ComputerHand2.add(null);
-                        PlayerHand2.add(null);
-                        PlayerHand1.add(null);
-                    }
-                    if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0 && ComputerHand2.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 20);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand2.add(null);
-                        ComputerHand1.add(null);
-                        ComputerHand2.add(null);
-                    }
-                    if (PlayerHand2.size() == 0 && ComputerHand1.size() == 0 && ComputerHand2.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjWins();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjWins(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 35);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand2.add(null);
-                        ComputerHand1.add(null);
-                        ComputerHand2.add(null);
-                    }
-
-                } else if (Humanplayers == 2 && Computerplayers == 1) {
-
-                    if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand1.add(null);
-                        PlayerHand2.add(null);
-                    }
-                    if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 20);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand1.add(null);
-                        ComputerHand1.add(null);
-                    }
-                    if (PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjWins();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjWins(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand2.add(null);
-                        ComputerHand1.add(null);
-                    }
-
-                } else if (Humanplayers == 1 && Computerplayers == 1) {
-
-                    if (PlayerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand1.add(null);
-                    }
-                    if (ComputerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjWins();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjWins(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 35);
-
-                        dispose();
-                        x = 10;
-                        ComputerHand1.add(null);
-                    }
-
-                } else if (Humanplayers == 2 && Computerplayers == 0) {
-
-                    if (PlayerHand1.size() == 0) {
-
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 20);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand1.add(null);
-                    }
-
-                    if (PlayerHand2.size() == 0) {
-
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 20);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand2.add(null);
-                    }
-                } else if (Humanplayers == 1 && Computerplayers == 2) {
-
-                    if (PlayerHand1.size() == 0 && ComputerHand2.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand1.add(null);
-                        ComputerHand2.add(null);
-                    }
-                    if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjLosses();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjLosses(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 10);
-
-                        dispose();
-                        x = 10;
-                        PlayerHand1.add(null);
-                        ComputerHand1.add(null);
-                    }
-                    if (ComputerHand2.size() == 0 && ComputerHand1.size() == 0) {
-                        ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
-                        JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
-                                "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
-
-                        int scoreTemp = Menu.player.getSjWins();
-
-                        scoreTemp++;
-
-                        //increment score
-                        Menu.player.setSjWins(scoreTemp++);
-
-                        //increment funds
-                        Menu.player.setFunds(Menu.player.getFunds() + 35);
-
-                        dispose();
-                        x = 10;
-                        ComputerHand2.add(null);
-                        ComputerHand1.add(null);
-                    }
-
+        taskPerformer = (ActionEvent evt1) -> {
+            //...Perform a task...
+            if (Humanplayers == 2 && Computerplayers == 2) {
+                
+                if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    ComputerHand1.add(null);
+                    PlayerHand2.add(null);
+                    PlayerHand1.add(null);
                 }
-
-                jLabel2Player1.setText("<html>Player 1 <br> \n"
-                        + "Use letter A to Slap<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(PlayerHand1)
-                        + "</html>\n");
-
-                jLabel2Player2.setText("<html>Player 2 <br> \n"
-                        + "Use letter L to Slap<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(PlayerHand2)
-                        + "</html>\n");
-
-                jLabel3Player3.setText("<html>Computer <br> \n"
-                        + "Player 1<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(ComputerHand1)
-                        + "</html>\n");
-
-                jLabel4Player4.setText("<html>Computer <br> \n"
-                        + "Player 2<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(ComputerHand2)
-                        + "</html>\n");
-
-                x++;
-                switch (x) {
-                    case 1: //
-                        if (PlayerHand1.size() != 0) {
-                            jLabelPlayer1.setIcon(PlayerHand1.get(0).getCardImage());
-                            CenterHand.add(PlayerHand1.remove(0));
-                        } else {
-                            jLabelPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-                        }
-                        break;
-                    case 2:
-                        if (PlayerHand2.size() != 0) {
-                            if (Humanplayers == 2) {
-                                jLabelPlayer2.setIcon(PlayerHand2.get(0).getCardImage());
-                                CenterHand.add(PlayerHand2.remove(0));
-                            }
-                        } else {
-                            jLabelPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-                        }
-
-                        break;
-                    case 3: //green
-
-                        if (ComputerHand1.size() != 0) {
-
-                            if (Computerplayers == 1 || Computerplayers == 2) {
-                                jLabelPlayer3.setIcon(ComputerHand1.get(0).getCardImage());
-                                CenterHand.add(ComputerHand1.remove(0));
-
-                            }
-                        } else {
-                            jLabelPlayer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-                        }
-                        break;
-                    case 4:
-                        if (ComputerHand2.size() != 0) {
-                            if (Computerplayers == 2) {
-                                jLabelPlayer4.setIcon(ComputerHand2.get(0).getCardImage());
-                                CenterHand.add(ComputerHand2.remove(0));
-
-                            }
-                        } else {
-                            jLabelPlayer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
-                        }
-
-                        x = 0;
-                        break;
+                if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0 && ComputerHand2.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    ComputerHand2.add(null);
+                    PlayerHand2.add(null);
+                    PlayerHand1.add(null);
                 }
-
-                jLabel2Player1.setText("<html>Player 1 <br> \n"
-                        + "Use letter A to Slap<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(PlayerHand1)
-                        + "</html>\n");
-
-                jLabel2Player2.setText("<html>Player 2 <br> \n"
-                        + "Use letter L to Slap<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(PlayerHand2)
-                        + "</html>\n");
-
-                jLabel3Player3.setText("<html>Computer <br> \n"
-                        + "Player 1<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(ComputerHand1)
-                        + "</html>\n");
-
-                jLabel4Player4.setText("<html>Computer <br> \n"
-                        + "Player 2<br>\n"
-                        + "# of cards "
-                        + deck.getTotalCards(ComputerHand2)
-                        + "</html>\n");
-
+                if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0 && ComputerHand2.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 20);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand2.add(null);
+                    ComputerHand1.add(null);
+                    ComputerHand2.add(null);
+                }
+                if (PlayerHand2.size() == 0 && ComputerHand1.size() == 0 && ComputerHand2.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjWins();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjWins(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 35);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand2.add(null);
+                    ComputerHand1.add(null);
+                    ComputerHand2.add(null);
+                }
+                
+            } else if (Humanplayers == 2 && Computerplayers == 1) {
+                
+                if (PlayerHand1.size() == 0 && PlayerHand2.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand1.add(null);
+                    PlayerHand2.add(null);
+                }
+                if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 20);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand1.add(null);
+                    ComputerHand1.add(null);
+                }
+                if (PlayerHand2.size() == 0 && ComputerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjWins();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjWins(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand2.add(null);
+                    ComputerHand1.add(null);
+                }
+                
+            } else if (Humanplayers == 1 && Computerplayers == 1) {
+                
+                if (PlayerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand1.add(null);
+                }
+                if (ComputerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjWins();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjWins(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 35);
+                    
+                    dispose();
+                    x = 10;
+                    ComputerHand1.add(null);
+                }
+                
+            } else if (Humanplayers == 2 && Computerplayers == 0) {
+                
+                if (PlayerHand1.size() == 0) {
+                    
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 20);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand1.add(null);
+                }
+                
+                if (PlayerHand2.size() == 0) {
+                    
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 2 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 20);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand2.add(null);
+                }
+            } else if (Humanplayers == 1 && Computerplayers == 2) {
+                
+                if (PlayerHand1.size() == 0 && ComputerHand2.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Computer 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand1.add(null);
+                    ComputerHand2.add(null);
+                }
+                if (PlayerHand1.size() == 0 && ComputerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Computer 2 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjLosses();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjLosses(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 10);
+                    
+                    dispose();
+                    x = 10;
+                    PlayerHand1.add(null);
+                    ComputerHand1.add(null);
+                }
+                if (ComputerHand2.size() == 0 && ComputerHand1.size() == 0) {
+                    ImageIcon icon = new ImageIcon("src/cards/aces.jpg");
+                    JOptionPane.showMessageDialog(null, "Player 1 Wins!!!",
+                            "Slap Jack", JOptionPane.INFORMATION_MESSAGE, icon);
+                    
+                    int scoreTemp = Menu.player.getSjWins();
+                    
+                    scoreTemp++;
+                    
+                    //increment score
+                    Menu.player.setSjWins(scoreTemp++);
+                    
+                    //increment funds
+                    Menu.player.setFunds(Menu.player.getFunds() + 35);
+                    
+                    dispose();
+                    x = 10;
+                    ComputerHand2.add(null);
+                    ComputerHand1.add(null);
+                }
+                
             }
+            
+            jLabel2Player1.setText("<html>Player 1 <br> \n"
+                    + "Use letter A to Slap<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(PlayerHand1)
+                    + "</html>\n");
+            
+            jLabel2Player2.setText("<html>Player 2 <br> \n"
+                    + "Use letter L to Slap<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(PlayerHand2)
+                    + "</html>\n");
+            
+            jLabel3Player3.setText("<html>Computer <br> \n"
+                    + "Player 1<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(ComputerHand1)
+                    + "</html>\n");
+            
+            jLabel4Player4.setText("<html>Computer <br> \n"
+                    + "Player 2<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(ComputerHand2)
+                    + "</html>\n");
+            
+            x++;
+            switch (x) {
+                case 1: //
+                    if (PlayerHand1.size() != 0) {
+                        jLabelPlayer1.setIcon(PlayerHand1.get(0).getCardImage());
+                        CenterHand.add(PlayerHand1.remove(0));
+                    } else {
+                        jLabelPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
+                    }
+                    break;
+                case 2:
+                    if (PlayerHand2.size() != 0) {
+                        if (Humanplayers == 2) {
+                            jLabelPlayer2.setIcon(PlayerHand2.get(0).getCardImage());
+                            CenterHand.add(PlayerHand2.remove(0));
+                        }
+                    } else {
+                        jLabelPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
+                    }
+                    
+                    break;
+                case 3: //green
+                    
+                    if (ComputerHand1.size() != 0) {
+                        
+                        if (Computerplayers == 1 || Computerplayers == 2) {
+                            jLabelPlayer3.setIcon(ComputerHand1.get(0).getCardImage());
+                            CenterHand.add(ComputerHand1.remove(0));
+                            
+                        }
+                    } else {
+                        jLabelPlayer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
+                    }
+                    break;
+                case 4:
+                    if (ComputerHand2.size() != 0) {
+                        if (Computerplayers == 2) {
+                            jLabelPlayer4.setIcon(ComputerHand2.get(0).getCardImage());
+                            CenterHand.add(ComputerHand2.remove(0));
+                            
+                        }
+                    } else {
+                        jLabelPlayer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cards/purple_back.jpg")));
+                    }
+                    
+                    x = 0;
+                    break;
+            }
+            
+            jLabel2Player1.setText("<html>Player 1 <br> \n"
+                    + "Use letter A to Slap<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(PlayerHand1)
+                    + "</html>\n");
+            
+            jLabel2Player2.setText("<html>Player 2 <br> \n"
+                    + "Use letter L to Slap<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(PlayerHand2)
+                    + "</html>\n");
+            
+            jLabel3Player3.setText("<html>Computer <br> \n"
+                    + "Player 1<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(ComputerHand1)
+                    + "</html>\n");
+            
+            jLabel4Player4.setText("<html>Computer <br> \n"
+                    + "Player 2<br>\n"
+                    + "# of cards "
+                    + deck.getTotalCards(ComputerHand2)
+                    + "</html>\n");
         };
         new javax.swing.Timer(delay, taskPerformer).start();
 
         if (Computerplayers == 1) {
 
             ActionListener taskPerformer2;
-            taskPerformer2 = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    //   System.out.println(jLabelPlayer1.getIcon().toString());
-                    if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        };
-                    } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand1.add(CenterHand.remove(i));
-                        }
+            taskPerformer2 = (ActionEvent evt1) -> {
+                //   System.out.println(jLabelPlayer1.getIcon().toString());
+                if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    };
+                } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer1.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer3.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand1.add(CenterHand.remove(i));
                     }
                 }
             };
@@ -768,48 +753,46 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
 
         if (Computerplayers == 2) {
             ActionListener taskPerformer3;
-            taskPerformer3 = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    //   System.out.println(jLabelPlayer1.getIcon().toString());
-                    if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        };
-                    } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
-                    } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
-                        //  System.out.println(jLabelPlayer1.getIcon().toString());
-                        for (int i = 0; i < CenterHand.size(); i++) {
-                            ComputerHand2.add(CenterHand.remove(i));
-                        }
+            taskPerformer3 = (ActionEvent evt1) -> {
+                //   System.out.println(jLabelPlayer1.getIcon().toString());
+                if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    };
+                } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer2.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofSPADES.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofCLUBS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofHEARTS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
+                    }
+                } else if (jLabelPlayer4.getIcon().toString().equalsIgnoreCase(JACKofDIAMONDS.toString())) {
+                    //  System.out.println(jLabelPlayer1.getIcon().toString());
+                    for (int i = 0; i < CenterHand.size(); i++) {
+                        ComputerHand2.add(CenterHand.remove(i));
                     }
                 }
             };
@@ -905,7 +888,6 @@ public class sjFrame extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel CenterDeck;
     private javax.swing.JButton addButton;
     private javax.swing.JButton addComputerButton;
-    private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel2Player1;
     private javax.swing.JLabel jLabel2Player2;
     private javax.swing.JLabel jLabel3Player3;

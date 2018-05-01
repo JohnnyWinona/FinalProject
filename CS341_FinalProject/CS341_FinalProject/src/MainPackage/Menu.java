@@ -7,11 +7,8 @@
 package MainPackage;
 
 import FramePackage.adminFrame;
-import MainPackage.Player;
 import FramePackage.bjFrame;
 import FramePackage.difficultyFrame;
-import static FramePackage.difficultyFrame.difficulty;
-import FramePackage.mmFrame;
 import FramePackage.sjFrame;
 import FramePackage.ssFrame;
 import java.awt.HeadlessException;
@@ -40,23 +37,14 @@ public class Menu extends javax.swing.JFrame {
         adminButton.setContentAreaFilled(false);
         adminButton.setBorderPainted(false);
     }
-
+    //used to reset players.ser file
+    //List<Player> playerList = new ArrayList<Player>();
     //call the load method to get players from player.ser file,
     //fills the array list with existing players
     List<Player> playerList = loadPlayers();
 
-    //used to reset players.ser file
-    //List<Player> playerList = new ArrayList<Player>();
     //the gameID for each game, needed for difficulty chooser if used
     public static int gameID;
-
-    public static int getGameID() {
-        return gameID;
-    }
-
-    public static void setGameID(int gameChosen) {
-        gameID = gameChosen;
-    }
 
     //default sign in as first player in list
     public static Player player;
@@ -247,7 +235,7 @@ public class Menu extends javax.swing.JFrame {
         //no difficulty chooser
         bjFrame bj = new bjFrame();
         bj.setVisible(true);
-        Menu.setGameID(1);
+        gameID = 1;
     }//GEN-LAST:event_bjButtonActionPerformed
 
     private void memoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_memoryButtonActionPerformed
@@ -255,7 +243,7 @@ public class Menu extends javax.swing.JFrame {
         //difficulty chooser
         difficultyFrame dF = new difficultyFrame();
         dF.setVisible(true);
-        Menu.setGameID(2);
+        gameID = 2;
     }//GEN-LAST:event_memoryButtonActionPerformed
 
     private void slapjackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slapjackButtonActionPerformed
@@ -267,7 +255,7 @@ public class Menu extends javax.swing.JFrame {
         //no difficulty chooser
         sjFrame sj = new sjFrame();
         sj.setVisible(true);
-        Menu.setGameID(3);
+        gameID = 3;
     }//GEN-LAST:event_slapjackButtonActionPerformed
 
     private void ssButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ssButtonActionPerformed
@@ -279,7 +267,7 @@ public class Menu extends javax.swing.JFrame {
         //no difficulty chooser
         ssFrame ss = new ssFrame();
         ss.setVisible(true);
-        Menu.setGameID(4);
+        gameID = 4;
     }//GEN-LAST:event_ssButtonActionPerformed
 
     private void createPlayerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPlayerButtonActionPerformed
@@ -389,21 +377,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_adminButtonActionPerformed
 
     public List<Player> loadPlayers() {
-        List<Player> playerList = new ArrayList<Player>();
+        List<Player> playerList = new ArrayList<>();
         try {
             FileInputStream fis = new FileInputStream("players.ser");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            playerList = (List<Player>) ois.readObject();
-            ois.close();
+            try (ObjectInputStream ois = new ObjectInputStream(fis)) {
+                playerList = (List<Player>) ois.readObject();
+            }
 
             // read and print an object and cast it as string
             System.out.println("Previous player info added: " + playerList);
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
         return playerList;
@@ -442,10 +428,8 @@ public class Menu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Menu().setVisible(true);
         });
     }
 

@@ -31,9 +31,7 @@
               <Component id="addComputerButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="startButton" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pauseButton" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="22" pref="147" max="32767" attributes="0"/>
           </Group>
           <Component id="panel1" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -44,7 +42,6 @@
               <Component id="panel1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="pauseButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="addComputerButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -253,14 +250,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="pauseButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pause Game"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pauseButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

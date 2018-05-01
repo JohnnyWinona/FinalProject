@@ -16,20 +16,11 @@ public class difficultyFrame extends javax.swing.JFrame {
     public difficultyFrame() {
         initComponents();
     }
-    
-    //The difficulty frame allows for any difficulty component to be added to any game
 
+    //The difficulty frame allows for any difficulty component to be added to any game
     //info passed onto other frame
     public static String difficulty;
     public static int gameID = Menu.gameID;
-
-    public static String getDifficulty() {
-        return difficulty;
-    }
-    
-    public static void setDifficulty(String difficultyChosen) {
-        difficulty = difficultyChosen;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,7 +102,7 @@ public class difficultyFrame extends javax.swing.JFrame {
 
     private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
         // TODO add your handling code here:
-        difficultyFrame.setDifficulty("easy");
+        difficulty = "easy";
         switch (Menu.gameID) {
             case 1:
                 bjFrame bj = new bjFrame();
@@ -134,7 +125,7 @@ public class difficultyFrame extends javax.swing.JFrame {
 
     private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
         // TODO add your handling code here:
-        difficultyFrame.setDifficulty("medium");
+        difficulty = "medium";
         switch (Menu.gameID) {
             case 1:
                 bjFrame bj = new bjFrame();
@@ -157,7 +148,7 @@ public class difficultyFrame extends javax.swing.JFrame {
 
     private void hardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonActionPerformed
         // TODO add your handling code here:
-        difficultyFrame.setDifficulty("hard");
+        difficulty = "hard";
         switch (Menu.gameID) {
             case 1:
                 bjFrame bj = new bjFrame();
@@ -194,22 +185,16 @@ public class difficultyFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(difficultyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(difficultyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(difficultyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(difficultyFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
+        //</editor-fold>
+
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new difficultyFrame().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new difficultyFrame().setVisible(true);
         });
     }
 
